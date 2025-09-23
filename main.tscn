@@ -1,8 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbjl1t8l0187n"]
+[gd_scene load_steps=4 format=3 uid="uid://cbjl1t8l0187n"]
 
-[ext_resource type="Texture2D" path="res://icon.svg" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://bva0c233dda1u" path="res://icon.svg" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://clktvg8lqeds4" path="res://scenes/character.tscn" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://bmmxgff16u52u" path="res://scripts/smart_cam.gd" id="3_1bvp3"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="floor" type="Sprite2D" parent="."]
+scale = Vector2(20.390627, 13.859377)
 texture = ExtResource("1_ig7tw")
+
+[node name="blue guy" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(-60, -24)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(8, 8)
+script = ExtResource("3_1bvp3")
+
+[node name="Character" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(22, 14)
+
+[node name="Character2" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(-49, 46)

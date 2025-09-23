@@ -1,0 +1,5 @@
+res://scripts/Character.gd
+res://scripts/global/CharacterController.gd
+res://scenes/character.tscn
+res://main.tscn
+res://scripts/smart_cam.gd
