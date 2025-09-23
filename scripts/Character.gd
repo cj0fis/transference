@@ -4,7 +4,7 @@ class_name Character extends CharacterBody2D
 
 var is_selected: bool = false
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("left_click") and is_selected:
 		_on_click()
 	
