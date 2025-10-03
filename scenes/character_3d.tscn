@@ -1,0 +1,109 @@
+[gd_scene load_steps=16 format=3 uid="uid://catn6hpj8kb6u"]
+
+[ext_resource type="Script" uid="uid://c2xxhl08keeq2" path="res://scripts/Character3D.gd" id="1_mf2e7"]
+[ext_resource type="Script" uid="uid://cvi5du2su6uo2" path="res://scripts/components/HealthComponent.gd" id="2_ffsub"]
+[ext_resource type="Script" uid="uid://b4hww5osf0iye" path="res://scripts/components/SoulComponent.gd" id="3_b85oe"]
+[ext_resource type="Texture2D" uid="uid://ch5ikt3ve8n1l" path="res://assets/_Grim_UI.png" id="5_delfk"]
+[ext_resource type="Script" uid="uid://bup84jc4r6ntk" path="res://scripts/components/HurtBoxComponent.gd" id="5_r6jgy"]
+[ext_resource type="Script" uid="uid://dbm0eunb3sh4f" path="res://scripts/components/HealthBarComponent.gd" id="6_yplgq"]
+[ext_resource type="Script" uid="uid://dttil0sv674li" path="res://scripts/components/TextureReplacerComponent.gd" id="8_o8qwa"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gljjg"]
+radius = 0.41357422
+height = 1.3100586
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gljjg"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rsqh2"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ffsub"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b85oe"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "velocity != Vector3(0,0,0)"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_delfk"]
+xfade_time = 0.2
+advance_mode = 2
+advance_expression = "velocity == Vector3(0,0,0)"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_yplgq"]
+states/Start/position = Vector2(172, 99.08642)
+states/idle/node = SubResource("AnimationNodeAnimation_gljjg")
+states/idle/position = Vector2(383.66666, 100.111115)
+states/run/node = SubResource("AnimationNodeAnimation_rsqh2")
+states/run/position = Vector2(677, 99.6813)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_ffsub"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_b85oe"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_delfk")]
+graph_offset = Vector2(-224, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yplgq"]
+atlas = ExtResource("5_delfk")
+region = Rect2(67, 1821, 42, 6)
+
+[node name="Character3D" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_mf2e7")
+
+[node name="ColliderBox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6550293, 0)
+shape = SubResource("CapsuleShape3D_gljjg")
+
+[node name="HurtBoxComponent" type="Area3D" parent="."]
+script = ExtResource("5_r6jgy")
+metadata/_custom_type_script = "uid://bup84jc4r6ntk"
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="HurtBoxComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6550293, 0)
+shape = SubResource("CapsuleShape3D_gljjg")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_yplgq")
+advance_expression_base_node = NodePath("..")
+
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("hurtbox")]
+script = ExtResource("2_ffsub")
+max_health = 100.0
+hurtbox = NodePath("../HurtBoxComponent")
+metadata/_custom_type_script = "uid://cvi5du2su6uo2"
+
+[node name="SoulComponent" type="Node" parent="."]
+script = ExtResource("3_b85oe")
+metadata/_custom_type_script = "uid://b4hww5osf0iye"
+
+[node name="TextureReplacerComponent" type="Node" parent="."]
+script = ExtResource("8_o8qwa")
+metadata/_custom_type_script = "uid://dttil0sv674li"
+
+[node name="HealthBarComponent" type="TextureProgressBar" parent="." node_paths=PackedStringArray("health_component")]
+modulate = Color(1, 1, 1, 0)
+offset_right = 42.0
+offset_bottom = 6.0
+max_value = 42.0
+value = 42.0
+rounded = true
+texture_progress = SubResource("AtlasTexture_yplgq")
+script = ExtResource("6_yplgq")
+health_component = NodePath("../HealthComponent")
+fade_out_time = 3.0
+metadata/_custom_type_script = "uid://dbm0eunb3sh4f"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04550171, 1.5244141, -1.0986099)
+visible = false
+light_color = Color(0.9882353, 0.8862745, 0.31764707, 1)
+light_energy = 2.038
+light_indirect_energy = 0.815
+light_volumetric_fog_energy = 4.022
+light_specular = 1.27
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04550171, 1.5244141, 1.075592)
+visible = false
+light_energy = 0.652
+light_volumetric_fog_energy = 3.963

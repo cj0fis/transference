@@ -1,0 +1,107 @@
+[gd_scene load_steps=15 format=3 uid="uid://c8snj7rkn12o8"]
+
+[ext_resource type="Script" uid="uid://ckb7ois1d6gdk" path="res://scripts/components/HitBox.gd" id="4_dprcw"]
+[ext_resource type="PackedScene" uid="uid://beniili1qlklo" path="res://scenes/goblins/goblin_skirmisher/goblin_skirmisher.tscn" id="4_js724"]
+[ext_resource type="Script" uid="uid://cswm1qu1263m2" path="res://scripts/SmartCam3D.gd" id="10_4x3p8"]
+[ext_resource type="Shader" uid="uid://dhoago6pts7v5" path="res://screen_effects.gdshader" id="11_si3gf"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_f20b2"]
+size = Vector2(100, 100)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_nyheh"]
+noise_type = 3
+frequency = 0.0112
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dprcw"]
+noise = SubResource("FastNoiseLite_nyheh")
+seamless = true
+as_normal_map = true
+bump_strength = 10.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51r06"]
+albedo_color = Color(0.13612643, 0.053163037, 0.0045986045, 1)
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_dprcw")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_poj7r"]
+sky_top_color = Color(0.14201298, 0.2836212, 0.3817795, 1)
+sky_horizon_color = Color(0.7607843, 0.6117647, 0.6039216, 1)
+ground_bottom_color = Color(0.9001067, 0.8231794, 0.81850904, 1)
+ground_horizon_color = Color(0.7607843, 0.6117647, 0.6039216, 1)
+ground_curve = 0.12125735
+
+[sub_resource type="Sky" id="Sky_jamy0"]
+sky_material = SubResource("ProceduralSkyMaterial_poj7r")
+
+[sub_resource type="Environment" id="Environment_qsqgh"]
+background_mode = 2
+background_energy_multiplier = 16.0
+sky = SubResource("Sky_jamy0")
+ambient_light_source = 2
+ambient_light_color = Color(0.67481464, 0.67481464, 0.6748146, 1)
+reflected_light_source = 1
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+volumetric_fog_density = 0.0396
+volumetric_fog_albedo = Color(0.3943528, 0.39435276, 0.39435276, 1)
+volumetric_fog_length = 23.84
+volumetric_fog_ambient_inject = 0.12
+
+[sub_resource type="QuadMesh" id="QuadMesh_ut6l8"]
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wbflw"]
+render_priority = 0
+shader = ExtResource("11_si3gf")
+shader_parameter/scale = 4.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_js724"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_f20b2")
+surface_material_override/0 = SubResource("StandardMaterial3D_51r06")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qsqgh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.16113879, 0.98693174, 0, -0.98693174, -0.16113879, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.86602455, -0.25000128, 0.43301368, 0, 0.8660248, 0.5000011, -0.5000015, 0.4330132, -0.74999875, 6.0021205, 7.4999995, -12.949154)
+top_level = true
+environment = SubResource("Environment_qsqgh")
+projection = 1
+current = true
+size = 12.0
+script = ExtResource("10_4x3p8")
+smooth_speed = 4.0
+horizontal_angle = -30.0
+distance = 15.0
+
+[node name="screen filter" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(0.9999997, 7.553467e-09, 2.3841858e-07, 1.0430813e-07, 0.8660254, -0.49999985, 0, 0.5, 0.86602527, -0.38272715, 0.47087812, -0.7490616)
+visible = false
+mesh = SubResource("QuadMesh_ut6l8")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_wbflw")
+
+[node name="HitBoxComponent" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5438063, 0)
+script = ExtResource("4_dprcw")
+metadata/_custom_type_script = "uid://ckb7ois1d6gdk"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBoxComponent"]
+shape = SubResource("BoxShape3D_js724")
+
+[node name="goblin_skirmisher" parent="." instance=ExtResource("4_js724")]
+transform = Transform3D(-0.5339539, 0, 0.8455136, 0, 1, 0, -0.8455136, 0, -0.5339539, 3.3447297, 0, -1.8864949)
+
+[node name="goblin_skirmisher2" parent="." instance=ExtResource("4_js724")]
+transform = Transform3D(-0.10256679, 0, -0.9947261, 0, 1, 0, 0.9947261, 0, -0.10256679, 0.31985545, 0, -1.9744172)
+
+[node name="goblin_skirmisher3" parent="." instance=ExtResource("4_js724")]
+transform = Transform3D(0.8859042, 0, 0.46386823, 0, 1, 0, -0.46386823, 0, 0.8859042, 2.4941316, 0, 2.0212493)

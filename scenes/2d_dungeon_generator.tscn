@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://cw3fliw07ncyt"]
+
+[ext_resource type="Script" uid="uid://duxqk4q7l2v5v" path="res://scripts/dungeon_generator.gd" id="1_aqf3t"]
+[ext_resource type="Script" uid="uid://d0eh3risiknwy" path="res://scripts/DungeonParameters.gd" id="2_balw6"]
+[ext_resource type="Script" uid="uid://bitko6oslllm6" path="res://scripts/dungeon_renderer.gd" id="2_th5cs"]
+[ext_resource type="Script" uid="uid://c75gosorq3t4" path="res://scenes/rectangle_physics_generator.gd" id="4_8gif6"]
+
+[sub_resource type="Resource" id="Resource_8gif6"]
+script = ExtResource("2_balw6")
+max_aspect_ratio = 3.0
+partition_steps = Array[int]([1, 0])
+min_cycle_length = 5
+metadata/_custom_type_script = "uid://d0eh3risiknwy"
+
+[sub_resource type="Resource" id="Resource_f4qyg"]
+script = ExtResource("2_balw6")
+min_size = 4
+avg_scale = 1.0
+min_cycle_length = 5
+metadata/_custom_type_script = "uid://d0eh3risiknwy"
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Generator" type="Node" parent="."]
+script = ExtResource("1_aqf3t")
+params = SubResource("Resource_8gif6")
+
+[node name="Renderer" type="Node2D" parent="." node_paths=PackedStringArray("generator")]
+visible = false
+script = ExtResource("2_th5cs")
+generator = NodePath("../Generator")
+render_hallways = true
+render_room_data = true
+
+[node name="rectangle_physics_generator" type="Node2D" parent="."]
+script = ExtResource("4_8gif6")
+params = SubResource("Resource_f4qyg")
+rect_count = 50
+rect_size = Vector2(8, 15)
+world_size = Vector2(100, 100)
