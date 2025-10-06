@@ -12,6 +12,7 @@ var target_position: Vector3
 func _ready() -> void:
 	if CharacterController and not CharacterController.active_cam:
 		CharacterController.set_active_cam(self)
+	rotation.y = horizontal_angle * PI/180.0 + PI
 
 func _physics_process(delta: float) -> void:
 	if CharacterController.active_cam == self:
@@ -19,6 +20,12 @@ func _physics_process(delta: float) -> void:
 			horizontal_angle -= 90.0 * delta
 		if Input.is_action_pressed("right_arrow"):
 			horizontal_angle += 90.0 * delta
+			
+		if Input.is_action_just_pressed("middle_click"):
+			if projection == PROJECTION_ORTHOGONAL:
+				projection = PROJECTION_PERSPECTIVE
+			else:
+				projection = PROJECTION_ORTHOGONAL
 			
 	
 	if target:

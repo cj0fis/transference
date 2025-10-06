@@ -1,0 +1,15 @@
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://cs3s7nrh6oj83"]
+
+[sub_resource type="Sky" id="Sky_rc0pn"]
+
+[resource]
+background_mode = 2
+background_energy_multiplier = 16.0
+sky = SubResource("Sky_rc0pn")
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+volumetric_fog_density = 0.0832
+volumetric_fog_albedo = Color(0, 0, 0, 1)
+volumetric_fog_length = 23.84
+volumetric_fog_ambient_inject = 0.12

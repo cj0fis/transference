@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://cuj5hwa6y1che"]
+
+[ext_resource type="Script" uid="uid://bp5bwuv6kyprb" path="res://scripts/global/game_controller.gd" id="1_vq0e2"]
+[ext_resource type="Script" uid="uid://cswm1qu1263m2" path="res://scripts/SmartCam3D.gd" id="2_ts4rt"]
+[ext_resource type="Shader" uid="uid://dhoago6pts7v5" path="res://screen_effects.gdshader" id="3_rc0pn"]
+[ext_resource type="Environment" uid="uid://cs3s7nrh6oj83" path="res://assets/dark_environment.tres" id="4_rc0pn"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_burlk"]
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h0hye"]
+render_priority = 0
+shader = ExtResource("3_rc0pn")
+shader_parameter/scale = 2.0
+
+[node name="GameController" type="Node"]
+script = ExtResource("1_vq0e2")
+
+[node name="World3D" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="World3D"]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
+top_level = true
+projection = 1
+current = true
+size = 8.5
+script = ExtResource("2_ts4rt")
+smooth_speed = 4.0
+horizontal_angle = 45.0
+distance = 6.5
+
+[node name="screen filter" type="MeshInstance3D" parent="World3D/Camera3D"]
+transform = Transform3D(0.9999997, 7.553467e-09, 2.3841858e-07, 1.0430813e-07, 0.8660254, -0.49999985, 0, 0.5, 0.86602527, -0.38272715, 0.47087812, -0.7490616)
+visible = false
+mesh = SubResource("QuadMesh_burlk")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_h0hye")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World3D"]
+environment = ExtResource("4_rc0pn")
+
+[node name="World2D" type="Node2D" parent="."]
+
+[node name="GUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PersistedScenes" type="Node3D" parent="."]
+
+[node name="GlobalAudio" type="AudioStreamPlayer" parent="."]

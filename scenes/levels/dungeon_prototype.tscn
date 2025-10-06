@@ -1,0 +1,253 @@
+[gd_scene format=3 uid="uid://bwv85kt62y1nf"]
+
+[node name="dungeon_prototype" type="Node3D"]
+
+[node name="Boss Room" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+size = Vector3(20, 4, 20)
+
+[node name="Label3D" type="Label3D" parent="Boss Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1652763, 0)
+pixel_size = 0.001
+billboard = 1
+double_sided = false
+fixed_size = true
+text = "BOSS ROOM
+"
+
+[node name="Room" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.65769, 2.0167503, -17.344795)
+size = Vector3(15, 4, 15)
+
+[node name="Label3D" type="Label3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1652763, 0)
+pixel_size = 0.001
+billboard = 1
+double_sided = false
+fixed_size = true
+text = "room
+"
+
+[node name="Room15" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 2.017, -47)
+size = Vector3(12, 4, 12)
+
+[node name="Label3D" type="Label3D" parent="Room15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1652763, 0)
+pixel_size = 0.001
+billboard = 1
+double_sided = false
+fixed_size = true
+text = "room
+"
+
+[node name="Room16" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2.017, -58)
+size = Vector3(12, 4, 24)
+
+[node name="Label3D" type="Label3D" parent="Room16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1652763, 0)
+pixel_size = 0.001
+billboard = 1
+double_sided = false
+fixed_size = true
+text = "room
+"
+
+[node name="Room17" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.017, -63)
+size = Vector3(24, 4, 24)
+
+[node name="Label3D" type="Label3D" parent="Room17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1652763, 0)
+pixel_size = 0.001
+billboard = 1
+double_sided = false
+fixed_size = true
+text = "room
+"
+
+[node name="Room14" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.65769, 2.0167503, -47.344795)
+size = Vector3(12, 4, 12)
+
+[node name="Label3D" type="Label3D" parent="Room14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1652763, 0)
+pixel_size = 0.001
+billboard = 1
+double_sided = false
+fixed_size = true
+text = "room
+"
+
+[node name="Room2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.218206, 2, 16.494707)
+size = Vector3(16, 4, 16)
+
+[node name="Label3D" type="Label3D" parent="Room2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1652763, 0)
+pixel_size = 0.001
+billboard = 1
+double_sided = false
+fixed_size = true
+text = "room
+"
+
+[node name="Room8" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.717999, 2, 53.495)
+size = Vector3(19, 4, 12)
+
+[node name="Label3D" type="Label3D" parent="Room8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1652763, 0)
+pixel_size = 0.001
+billboard = 1
+double_sided = false
+fixed_size = true
+text = "room
+"
+
+[node name="Room9" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.218, 2, 47.495)
+size = Vector3(12, 4, 12)
+
+[node name="Label3D" type="Label3D" parent="Room9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1652763, 0)
+pixel_size = 0.001
+billboard = 1
+double_sided = false
+fixed_size = true
+text = "room
+"
+
+[node name="Room10" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.218, 2, 27.994999)
+size = Vector3(12, 4, 23)
+
+[node name="Label3D" type="Label3D" parent="Room10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1652763, 0)
+pixel_size = 0.001
+billboard = 1
+double_sided = false
+fixed_size = true
+text = "room
+"
+
+[node name="Room3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.285833, 2, 19.287685)
+size = Vector3(24, 4, 16)
+
+[node name="Label3D" type="Label3D" parent="Room3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1652763, 0)
+pixel_size = 0.001
+billboard = 1
+double_sided = false
+fixed_size = true
+text = "room
+"
+
+[node name="Room4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.285833, 2, -17.765205)
+size = Vector3(14, 4, 20)
+
+[node name="Label3D" type="Label3D" parent="Room4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1652763, 0)
+pixel_size = 0.001
+billboard = 1
+double_sided = false
+fixed_size = true
+text = "room
+"
+
+[node name="Room5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42190933, 2, -33.46769)
+size = Vector3(10, 4, 20)
+
+[node name="Label3D" type="Label3D" parent="Room5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1652763, 0)
+pixel_size = 0.001
+billboard = 1
+double_sided = false
+fixed_size = true
+text = "room
+"
+
+[node name="Room6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5780907, 2, 32.592186)
+size = Vector3(14, 4, 14)
+
+[node name="Label3D" type="Label3D" parent="Room6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1652763, 0)
+pixel_size = 0.001
+billboard = 1
+double_sided = false
+fixed_size = true
+text = "room
+"
+
+[node name="Room7" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5780907, 2, 57.7536)
+size = Vector3(14, 4, 20)
+
+[node name="Label3D" type="Label3D" parent="Room7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1652763, 0)
+pixel_size = 0.001
+billboard = 1
+double_sided = false
+fixed_size = true
+text = "room
+"
+
+[node name="Room8" type="CSGBox3D" parent="Room7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 9.5)
+size = Vector3(14, 4, 11)
+
+[node name="Room11" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.5, 2, 6)
+size = Vector3(18, 4, 12)
+
+[node name="Label3D" type="Label3D" parent="Room11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1652763, 0)
+pixel_size = 0.001
+billboard = 1
+double_sided = false
+fixed_size = true
+text = "room
+"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Room11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 3)
+size = Vector3(6, 4, 18)
+
+[node name="Room12" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.5, 2, -26.5)
+size = Vector3(18, 4, 23)
+
+[node name="Label3D" type="Label3D" parent="Room12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1652763, 0)
+pixel_size = 0.001
+billboard = 1
+double_sided = false
+fixed_size = true
+text = "room
+"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Room12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 5.5)
+size = Vector3(12, 4, 23)
+
+[node name="Room13" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.5, 2, -26.5)
+size = Vector3(14, 4, 23)
+
+[node name="Label3D" type="Label3D" parent="Room13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1652763, 0)
+pixel_size = 0.001
+billboard = 1
+double_sided = false
+fixed_size = true
+text = "room
+"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Room13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -14)
+size = Vector3(12, 4, 30)

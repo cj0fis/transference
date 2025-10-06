@@ -1,4 +1,3 @@
-
 class_name Character3D extends CharacterBody3D
 
 @export var speed: float = 4.0
@@ -16,11 +15,17 @@ func _ready() -> void:
 	
 func _physics_process(_delta: float) -> void:
 	#CharacterController handles movement for this
-	move_and_slide()
+	
+	#apply gravity
+	#if not is_on_floor():
+		#velocity.y = -5
+	#else:
+		#velocity.y = 0
+		
+		
 	if Input.is_action_just_pressed("left_click") and is_mouse_over:
 		make_active_char()
-	
-		
+	move_and_slide()
 	
 #calling this function makes this character the active character
 func make_active_char() -> void:
@@ -33,9 +38,13 @@ func _on_mouse_enter() -> void:
 func _on_mouse_exit() -> void:
 	is_mouse_over = false
 
+
+
+
 var attack_state: bool = false
 #set attack_state = true to put this character into attack state
 func is_attacking() -> bool:
+	
 	if attack_state == true:
 		attack_state = false
 		return true

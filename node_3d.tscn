@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://tilgdyuywinp"]
+
+[ext_resource type="PackedScene" uid="uid://g5tu20xtd5l1" path="res://assets/room_test.gltf" id="1_a0tk4"]
+[ext_resource type="PackedScene" uid="uid://me14lg4tr321" path="res://scenes/goblins/goblin_fighter/goblin_fighter.tscn" id="2_r3fl7"]
+[ext_resource type="PackedScene" uid="uid://beniili1qlklo" path="res://scenes/goblins/goblin_skirmisher/goblin_skirmisher.tscn" id="3_jka67"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="blockbench_export" parent="." instance=ExtResource("1_a0tk4")]
+
+[node name="blockbench_export2" parent="." instance=ExtResource("1_a0tk4")]
+transform = Transform3D(-0.0058468683, 0, 0.9999829, 0, 1, 0, -0.9999829, 0, -0.0058468683, 0, 0, 0)
+
+[node name="Goblin Fighter" parent="." instance=ExtResource("2_r3fl7")]
+transform = Transform3D(0.9773273, 0, 0.21173419, 0, 1, 0, -0.21173419, 0, 0.9773273, 1.5162821, 0, 1.823645)
+
+[node name="goblin_skirmisher" parent="." instance=ExtResource("3_jka67")]
+transform = Transform3D(-0.6784675, 0, 0.7346304, 0, 1, 0, -0.7346304, 0, -0.6784675, 1.3917098, 0, -1.4731536)

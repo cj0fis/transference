@@ -2,7 +2,6 @@
 ##this component allows for a character to randomly choose a texture to apply to its mesh
 class_name TextureReplacerComponent extends Component
 
-
 @export_tool_button("change texture") var b1 = set_texture
 		
 @export var root_node: Node3D = null:

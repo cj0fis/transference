@@ -30,7 +30,6 @@ func _ready() -> void:
 func _on_state_changed(state: StringName) -> void:
 	if state in state_damage:
 		set_hitboxes(state_damage[state])
-		print("setting hitbox damage to: ", state_damage[state])
 
 func set_hitboxes(dmg: float):
 	for hitbox in hitboxes:
