@@ -37,35 +37,6 @@ var levels: Dictionary[String, String] = {
 func _ready() -> void:
 	GlobalManager.game_controller = self
 	change_3d_scene("res://scenes/levels/room_test_2.tscn")
-	#GlobalManager.spawn_player()
-	#enter_level("tavern")
-	
-#loads a level, and puts the player at the correct entrance
-#func enter_level(level: String, entrance_name: String = "spawn") -> void:
-	#var level_path = level	#assume that the level string is the path
-	#if level_path in levels:	#check if it is a shortcut, and if so, use the full path
-		#level_path = levels[level_path]
-		#
-	#if level_path != current_3d_path:	#we dont want to reset the scene if the player is just teleporting within the scene
-		#change_3d_scene(level_path)
-	#var spawn_pos = get_entrance_position(entrance_name)
-	#GlobalManager.player.teleport(spawn_pos)
-	
-##finds the position of the entrance with the matching name (not case sensitive)
-##in case of no matching entrances: return the position of the first entrance
-##in case of no entrances: return Vector3.ZERO
-#func get_entrance_position(entrance_name: String) -> Vector3:
-	#var pos = Vector3.ZERO
-	#if current_3d_scene is not Level3D:
-		#print("[ERROR] Cannot teleport: current 3d scene is not of type 'Level3D'")
-		#return pos
-	#var entrances = current_3d_scene.entrances
-	#for child in entrances.get_children():
-		#if pos == Vector3.ZERO:
-			#pos = child.global_position	#in case of no matching entrances: return the first one
-		#if child.name.to_lower() == entrance_name.to_lower():
-			#return child.global_position
-	#return pos	#in case of no entrances: return Vector2.ZERO
 
 #holds references to which scenes are being kept in the background
 var persisted_dict: Dictionary[String, Node3D]

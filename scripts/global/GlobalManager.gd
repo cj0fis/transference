@@ -11,13 +11,6 @@ signal PLAYER_INITIATED
 var game_controller: GameController	#global referene to the game controller
 
 
-
-
-#instantiates the player and adds it to the world_2d
-#func spawn_player(position: Vector2 = Vector2.ZERO) -> void:
-	#var player_scene = load("res://characters/player/player_base.tscn").instantiate()	#when the scene is ready, it will call set_player()
-	#game_controller.world_2d.add_child(player_scene)
-
 #optional logging
 
 func log_error(msg: String) -> void:
