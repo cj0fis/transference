@@ -1,1 +1,3 @@
 res://scripts/SmartCam3D.gd
+res://scenes/kobolds/kobold_fighter/kobold_fighter.tscn
+res://assets/shaders and materials/character_effects_material.tres
