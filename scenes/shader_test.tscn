@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://cl41rivo80dgp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c7sh0"]
+depth_draw_mode = 2
+albedo_color = Color(1, 0.101960786, 0.015686275, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 2
+stencil_color = Color(0.7441813, 0.7441813, 0.7441813, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_im7wb"]
+material = SubResource("StandardMaterial3D_c7sh0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3x27y"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.007843138, 0, 0.2627451, 1)
+stencil_mode = 3
+stencil_flags = 2
+stencil_compare = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sju7m"]
+material = SubResource("StandardMaterial3D_3x27y")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fthar"]
+cull_mode = 2
+albedo_color = Color(0.25808161, 0.25808161, 0.25808161, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ugewl"]
+material = SubResource("StandardMaterial3D_fthar")
+
+[node name="shader_test" type="Node3D"]
+
+[node name="sphere" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3524017, 0, 0)
+mesh = SubResource("SphereMesh_im7wb")
+
+[node name="plane" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.051900163, 0.9986523, 0, -0.9986523, 0.051900163, 0, 0, 0, 1, 0.9601768, 0.15337484, 0)
+mesh = SubResource("PlaneMesh_sju7m")
+
+[node name="wall" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.08206667, 0.99928004, 0, -2.5883787, 0.031682994, 0, 0, 0, 2.5054035, 3.1249049, 0.09907766, 0)
+visible = false
+mesh = SubResource("PlaneMesh_ugewl")

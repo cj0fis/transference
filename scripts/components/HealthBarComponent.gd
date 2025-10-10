@@ -1,14 +1,11 @@
-@tool
 class_name HealthBarComponent extends TextureProgressBar
 
 @onready var parent: Character3D
 
-@export var health_component: HealthComponent:
-	set(value):
-		health_component = value
-		update_configuration_warnings()
+var health_component: HealthComponent
 		
 var time_since_health_update: float = 0
+
 @export var fade_out_time: float = 0.0
 
 const UI_TEX = preload("uid://ch5ikt3ve8n1l")
@@ -22,22 +19,19 @@ func init_texture_progress_bar() -> void:
 	value = max_value
 	rounded = true
 
-func _get_configuration_warnings() -> PackedStringArray:
-	var warnings:= []
-	if not health_component:
-		warnings.append("Must assign a HealthComponent!")
-	return warnings
-
+func assign_components() -> void:
+	if get_parent() is Character3D:
+		parent = get_parent()
+		health_component = parent.get_component(HealthComponent)
+		health_component.connect("HEALTH_UPDATE", update_health)
 
 func _ready() -> void:
+	assign_components()
+	
 	#initialize health bar. This is done with code because the component will be added as a node, not a scene
 	init_texture_progress_bar()
 	modulate.a = 0.0	#health bars should be transparent initially
-	
-	if get_parent() is Character3D:
-		parent = get_parent()
-	
-	health_component.connect("HEALTH_UPDATE", update_health)
+
 	
 func _physics_process(delta: float) -> void:
 	if not parent:

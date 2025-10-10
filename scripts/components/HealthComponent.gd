@@ -20,18 +20,17 @@ class HOT:
 			active = false
 #exports
 @export var max_health: float = 1.0
-@export var hurtbox: HurtBoxComponent:
-	set(value):
-		hurtbox = value
-		update_configuration_warnings()
+@onready var hurtbox: HurtBoxComponent
 		
-func _ready() -> void:
+func assign_components() -> void:
+	hurtbox = parent.get_component(HurtBoxComponent)
 	hurtbox.TAKE_DAMAGE.connect(apply_health)
+
+func _ready() -> void:
+	assign_components()
 
 #signals
 signal IS_DEAD
-#signal IS_HEALING
-#signal IS_TAKING_DAMAGE
 signal HEALTH_UPDATE(delta: float)
 
 #variables
@@ -45,6 +44,8 @@ func apply_health(amount: float, seconds: float = 0.5) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if current_health <= 0:
+		return
 	var delta_health: float = 0.0
 	for i in range(HOTs.size()-1, -1, -1):		#iterate backwards so inactive HOTs can be popped
 		if HOTs[i].active:

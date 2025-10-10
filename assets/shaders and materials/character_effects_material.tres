@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://bu3h0pgv0m52y"]
+
+[ext_resource type="Shader" uid="uid://bddfg3sif24rb" path="res://assets/shaders and materials/character_effects.gdshader" id="1_4bbvg"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4om8o"]
+noise_type = 3
+frequency = 0.0403
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yh1gt"]
+resource_local_to_scene = true
+noise = SubResource("FastNoiseLite_4om8o")
+
+[resource]
+resource_local_to_scene = true
+resource_name = "Character Effects Material"
+render_priority = 0
+shader = ExtResource("1_4bbvg")
+shader_parameter/hit_color = Color(1, 1, 1, 1)
+shader_parameter/show_hit_color = false
+shader_parameter/light_color = Color(1, 0, 0, 1)
+shader_parameter/amount = 0.0010000000475
+shader_parameter/noise = SubResource("NoiseTexture2D_yh1gt")

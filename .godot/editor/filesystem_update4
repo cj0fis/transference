@@ -1,2 +1,1 @@
-res://scenes/levels/room_test_2.tscn
-res://screen_effects.gdshader
+res://scripts/SmartCam3D.gd

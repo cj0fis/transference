@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://catn6hpj8kb6u"]
+[gd_scene load_steps=21 format=3 uid="uid://catn6hpj8kb6u"]
 
 [ext_resource type="Script" uid="uid://c2xxhl08keeq2" path="res://scripts/Character3D.gd" id="1_mf2e7"]
 [ext_resource type="Script" uid="uid://cvi5du2su6uo2" path="res://scripts/components/HealthComponent.gd" id="2_ffsub"]
@@ -7,6 +7,11 @@
 [ext_resource type="Script" uid="uid://bup84jc4r6ntk" path="res://scripts/components/HurtBoxComponent.gd" id="5_r6jgy"]
 [ext_resource type="Script" uid="uid://dbm0eunb3sh4f" path="res://scripts/components/HealthBarComponent.gd" id="6_yplgq"]
 [ext_resource type="Script" uid="uid://dttil0sv674li" path="res://scripts/components/TextureReplacerComponent.gd" id="8_o8qwa"]
+[ext_resource type="Script" uid="uid://cq7lqaygbe8nd" path="res://scripts/components/HitEffectComponent.gd" id="8_r6jgy"]
+[ext_resource type="Script" uid="uid://pxw3sdljbiqo" path="res://scripts/components/DeathEffectComponent.gd" id="9_xu6hi"]
+[ext_resource type="Script" uid="uid://bk2oaelgxw5ca" path="res://scripts/components/HitBoxManagerComponent.gd" id="10_kbgrf"]
+[ext_resource type="Script" uid="uid://cvbsf3t3ym1my" path="res://scripts/components/MovementComponent.gd" id="11_kbgrf"]
+[ext_resource type="Script" uid="uid://cnc7l45tw0e6h" path="res://scripts/components/StateComponent.gd" id="12_tsaid"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gljjg"]
 radius = 0.41357422
@@ -38,15 +43,13 @@ states/idle/position = Vector2(383.66666, 100.111115)
 states/run/node = SubResource("AnimationNodeAnimation_rsqh2")
 states/run/position = Vector2(677, 99.6813)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_ffsub"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_b85oe"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_delfk")]
-graph_offset = Vector2(-224, 13)
+graph_offset = Vector2(-225, 46)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yplgq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6jgy"]
 atlas = ExtResource("5_delfk")
 region = Rect2(67, 1821, 42, 6)
 
 [node name="Character3D" type="CharacterBody3D"]
-collision_layer = 2
-collision_mask = 2
 script = ExtResource("1_mf2e7")
 
 [node name="ColliderBox" type="CollisionShape3D" parent="."]
@@ -54,6 +57,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6550293, 0)
 shape = SubResource("CapsuleShape3D_gljjg")
 
 [node name="HurtBoxComponent" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+input_ray_pickable = false
 script = ExtResource("5_r6jgy")
 metadata/_custom_type_script = "uid://bup84jc4r6ntk"
 
@@ -65,10 +71,9 @@ shape = SubResource("CapsuleShape3D_gljjg")
 tree_root = SubResource("AnimationNodeStateMachine_yplgq")
 advance_expression_base_node = NodePath("..")
 
-[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("hurtbox")]
+[node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("2_ffsub")
 max_health = 100.0
-hurtbox = NodePath("../HurtBoxComponent")
 metadata/_custom_type_script = "uid://cvi5du2su6uo2"
 
 [node name="SoulComponent" type="Node" parent="."]
@@ -79,30 +84,53 @@ metadata/_custom_type_script = "uid://b4hww5osf0iye"
 script = ExtResource("8_o8qwa")
 metadata/_custom_type_script = "uid://dttil0sv674li"
 
-[node name="HealthBarComponent" type="TextureProgressBar" parent="." node_paths=PackedStringArray("health_component")]
+[node name="HealthBarComponent" type="TextureProgressBar" parent="."]
 modulate = Color(1, 1, 1, 0)
 offset_right = 42.0
 offset_bottom = 6.0
 max_value = 42.0
 value = 42.0
 rounded = true
-texture_progress = SubResource("AtlasTexture_yplgq")
+texture_progress = SubResource("AtlasTexture_r6jgy")
 script = ExtResource("6_yplgq")
-health_component = NodePath("../HealthComponent")
 fade_out_time = 3.0
 metadata/_custom_type_script = "uid://dbm0eunb3sh4f"
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04550171, 1.5244141, -1.0986099)
-visible = false
-light_color = Color(0.9882353, 0.8862745, 0.31764707, 1)
-light_energy = 2.038
+[node name="HitEffectComponent" type="Node" parent="."]
+script = ExtResource("8_r6jgy")
+metadata/_custom_type_script = "uid://cq7lqaygbe8nd"
+
+[node name="DeathEffectComponent" type="Node" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("9_xu6hi")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://pxw3sdljbiqo"
+
+[node name="HitBoxManagerComponent" type="Node" parent="." node_paths=PackedStringArray("animation_tree")]
+script = ExtResource("10_kbgrf")
+animation_tree = NodePath("../AnimationTree")
+metadata/_custom_type_script = "uid://bk2oaelgxw5ca"
+
+[node name="MovementComponent" type="Node" parent="."]
+script = ExtResource("11_kbgrf")
+metadata/_custom_type_script = "uid://cvbsf3t3ym1my"
+
+[node name="StateComponent" type="Node" parent="."]
+script = ExtResource("12_tsaid")
+metadata/_custom_type_script = "uid://cnc7l45tw0e6h"
+
+[node name="Character Lights" type="Node3D" parent="."]
+
+[node name="Front light" type="OmniLight3D" parent="Character Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8864441, -0.36353302)
+light_color = Color(0.9931099, 0.7901237, 0.6140929, 1)
+light_energy = 2.0
 light_indirect_energy = 0.815
 light_volumetric_fog_energy = 4.022
+light_size = 0.791
 light_specular = 1.27
+omni_range = 6.0
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04550171, 1.5244141, 1.075592)
-visible = false
-light_energy = 0.652
-light_volumetric_fog_energy = 3.963
+[node name="Back light" type="OmniLight3D" parent="Character Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04550171, 1.2451248, 0.77023315)
+light_energy = 0.155
+omni_range = 1.2854149

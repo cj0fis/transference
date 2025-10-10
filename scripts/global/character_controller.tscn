@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtgdtohmsxhnp"]
+
+[ext_resource type="Script" uid="uid://bmiahesj3ghoi" path="res://scripts/global/CharacterController.gd" id="1_gmbua"]
+
+[sub_resource type="Gradient" id="Gradient_gmbua"]
+offsets = PackedFloat32Array(0.33697632, 0.75956285)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1i4uj"]
+gradient = SubResource("Gradient_gmbua")
+fill = 1
+fill_from = Vector2(0.25, 0.75)
+fill_to = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmbua"]
+transparency = 1
+albedo_texture = SubResource("GradientTexture2D_1i4uj")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1i4uj"]
+material = SubResource("StandardMaterial3D_gmbua")
+height = 0.001
+
+[node name="character_controller" type="Node3D"]
+script = ExtResource("1_gmbua")
+
+[node name="mouse_highlight" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_1i4uj")

@@ -1,8 +1,10 @@
-res://scenes/levels
+res://scripts/global
 res://assets
 res://scenes
 res://scripts
-res://scripts/global
+res://scenes/kobolds/kobold_skirmisher
+res://scenes/goblins/goblin_skirmisher
+res://scenes/levels
 res://
 res://scenes/goblins/goblin_fighter
 X:/dev/transference

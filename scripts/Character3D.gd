@@ -1,46 +1,40 @@
+@tool
 class_name Character3D extends CharacterBody3D
 
 @export var speed: float = 4.0
+@export var mesh: MeshInstance3D = null
 
 
 var is_mouse_over: bool = false		#true if the mouse is over this character's mesh
 
 func _ready() -> void:
-	if not CharacterController.active_char:
+	set_character_effect_material()
+	if not Engine.is_editor_hint() and not CharacterController.active_char:
 		CharacterController.bodyswap(self)
 		CharacterController.enabled = true
-	mouse_entered.connect(_on_mouse_enter)
-	mouse_exited.connect(_on_mouse_exit)
+	
 	add_to_group("characters")
 	
-func _physics_process(_delta: float) -> void:
-	#CharacterController handles movement for this
 	
+func _physics_process(_delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
+	#CharacterController handles movement for this
 	#apply gravity
 	#if not is_on_floor():
 		#velocity.y = -5
 	#else:
 		#velocity.y = 0
-		
-		
-	if Input.is_action_just_pressed("left_click") and is_mouse_over:
-		make_active_char()
+	velocity.y = 0
 	move_and_slide()
 	
 #calling this function makes this character the active character
 func make_active_char() -> void:
 	CharacterController.bodyswap(self)
 
-func _on_mouse_enter() -> void:
-	is_mouse_over = true
-	
-	
-func _on_mouse_exit() -> void:
-	is_mouse_over = false
 
 
-
-
+##TODO: this implementation of an attack state is janky, fix this up to be more robust
 var attack_state: bool = false
 #set attack_state = true to put this character into attack state
 func is_attacking() -> bool:
@@ -50,3 +44,13 @@ func is_attacking() -> bool:
 		return true
 	return false
 	
+	
+func get_component(component_class):
+	for child in get_children():
+		if is_instance_of(child, component_class):
+			return child
+	return null
+	
+func set_character_effect_material() -> void:
+	if mesh:
+		mesh.material_override = preload("uid://bu3h0pgv0m52y").duplicate_deep()

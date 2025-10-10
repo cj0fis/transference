@@ -1,58 +1,87 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1759786792
+::res://::1760110632
 icon.svg::CompressedTexture2D::3861909359160049744::1757276727::1758585724::1::::<><><>0<>0<>028b8370553804e7aad98d162100b0f2<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
-screen_effects.gdshader::Shader::7679496743789301960::1759786564::0::1::::<><><>0<>0<><>::
 ::res://addons/::1759505684
 ::res://addons/godot-git-plugin/::1759505684
 git_plugin.gdextension::GDExtension::7805399918857374455::1759505684::0::1::::<><><>0<>0<><>::
 THIRDPARTY.md::TextFile::-1::1759505684::0::1::::<><><>0<>0<><>::
 ::res://addons/godot-git-plugin/linux/::1759505684
 ::res://addons/godot-git-plugin/macos/::1759505684
-::res://addons/godot-git-plugin/windows/::1759786787
-::res://assets/::1759774000
+::res://addons/godot-git-plugin/windows/::1760110628
+::res://assets/::1760110589
 _Grim_UI.png::CompressedTexture2D::5326599241514381339::1758816384::1758816385::1::::<><><>0<>0<>cf96a1a0baa4e71fbb33803f5ca337aa<>res://.godot/imported/_Grim_UI.png-72d61e17d9df543be2c367228bab06b5.ctex::
 dark_environment.tres::Environment::6095193890684474914::1759764825::0::1::::<><><>0<>0<><>::
 Odderf Basic.ttf::FontFile::1765029292803564197::1759449107::1759449107::1::::<><><>0<>0<>0ffd53a344553e9f983c8c9253c0c807<>res://.godot/imported/Odderf Basic.ttf-706424cfc5da68c9123e66ecc4a3f58a.fontdata::
-::res://assets/props and levels/::1759775094
+::res://assets/audio/::1759950615
+deathSFX.mp3::AudioStreamMP3::1185606620836340234::1759950614::1759950615::1::::<><><>0<>0<>53215a7185bb6d066497cc4ab200e9c6<>res://.godot/imported/deathSFX.mp3-9c2a810e460caa6ff5a30b2cb81201cf.mp3str::
+::res://assets/props and levels/::1760066568
+Floor Tile Set.gltf::PackedScene::7553389548084215655::1760058483::1760058484::1::::<><><>0<>0<>4c5ba4d8e0dea694d79c6d0b5c03f476<>res://.godot/imported/Floor Tile Set.gltf-c586e45fedf4ed79d05493c2aa7e70d7.scn::uid://bqeoadwhjvejd::::res://assets/props and levels/Floor Tile Set_0.png
+Floor Tile Set_0.png::CompressedTexture2D::3518549922703241693::1760058484::1760058485::1::::<><><>0<>0<>547beea9891b6254ff3aee81469989a9<>res://.godot/imported/Floor Tile Set_0.png-d8cc4d23409d0d427ae5e9c604d5acfb.s3tc.ctex::
 floor_set.gltf::PackedScene::4132959256192120391::1759774005::1759774005::1::::<><><>0<>0<>7a2846a099e064b7b127b12b54350f9e<>res://.godot/imported/floor_set.gltf-b40472467e5da21d72f5836a946e1109.scn::uid://h3n2r3oggepx::::res://assets/props and levels/floor_set_0.png
-floor_set_0.png::CompressedTexture2D::549962956717127669::1759774005::1759775094::1::::<><><>0<>0<>9b31e374c22ad4f0f90c75bb05e54311<>res://.godot/imported/floor_set_0.png-55cc2341d0dbc679f31e4fd4553ad8ad.ctex::
-::res://scenes/::1759786709
-character_3d.tscn::PackedScene::4812909616519284086::1759718561::0::1::::<><><>0<>0<><>::uid://c2xxhl08keeq2::::res://scripts/Character3D.gd<>uid://cvi5du2su6uo2::::res://scripts/components/HealthComponent.gd<>uid://b4hww5osf0iye::::res://scripts/components/SoulComponent.gd<>uid://ch5ikt3ve8n1l::::res://assets/_Grim_UI.png<>uid://bup84jc4r6ntk::::res://scripts/components/HurtBoxComponent.gd<>uid://dbm0eunb3sh4f::::res://scripts/components/HealthBarComponent.gd<>uid://dttil0sv674li::::res://scripts/components/TextureReplacerComponent.gd
-game_controller.tscn::PackedScene::6197032807229013802::1759773705::0::1::::<><><>0<>0<><>::uid://bp5bwuv6kyprb::::res://scripts/global/game_controller.gd<>uid://cswm1qu1263m2::::res://scripts/SmartCam3D.gd<>uid://dhoago6pts7v5::::res://screen_effects.gdshader<>uid://cs3s7nrh6oj83::::res://assets/dark_environment.tres
+floor_set_0.png::CompressedTexture2D::549962956717127669::1759774005::1759974034::1::::<><><>0<>0<>9b31e374c22ad4f0f90c75bb05e54311<>res://.godot/imported/floor_set_0.png-55cc2341d0dbc679f31e4fd4553ad8ad.ctex::
+floor_tileset2.png::CompressedTexture2D::2893501888738168667::1759973819::1760066568::1::::<><><>0<>0<>f695aaffdd4ed39804c4e68e6cfdb007<>res://.godot/imported/floor_tileset2.png-c7ec1cd0cc6862fd24f730c6dcb104a1.s3tc.ctex::
+::res://assets/shaders and materials/::1760110589
+character_effects.gdshader::Shader::2603496146428183135::1760068317::0::1::::<><><>0<>0<><>::
+character_effects_material.tres::ShaderMaterial::3848470595471548342::1760110576::0::1::::<><><>0<>0<><>::uid://bddfg3sif24rb::::res://assets/shaders and materials/character_effects.gdshader
+dissolve_shader.tres::VisualShader::1404096515113390982::1760068317::0::1::::<><><>0<>0<><>::
+outline.gdshader::Shader::2650160540956151649::1760068317::0::1::::<><><>0<>0<><>::
+outline_material.tres::StandardMaterial3D::8736279966779528370::1760050142::0::1::::<><><>0<>0<><>::
+screen_effects.gdshader::Shader::7679496743789301960::1760068317::0::1::::<><><>0<>0<><>::
+::res://scenes/::1760110589
+character_3d.tscn::PackedScene::4812909616519284086::1760071739::0::1::::<><><>0<>0<><>::uid://c2xxhl08keeq2::::res://scripts/Character3D.gd<>uid://cvi5du2su6uo2::::res://scripts/components/HealthComponent.gd<>uid://b4hww5osf0iye::::res://scripts/components/SoulComponent.gd<>uid://ch5ikt3ve8n1l::::res://assets/_Grim_UI.png<>uid://bup84jc4r6ntk::::res://scripts/components/HurtBoxComponent.gd<>uid://dbm0eunb3sh4f::::res://scripts/components/HealthBarComponent.gd<>uid://dttil0sv674li::::res://scripts/components/TextureReplacerComponent.gd<>uid://cq7lqaygbe8nd::::res://scripts/components/HitEffectComponent.gd<>uid://pxw3sdljbiqo::::res://scripts/components/DeathEffectComponent.gd<>uid://bk2oaelgxw5ca::::res://scripts/components/HitBoxManagerComponent.gd<>uid://cvbsf3t3ym1my::::res://scripts/components/MovementComponent.gd<>uid://cnc7l45tw0e6h::::res://scripts/components/StateComponent.gd
+game_controller.tscn::PackedScene::6197032807229013802::1760110589::0::1::::<><><>0<>0<><>::uid://bp5bwuv6kyprb::::res://scripts/global/game_controller.gd<>uid://cswm1qu1263m2::::res://scripts/SmartCam3D.gd<>uid://dhoago6pts7v5::::res://assets/shaders and materials/screen_effects.gdshader<>uid://cs3s7nrh6oj83::::res://assets/dark_environment.tres<>uid://q5k1duvmngi1::::res://assets/audio/deathSFX.mp3<>uid://d3u8j0xy35g2u::::res://scripts/global/global_audio.gd
+shader_test.tscn::PackedScene::5606395055889478335::1760046392::0::1::::<><><>0<>0<><>::
 ::res://scenes/goblins/::1759695700
-::res://scenes/goblins/goblin_fighter/::1759719583
+::res://scenes/goblins/goblin_fighter/::1760110586
 goblin_fighter.gltf::PackedScene::3830041885782183881::1759718772::1759718772::1::::<><><>0<>0<>0edb47eed405c724a3b9ded6463480d0<>res://.godot/imported/goblin_fighter.gltf-77c2b50fca2606467621ed77519b453d.scn::uid://da4ndt2udatel::::res://scenes/goblins/goblin_fighter/goblin_fighter_texture.png
-goblin_fighter.tscn::PackedScene::852154652877195000::1759719583::0::1::::<><><>0<>0<><>::uid://c2xxhl08keeq2::::res://scripts/Character3D.gd<>uid://ch5ikt3ve8n1l::::res://assets/_Grim_UI.png<>uid://bup84jc4r6ntk::::res://scripts/components/HurtBoxComponent.gd<>uid://cvi5du2su6uo2::::res://scripts/components/HealthComponent.gd<>uid://b4hww5osf0iye::::res://scripts/components/SoulComponent.gd<>uid://dttil0sv674li::::res://scripts/components/TextureReplacerComponent.gd<>uid://da4ndt2udatel::::res://scenes/goblins/goblin_fighter/goblin_fighter_texture.png<>uid://bk2oaelgxw5ca::::res://scripts/components/HitBoxManagerComponent.gd<>uid://dbm0eunb3sh4f::::res://scripts/components/HealthBarComponent.gd<>uid://ckb7ois1d6gdk::::res://scripts/components/HitBox.gd
+goblin_fighter.tscn::PackedScene::852154652877195000::1760110586::0::1::::<><><>0<>0<><>::uid://c2xxhl08keeq2::::res://scripts/Character3D.gd<>uid://ch5ikt3ve8n1l::::res://assets/_Grim_UI.png<>uid://bup84jc4r6ntk::::res://scripts/components/HurtBoxComponent.gd<>uid://cvi5du2su6uo2::::res://scripts/components/HealthComponent.gd<>uid://b4hww5osf0iye::::res://scripts/components/SoulComponent.gd<>uid://dttil0sv674li::::res://scripts/components/TextureReplacerComponent.gd<>uid://da4ndt2udatel::::res://scenes/goblins/goblin_fighter/goblin_fighter_texture.png<>uid://bk2oaelgxw5ca::::res://scripts/components/HitBoxManagerComponent.gd<>uid://dbm0eunb3sh4f::::res://scripts/components/HealthBarComponent.gd<>uid://pxw3sdljbiqo::::res://scripts/components/DeathEffectComponent.gd<>uid://cq7lqaygbe8nd::::res://scripts/components/HitEffectComponent.gd<>uid://ckb7ois1d6gdk::::res://scripts/components/HitBox.gd<>uid://cvbsf3t3ym1my::::res://scripts/components/MovementComponent.gd<>uid://cnc7l45tw0e6h::::res://scripts/components/StateComponent.gd<>uid://cpe7wu1hl4t2o::::res://scripts/components/OutlineComponent.gd<>uid://dwp6iwnn4bcdm::::res://assets/shaders and materials/outline_material.tres<>uid://bddfg3sif24rb::::res://assets/shaders and materials/character_effects.gdshader
 goblin_fighter_texture.png::CompressedTexture2D::7219924724800826959::1759695881::1759696004::1::::<><><>0<>0<>c4c538c3b05dd32a90181fa25056fc3e<>res://.godot/imported/goblin_fighter_texture.png-1f528e62063bed9f917567166c3ec0d8.ctex::
-::res://scenes/goblins/goblin_skirmisher/::1759779277
+::res://scenes/goblins/goblin_skirmisher/::1760110586
 goblin_skirmisher.gltf::PackedScene::220307130419647323::1759718509::1759718509::1::::<><><>0<>0<>84578a175c6316ed5d0cb2d140c8e379<>res://.godot/imported/goblin_skirmisher.gltf-d122b70cc7edb83dc72dcc0b1704cc32.scn::uid://cxfiqlq1medby::::res://scenes/goblins/goblin_skirmisher/small_goblin.png
-goblin_skirmisher.tscn::PackedScene::2694513582659812164::1759779277::0::1::::<><><>0<>0<><>::uid://c2xxhl08keeq2::::res://scripts/Character3D.gd<>uid://ch5ikt3ve8n1l::::res://assets/_Grim_UI.png<>uid://bup84jc4r6ntk::::res://scripts/components/HurtBoxComponent.gd<>uid://cvi5du2su6uo2::::res://scripts/components/HealthComponent.gd<>uid://b4hww5osf0iye::::res://scripts/components/SoulComponent.gd<>uid://dttil0sv674li::::res://scripts/components/TextureReplacerComponent.gd<>uid://cxfiqlq1medby::::res://scenes/goblins/goblin_skirmisher/small_goblin.png<>uid://bk2oaelgxw5ca::::res://scripts/components/HitBoxManagerComponent.gd<>uid://dbm0eunb3sh4f::::res://scripts/components/HealthBarComponent.gd<>uid://ckb7ois1d6gdk::::res://scripts/components/HitBox.gd
+goblin_skirmisher.tscn::PackedScene::2694513582659812164::1760110586::0::1::::<><><>0<>0<><>::uid://c2xxhl08keeq2::::res://scripts/Character3D.gd<>uid://ch5ikt3ve8n1l::::res://assets/_Grim_UI.png<>uid://bup84jc4r6ntk::::res://scripts/components/HurtBoxComponent.gd<>uid://cvi5du2su6uo2::::res://scripts/components/HealthComponent.gd<>uid://b4hww5osf0iye::::res://scripts/components/SoulComponent.gd<>uid://dttil0sv674li::::res://scripts/components/TextureReplacerComponent.gd<>uid://bk2oaelgxw5ca::::res://scripts/components/HitBoxManagerComponent.gd<>uid://djoi6145f876q::::res://scenes/goblins/goblin_skirmisher/small_goblin1.png<>uid://dbm0eunb3sh4f::::res://scripts/components/HealthBarComponent.gd<>uid://ckb7ois1d6gdk::::res://scripts/components/HitBox.gd<>uid://pxw3sdljbiqo::::res://scripts/components/DeathEffectComponent.gd<>uid://cq7lqaygbe8nd::::res://scripts/components/HitEffectComponent.gd<>uid://cvbsf3t3ym1my::::res://scripts/components/MovementComponent.gd<>uid://cnc7l45tw0e6h::::res://scripts/components/StateComponent.gd<>uid://q5k1duvmngi1::::res://assets/audio/deathSFX.mp3<>uid://cpe7wu1hl4t2o::::res://scripts/components/OutlineComponent.gd<>uid://dwp6iwnn4bcdm::::res://assets/shaders and materials/outline_material.tres<>uid://bddfg3sif24rb::::res://assets/shaders and materials/character_effects.gdshader
+small_goblin1.png::CompressedTexture2D::7820405439709126278::1760053422::1760053523::1::::<><><>0<>0<>65e61ed5b1d6a48916ed2fdcdeef134a<>res://.godot/imported/small_goblin1.png-19bb6745f9c64e678a75ea87498f426f.ctex::
 small_goblin.png::CompressedTexture2D::6398021572147095910::1759274868::1759718509::1::::<><><>0<>0<>21fe567cd27d97dc4f4e3746ae30610a<>res://.godot/imported/small_goblin.png-e01ae00476ccfb0ddcc82cfba871de82.ctex::
-::res://scenes/levels/::1759786754
-dungeon_prototype.tscn::PackedScene::3975984967173847351::1759786620::0::1::::<><><>0<>0<><>::
+::res://scenes/kobolds/::1759968135
+::res://scenes/kobolds/kobold_fighter/::1760110586
+kobold texture.png::CompressedTexture2D::5196474638131560465::1760053664::1760053949::1::::<><><>0<>0<>f54e32a91494aeb7eba7d17d3a53dc32<>res://.godot/imported/kobold texture.png-5b697f1f17db4dcd0bc84da8df2fab11.s3tc.ctex::
+Kobold.gltf::PackedScene::4385528165078881452::1760047989::1760047991::1::::<><><>0<>0<>198e63f2a4ce38628c379d1436d9c40c<>res://.godot/imported/Kobold.gltf-47129a87ab3cfbfa1747fbdc8264e1d7.scn::uid://bn0a1lvycsab::::res://scenes/kobolds/kobold_fighter/Kobold_0.png
+kobold_fighter.tscn::PackedScene::6793879461334568944::1760110586::0::1::::<><><>0<>0<><>::uid://c2xxhl08keeq2::::res://scripts/Character3D.gd<>uid://bup84jc4r6ntk::::res://scripts/components/HurtBoxComponent.gd<>uid://cvi5du2su6uo2::::res://scripts/components/HealthComponent.gd<>uid://b4hww5osf0iye::::res://scripts/components/SoulComponent.gd<>uid://dttil0sv674li::::res://scripts/components/TextureReplacerComponent.gd<>uid://cgbhgb4c2rj26::::res://scenes/kobolds/kobold_fighter/kobold texture.png<>uid://ch5ikt3ve8n1l::::res://assets/_Grim_UI.png<>uid://dbm0eunb3sh4f::::res://scripts/components/HealthBarComponent.gd<>uid://cq7lqaygbe8nd::::res://scripts/components/HitEffectComponent.gd<>uid://pxw3sdljbiqo::::res://scripts/components/DeathEffectComponent.gd<>uid://bk2oaelgxw5ca::::res://scripts/components/HitBoxManagerComponent.gd<>uid://cvbsf3t3ym1my::::res://scripts/components/MovementComponent.gd<>uid://cnc7l45tw0e6h::::res://scripts/components/StateComponent.gd<>uid://dwp6iwnn4bcdm::::res://assets/shaders and materials/outline_material.tres<>uid://cpe7wu1hl4t2o::::res://scripts/components/OutlineComponent.gd<>uid://bddfg3sif24rb::::res://assets/shaders and materials/character_effects.gdshader
+::res://scenes/kobolds/kobold_skirmisher/::1760110576
+kobold_skirmisher.tscn::PackedScene::7459234855258109956::1760110576::0::1::::<><><>0<>0<><>::uid://c2xxhl08keeq2::::res://scripts/Character3D.gd<>uid://bup84jc4r6ntk::::res://scripts/components/HurtBoxComponent.gd<>uid://ch5ikt3ve8n1l::::res://assets/_Grim_UI.png<>uid://cvi5du2su6uo2::::res://scripts/components/HealthComponent.gd<>uid://b4hww5osf0iye::::res://scripts/components/SoulComponent.gd<>uid://dttil0sv674li::::res://scripts/components/TextureReplacerComponent.gd<>uid://dbm0eunb3sh4f::::res://scripts/components/HealthBarComponent.gd<>uid://cq7lqaygbe8nd::::res://scripts/components/HitEffectComponent.gd<>uid://cvbsf3t3ym1my::::res://scripts/components/MovementComponent.gd<>uid://pxw3sdljbiqo::::res://scripts/components/DeathEffectComponent.gd<>uid://cnc7l45tw0e6h::::res://scripts/components/StateComponent.gd<>uid://bk2oaelgxw5ca::::res://scripts/components/HitBoxManagerComponent.gd<>uid://cpe7wu1hl4t2o::::res://scripts/components/OutlineComponent.gd<>uid://bddfg3sif24rb::::res://assets/shaders and materials/character_effects.gdshader
+SmallKobold.gltf::PackedScene::3683391555617983289::1760048124::1760048125::1::::<><><>0<>0<>7a4d1d1068e32f16c76bf93baa95915c<>res://.godot/imported/SmallKobold.gltf-efbe12d84fc4e0f7b30c89731f3fbd6a.scn::
+::res://scenes/levels/::1760073567
+dungeon_prototype.tscn::PackedScene::3975984967173847351::1760056770::0::1::::<><><>0<>0<><>::
 Level3D.tscn::PackedScene::8799141581466609698::1759764407::0::1::::<><><>0<>0<><>::uid://b8cs3esblmxw8::::res://scripts/Level3D.gd
 room_test.gltf::PackedScene::6697191550439704426::1759708190::1759708191::1::::<><><>0<>0<>5a6395783794bc322d18e33e9eebe6e0<>res://.godot/imported/room_test.gltf-d4b17df62d1c79ddc2674280ef08bfe8.scn::uid://dfip53p44s8hi::::res://scenes/levels/room_test_0.png
 room_test.tscn::PackedScene::5048985381213418836::1759772216::0::1::::<><><>0<>0<><>::uid://dxmmtuf7qc5ry::::res://scenes/levels/Level3D.tscn<>uid://dfip53p44s8hi::::res://scenes/levels/room_test_0.png<>uid://beniili1qlklo::::res://scenes/goblins/goblin_skirmisher/goblin_skirmisher.tscn<>uid://me14lg4tr321::::res://scenes/goblins/goblin_fighter/goblin_fighter.tscn
 room_test_0.png::CompressedTexture2D::7527687115193584314::1759708191::1759708192::1::::<><><>0<>0<>8f56669b1c61218897bedbdfcb591dd8<>res://.godot/imported/room_test_0.png-123f29ddb06918f171fb6efd5be9a559.s3tc.ctex::
-room_test_2.tscn::PackedScene::6382929934808220000::1759786754::0::1::::<><><>0<>0<><>::uid://dxmmtuf7qc5ry::::res://scenes/levels/Level3D.tscn<>uid://beniili1qlklo::::res://scenes/goblins/goblin_skirmisher/goblin_skirmisher.tscn<>uid://h3n2r3oggepx::::res://assets/props and levels/floor_set_0.png
-::res://scripts/::1759786530
-Character3D.gd::GDScript::6716830443237271019::1759773450::0::1::::Character3D<>CharacterBody3D<><>0<>0<><>::
+room_test_2.tscn::PackedScene::6382929934808220000::1760073567::0::1::::<><><>0<>0<><>::uid://dxmmtuf7qc5ry::::res://scenes/levels/Level3D.tscn<>uid://beniili1qlklo::::res://scenes/goblins/goblin_skirmisher/goblin_skirmisher.tscn<>uid://h3n2r3oggepx::::res://assets/props and levels/floor_set_0.png<>uid://me14lg4tr321::::res://scenes/goblins/goblin_fighter/goblin_fighter.tscn<>uid://c32ag4wrs3hqu::::res://scenes/kobolds/kobold_fighter/kobold_fighter.tscn<>uid://bqeoadwhjvejd::::res://assets/props and levels/Floor Tile Set_0.png
+::res://scripts/::1760067484
+Character3D.gd::GDScript::6716830443237271019::1760067484::0::1::::Character3D<>CharacterBody3D<><>0<>1<><>::
 Level3D.gd::GDScript::4707924425315936921::1759719506::0::1::::Level3D<>Node3D<><>0<>0<><>::
-SmartCam3D.gd::GDScript::6082432770503168907::1759719752::0::1::::SmartCam3D<>Camera3D<><>0<>0<><>::
-::res://scripts/components/::1759713901
-Component.gd::GDScript::332375632143793452::1758765611::0::1::::Component<>Node<><>0<>0<><>::
-HealthBarComponent.gd::GDScript::7255749566393863723::1758820986::0::1::::HealthBarComponent<>TextureProgressBar<><>0<>1<><>::
-HealthComponent.gd::GDScript::6265150066004597503::1759272766::0::1::::HealthComponent<>Component<><>0<>0<><>::
+SmartCam3D.gd::GDScript::6082432770503168907::1760056770::0::1::::SmartCam3D<>Camera3D<><>0<>0<><>::
+Tools.gd::GDScript::4422698227083792659::1760036048::0::1::::<>Node<><>0<>0<><>::
+::res://scripts/components/::1760073302
+Component.gd::GDScript::332375632143793452::1760038398::0::1::::Component<>Node<><>0<>0<><>::
+DeathEffectComponent.gd::GDScript::1101700069550641542::1760038438::0::1::::DeathEffectComponent<>Component<><>0<>0<><>::
+HealthBarComponent.gd::GDScript::7255749566393863723::1760049041::0::1::::HealthBarComponent<>TextureProgressBar<><>0<>0<><>::
+HealthComponent.gd::GDScript::6265150066004597503::1760038857::0::1::::HealthComponent<>Component<><>0<>0<><>::
 HitBox.gd::GDScript::5478762575583617264::1759713901::0::1::::HitBox<>Area3D<><>0<>0<><>::
-HitBoxManagerComponent.gd::GDScript::3144897584722266204::1759707245::0::1::::HitBoxManagerComponent<>Component<><>0<>0<><>::
-HurtBoxComponent.gd::GDScript::3823219148690519916::1759272309::0::1::::HurtBoxComponent<>Area3D<><>0<>1<><>::
+HitBoxManagerComponent.gd::GDScript::3144897584722266204::1760037017::0::1::::HitBoxManagerComponent<>Component<><>0<>0<><>::
+HitEffectComponent.gd::GDScript::5962619450696993201::1760049034::0::1::::HitEffectComponent<>Component<><>0<>0<><>::
+HurtBoxComponent.gd::GDScript::3823219148690519916::1760071680::0::1::::HurtBoxComponent<>Area3D<><>0<>1<><>::
+MovementComponent.gd::GDScript::6249974797688116792::1760073302::0::1::::MovementComponent<>Component<><>0<>0<><>::
 NameComponent.gd::GDScript::8394503998666648497::1758587111::0::1::::NameComponent<>Component<><>0<>0<><>::
+OutlineComponent.gd::GDScript::5835914855173189608::1760071739::0::1::::OutlineComponent<>Component<><>0<>0<><>::
 PresetsComponent.gd::GDScript::3776335471355940727::1758586872::0::1::::PresetsComponent<>Component<><>0<>0<><>::
 SoulComponent.gd::GDScript::4437724452934506668::1758587119::0::1::::SoulComponent<>Component<><>0<>0<><>::
-TextureReplacerComponent.gd::GDScript::8532579979091234818::1759703641::0::1::::TextureReplacerComponent<>Component<><>0<>1<><>::
-::res://scripts/global/::1759786581
-CharacterController.gd::GDScript::3245214568285762832::1759713675::0::1::::<>Node2D<><>0<>0<><>::
+StateComponent.gd::GDScript::5691389248105170749::1760039089::0::1::::StateComponent<>Component<><>0<>0<><>::
+TextureReplacerComponent.gd::GDScript::8532579979091234818::1760067493::0::1::::TextureReplacerComponent<>Component<><>0<>1<><>::
+::res://scripts/global/::1760073529
+CharacterController.gd::GDScript::3245214568285762832::1760073529::0::1::::<>Node3D<><>0<>0<><>::
+character_controller.tscn::PackedScene::8505453174499494141::1760068736::0::1::::<><><>0<>0<><>::uid://bmiahesj3ghoi::::res://scripts/global/CharacterController.gd
 game_controller.gd::GDScript::3501285759674772607::1759786564::0::1::::GameController<>Node<><>0<>0<><>::
 GlobalManager.gd::GDScript::1709808265790366275::1759786581::0::1::::<>Node<><>0<>0<><>::
+global_audio.gd::GDScript::9167858310675152562::1759950721::0::1::::<>AudioStreamPlayer<><>0<>0<><>::
 ::res://scripts/resources/::1758587030
 CharacterPreset.gd::GDScript::2668741422571492507::1758587030::0::1::::CharacterPreset<>Resource<><>0<>0<><>::
