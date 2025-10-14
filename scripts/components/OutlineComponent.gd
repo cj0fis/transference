@@ -36,17 +36,15 @@ func _on_death() -> void:
 	#outline_mesh.visible = false
 		
 var outline_color = Color.WHITE
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	#if hover_timer > 0.0:
 		#hover_timer -= delta
 		#is_mouse_over = true
 	#else:
 		#is_mouse_over = false
 	if is_mouse_over:	#we set this in the process function because signals may be sent inbetween frames and cause flickering
-
 		outline_mesh.material_override.set("albedo_color", Color.WHITE)
 	else:
-
 		outline_mesh.material_override.set("albedo_color", Color.BLACK)
 	#if Input.is_action_just_pressed("left_click") and is_mouse_over:
 		#parent.make_active_char()

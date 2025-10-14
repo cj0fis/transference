@@ -2,8 +2,8 @@
 class_name HitBox extends Area3D
 
 
-@export var damage: float = 10.0	#setting this to 0 will prevent this from emitting signals
-
+@export var damage: float = 0.0
+			
 
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
@@ -13,5 +13,6 @@ func _ready() -> void:
 	
 func _on_area_entered(area: Area3D):
 	if area is HurtBoxComponent and area.owner != self.owner and damage != 0.0:
-		area.damage(-damage)
+		area.damage(damage)
+
 		

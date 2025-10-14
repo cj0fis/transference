@@ -6,13 +6,23 @@ extends Node
 @export var init_logging = true
 @export var debug_logging = true
 
-signal PLAYER_INITIATED
 
 var game_controller: GameController	#global referene to the game controller
 
+var max_aggro: int = 1
+var aggro_queue: Array[Character3D]
+
+func add_aggro(aggro_char: Character3D) -> void:
+	if aggro_char not in aggro_queue:
+		aggro_queue.push_back(aggro_char)
+
+
+
+
+
+
 
 #optional logging
-
 func log_error(msg: String) -> void:
 	if error_logging:
 		print_rich("[color=red] [ERROR] " + msg)

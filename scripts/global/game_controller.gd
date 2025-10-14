@@ -10,11 +10,11 @@ class_name GameController extends Node
 #one player scene exists in this GameController scene. It is not a child of level scenes
 #when 'entering' a level scene, that scene is instantiated and the player is teleported to an entrance marker
 
-
-@onready var world_3d: Node3D = $World3D
-@onready var world_2d: Node2D = $World2D
 @onready var gui: Control = $GUI
-@onready var persisted_scenes: Node3D = $PersistedScenes
+@onready var world_3d: Node3D = $GUI/SubViewportContainer/SubViewport/World3D
+@onready var world_2d: Node2D = $GUI/SubViewportContainer/SubViewport/World2D
+@onready var sub_viewport: SubViewport = $GUI/SubViewportContainer/SubViewport
+@onready var persisted_scenes: Node3D = $GUI/SubViewportContainer/SubViewport/PersistedScenes
 @onready var global_audio: AudioStreamPlayer = $GlobalAudio
 
 var current_3d_scene: Node3D
@@ -36,7 +36,7 @@ var levels: Dictionary[String, String] = {
 
 func _ready() -> void:
 	GlobalManager.game_controller = self
-	change_3d_scene("res://scenes/levels/room_test_2.tscn")
+	change_3d_scene("res://scenes/levels/dungeon_room.tscn")
 
 #holds references to which scenes are being kept in the background
 var persisted_dict: Dictionary[String, Node3D]

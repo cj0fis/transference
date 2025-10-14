@@ -1,7 +1,7 @@
 @tool
 ##A character with the hurtbox will take damage if the hurtbox overlaps another character's hitbox
 class_name HurtBoxComponent extends Area3D
-@export var damage_cooldown: float = 0.5
+@export var damage_cooldown: float = 0.0
 var cooldown = 0.0
 
 ##emitted when the character recieves damage
@@ -24,5 +24,5 @@ func _physics_process(delta: float) -> void:
 func damage(value: int) -> void:
 	if cooldown > 0:
 		return
-	TAKE_DAMAGE.emit(value)
+	TAKE_DAMAGE.emit(-value)
 	cooldown = damage_cooldown

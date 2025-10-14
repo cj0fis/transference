@@ -1,19 +1,18 @@
-[gd_scene load_steps=48 format=4 uid="uid://me14lg4tr321"]
+[gd_scene load_steps=47 format=4 uid="uid://me14lg4tr321"]
 
 [ext_resource type="Script" uid="uid://c2xxhl08keeq2" path="res://scripts/Character3D.gd" id="1_0abcb"]
-[ext_resource type="Texture2D" uid="uid://ch5ikt3ve8n1l" path="res://assets/_Grim_UI.png" id="2_6igti"]
+[ext_resource type="Texture2D" uid="uid://ch5ikt3ve8n1l" path="res://assets/ui/_Grim_UI.png" id="2_6igti"]
 [ext_resource type="Script" uid="uid://bup84jc4r6ntk" path="res://scripts/components/HurtBoxComponent.gd" id="2_7qvvb"]
 [ext_resource type="Script" uid="uid://cvi5du2su6uo2" path="res://scripts/components/HealthComponent.gd" id="3_ysr5b"]
 [ext_resource type="Script" uid="uid://b4hww5osf0iye" path="res://scripts/components/SoulComponent.gd" id="4_58ihc"]
 [ext_resource type="Script" uid="uid://dttil0sv674li" path="res://scripts/components/TextureReplacerComponent.gd" id="5_otpvk"]
 [ext_resource type="Texture2D" uid="uid://da4ndt2udatel" path="res://scenes/goblins/goblin_fighter/goblin_fighter_texture.png" id="6_4aw2e"]
-[ext_resource type="Script" uid="uid://bk2oaelgxw5ca" path="res://scripts/components/HitBoxManagerComponent.gd" id="7_ysr5b"]
 [ext_resource type="Script" uid="uid://dbm0eunb3sh4f" path="res://scripts/components/HealthBarComponent.gd" id="8_fyfmh"]
 [ext_resource type="Script" uid="uid://pxw3sdljbiqo" path="res://scripts/components/DeathEffectComponent.gd" id="8_otpvk"]
 [ext_resource type="Script" uid="uid://cq7lqaygbe8nd" path="res://scripts/components/HitEffectComponent.gd" id="9_4aw2e"]
 [ext_resource type="Script" uid="uid://ckb7ois1d6gdk" path="res://scripts/components/HitBox.gd" id="9_7qvvb"]
 [ext_resource type="Script" uid="uid://cvbsf3t3ym1my" path="res://scripts/components/MovementComponent.gd" id="10_4aw2e"]
-[ext_resource type="Script" uid="uid://cnc7l45tw0e6h" path="res://scripts/components/StateComponent.gd" id="11_fyfmh"]
+[ext_resource type="Script" uid="uid://bip8d6nn1kr6u" path="res://scripts/components/StateComponent.gd" id="11_8ug1i"]
 [ext_resource type="Script" uid="uid://cpe7wu1hl4t2o" path="res://scripts/components/OutlineComponent.gd" id="12_8ug1i"]
 [ext_resource type="Material" uid="uid://dwp6iwnn4bcdm" path="res://assets/shaders and materials/outline_material.tres" id="14_w7fbm"]
 [ext_resource type="Shader" uid="uid://bddfg3sif24rb" path="res://assets/shaders and materials/character_effects.gdshader" id="15_2ywn4"]
@@ -42,19 +41,15 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b85oe"]
 xfade_time = 0.2
-advance_mode = 2
 advance_expression = "velocity != Vector3(0,0,0)"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_delfk"]
 xfade_time = 0.2
-advance_mode = 2
 advance_expression = "velocity == Vector3(0,0,0)"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_58ihc"]
 xfade_time = 0.1
 switch_mode = 1
-advance_mode = 2
-advance_expression = "velocity != Vector3(0,0,0)"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0abcb"]
 switch_mode = 2
@@ -68,22 +63,18 @@ advance_mode = 2
 xfade_time = 0.1
 priority = 2
 switch_mode = 2
-advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_otpvk"]
 xfade_time = 0.1
-advance_mode = 2
-advance_expression = "is_attacking()"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4aw2e"]
 xfade_time = 0.1
-advance_mode = 2
-advance_expression = "is_attacking()"
+advance_expression = "is_attacking("
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_yplgq"]
 states/Start/position = Vector2(172, 99.08642)
-states/attack_1/node = SubResource("AnimationNodeAnimation_0abcb")
-states/attack_1/position = Vector2(383.66666, 193)
+states/attack/node = SubResource("AnimationNodeAnimation_0abcb")
+states/attack/position = Vector2(383.66666, 193)
 states/attack_2/node = SubResource("AnimationNodeAnimation_7qvvb")
 states/attack_2/position = Vector2(579, 186)
 states/attack_3/node = SubResource("AnimationNodeAnimation_ysr5b")
@@ -92,22 +83,25 @@ states/idle/node = SubResource("AnimationNodeAnimation_gljjg")
 states/idle/position = Vector2(370.66666, 65.111115)
 states/run/node = SubResource("AnimationNodeAnimation_rsqh2")
 states/run/position = Vector2(677, 65.111115)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_ffsub"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_b85oe"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_delfk"), "attack_3", "run", SubResource("AnimationNodeStateMachineTransition_58ihc"), "attack_2", "attack_3", SubResource("AnimationNodeStateMachineTransition_0abcb"), "attack_1", "attack_2", SubResource("AnimationNodeStateMachineTransition_7qvvb"), "attack_3", "idle", SubResource("AnimationNodeStateMachineTransition_ysr5b"), "idle", "attack_1", SubResource("AnimationNodeStateMachineTransition_otpvk"), "run", "attack_1", SubResource("AnimationNodeStateMachineTransition_4aw2e")]
-graph_offset = Vector2(-428, -13)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_ffsub"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_b85oe"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_delfk"), "attack_3", "run", SubResource("AnimationNodeStateMachineTransition_58ihc"), "attack_2", "attack_3", SubResource("AnimationNodeStateMachineTransition_0abcb"), "attack", "attack_2", SubResource("AnimationNodeStateMachineTransition_7qvvb"), "attack_3", "idle", SubResource("AnimationNodeStateMachineTransition_ysr5b"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_otpvk"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_4aw2e")]
+graph_offset = Vector2(-154, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2ywn4"]
+size = Vector3(1, 1, 1.560791)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_otpvk"]
 atlas = ExtResource("2_6igti")
 region = Rect2(67, 1821, 42, 6)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ne65p"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8ug1i"]
 noise_type = 3
 frequency = 0.0403
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4t6lb"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2ywn4"]
 resource_local_to_scene = true
-noise = SubResource("FastNoiseLite_ne65p")
+noise = SubResource("FastNoiseLite_8ug1i")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_76mh5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ne65p"]
 resource_local_to_scene = true
 resource_name = "Character Effects Material"
 render_priority = 0
@@ -117,7 +111,7 @@ shader_parameter/show_hit_color = false
 shader_parameter/light_color = Color(1, 0, 0, 1)
 shader_parameter/amount = 0.0010000000475
 shader_parameter/albedo = ExtResource("6_4aw2e")
-shader_parameter/noise = SubResource("NoiseTexture2D_4t6lb")
+shader_parameter/noise = SubResource("NoiseTexture2D_2ywn4")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dub5m"]
 resource_name = "material_0"
@@ -243,9 +237,6 @@ _surfaces = [{
 "vertex_count": 600,
 "vertex_data": PackedByteArray("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5vkXhv/////m+ReG/////+b5F4b/////5vkXhv////8XBheG/3//vxcGF4b/f/+/FwYXhv9//78XBheG/3//vwCA//////+/AID//////78AgP//////vwCA//////+/AIAAAP///78AgAAA////vwCAAAD///+/AIAAAP///7//f8Zx////v/9/xnH///+//3/Gcf///7//f8Zx////v+7s//8AAP+/7uz//wAA/7/u7P//AAD/v+7s//8AAP+/VNVUVf////9U1VRV/////1TVVFX/////VNVUVf////+qKlRV/3//v6oqVFX/f/+/qipUVf9//7+qKlRV/3//vwCA//////+/AID//////78AgP//////vwCA//////+/AIAAAP///78AgAAA////vwCAAAD///+/AIAAAP///7//f15D////v/9/XkP///+//39eQ////7//f15D////v//PAAAAAP+//88AAAAA/7//zwAAAAD/v//PAAAAAP+///8AgP///////wCA////////AID///////8AgP////8AAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//vwCA//8AAP+/AID//wAA/78AgP//AAD/vwCA//8AAP+/AIAAAAAA/z8AgAAAAAD/PwCAAAAAAP8/AIAAAAAA/z//f/9/////v/9//3////+//3//f////7//f/9/////v/////8AAP+//////wAA/7//////AAD/v/////8AAP+/EfsTe/////8R+xN7/////xH7E3v/////EfsTe//////sBBN7/3//v+wEE3v/f/+/7AQTe/9//7/sBBN7/3//vwCA//////+/AID//////78AgP//////vwCA//////+/AIAAAP///78AgAAA////vwCAAAD///+/AIAAAP///7//f+uE////v/9/64T///+//3/rhP///7//f+uE////v1z0AAAAAP+/XPQAAAAA/79c9AAAAAD/v1z0AAAAAP+///8AgP///////wCA////////AID///////8AgP////8AAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//vwCA//8AAP+/AID//wAA/78AgP//AAD/vwCA//8AAP+/AIAAAAAA/z8AgAAAAAD/PwCAAAAAAP8/AIAAAAAA/z//f/9/////v/9//3////+//3//f////7//f/9/////v/////8AAP+//////wAA/7//////AAD/v/////8AAP+///8AgP///////wCA////////AID///////8AgP////8AAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//vwCA//8AAP+/AID//wAA/78AgP//AAD/vwCA//8AAP+/AIAAAAAA/z8AgAAAAAD/PwCAAAAAAP8/AIAAAAAA/z//f/9/////v/9//3////+//3//f////7//f/9/////v/////8AAP+//////wAA/7//////AAD/v/////8AAP+///8AgP///////wCA////////AID///////8AgP////8AAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//vwCA//8AAP+/AID//wAA/78AgP//AAD/vwCA//8AAP+/AIAAAAAA/z8AgAAAAAD/PwCAAAAAAP8/AIAAAAAA/z//f/9/////v/9//3////+//3//f////7//f/9/////v/////8AAP+//////wAA/7//////AAD/v/////8AAP+///8AgP///////wCA////////AID///////8AgP////8AAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//vwCA//8AAP+/AID//wAA/78AgP//AAD/vwCA//8AAP+/AIAAAAAA/z8AgAAAAAD/PwCAAAAAAP8/AIAAAAAA/z//f/9/////v/9//3////+//3//f////7//f/9/////v/////8AAP+//////wAA/7//////AAD/v/////8AAP+/AID///////8AgP///////wCA////////AID///////8AgAAA/3//vwCAAAD/f/+/AIAAAP9//78AgAAA/3//v45Q7TCCgbfAjlDtMIKBt8COUO0wgoG3wI5Q7TCCgbfA///hg/t/AID//+GD/38AgP//4YP/fwCA///hg/p/AID/f/9/AID///9//38AgP///3//fwCA////f/9/AID/////////fwCA//////9/AID//////38AgP//////fwCA//8AgP///////wCA////////AID///////8AgP////8AAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//vwCA//8AAP+/AID//wAA/78AgP//AAD/vwCA//8AAP+/AIAAAAAA/z8AgAAAAAD/PwCAAAAAAP8/AIAAAAAA/z//f/9/////v/9//3////+//3//f////7//f/9/////v/////8AAP+//////wAA/7//////AAD/v/////8AAP+///8AgP///////wCA////////AID///////8AgP////8AAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//vwCA//8AAP+/AID//wAA/78AgP//AAD/vwCA//8AAP+/AIAAAAAA/z8AgAAAAAD/PwCAAAAAAP8/AIAAAAAA/z//f/9/////v/9//3////+//3//f////7//f/9/////v/////8AAP+//////wAA/7//////AAD/v/////8AAP+///8AgP///////wCA////////AID///////8AgP////8AAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//vwCA//8AAP+/AID//wAA/78AgP//AAD/vwCA//8AAP+/AIAAAAAA/z8AgAAAAAD/PwCAAAAAAP8/AIAAAAAA/z//f/9/////v/9//3////+//3//f////7//f/9/////v/////8AAP+//////wAA/7//////AAD/v/////8AAP+///8AgP///////wCA////////AID///////8AgP////8AAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//vwCA//8AAP+/AID//wAA/78AgP//AAD/vwCA//8AAP+/AIAAAAAA/z8AgAAAAAD/PwCAAAAAAP8/AIAAAAAA/z//f/9/////v/9//3////+//3//f////7//f/9/////v/////8AAP+//////wAA/7//////AAD/v/////8AAP+///8AgP///////wCA////////AID///////8AgP////8AAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//vwCA//////+/AID//////78AgP//////vwCA//////+/mZkAAAAA/7+ZmQAAAAD/v5mZAAAAAP+/mZkAAAAA/7//f/9/////v/9//3////+//3//f////7//f/9/////v/////8AAP+//////wAA/7//////AAD/v/////8AAP+///8AgP7/AID//wCA/v8AgP//AID///////8AgP7/AIAAAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//vwCA//////+/AID//////78AgP//////vwCA//////+//3+xEP///7//f7EQ////v/9/sRD///+//3+xEP///7//f/9/////v/9//3////+//3//f////7//f/9/////v/////8AAP+//////wAA/7//////AAD/v/////8AAP+///8AgP///////wCA////////AID///////8AgP////8AAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//vwCA//8AAP+/AID//wAA/78AgP//AAD/vwCA//8AAP+/AIAAAAAA/z8AgAAAAAD/PwCAAAAAAP8/AIAAAAAA/z//f/9/////v/9//3////+//3//f////7//f/9/////v/////8AAP+//////wAA/7//////AAD/v/////8AAP+/vfUAg1PcGoO99QCDU9wag731AINT3BqDvfUAg1PcGoNBCgCDNobU0UEKAIM2htTRQQoAgzaG1NFBCgCDNobU0Xyl//////+/fKX//////798pf//////v3yl//////+//38iEwAA/7//fyITAAD/v/9/IhMAAP+//38iEwAA/7//f3yl////v/9/fKX///+//398pf///7//f3yl////v4HaAAAAAP+/gdoAAAAA/7+B2gAAAAD/v4HaAAAAAP+/VNVUVf////9U1VRV/////1TVVFX/////VNVUVf////8AAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//v/+f/9///////5//3///////n//f//////+f/9//////AIAAAP///78AgAAA////vwCAAAD///+/AIAAAP///7//f/9/////v/9//3////+//3//f////7//f/9/////v/////8AAP+//////wAA/7//////AAD/v/////8AAP+/qipUVf9//7+qKlRV/3//v6oqVFX/f/+/qipUVf9//7///wCA////////AID///////8AgP///////wCA//////9f/9//f/+//1//3/9//7//X//f/3//v/9f/9//f/+/AIAAAP///78AgAAA////vwCAAAD///+/AIAAAP///7//f/9/////v/9//3////+//3//f////7//f/9/////v/////8AAP+//////wAA/7//////AAD/v/////8AAP+/EvvrhP////8S++uE/////xL764T/////EvvrhP////8AAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//vwCA//////+/AID//////78AgP//////vwCA//////+/AIAAAP///78AgAAA////vwCAAAD///+/AIAAAP///7//f319////v/9/fX3///+//399ff///7//f319////v3z9AAAAAP+/fP0AAAAA/798/QAAAAD/v3z9AAAAAP+///8AgP///////wCA////////AID///////8AgP////8AAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//vwCA//8AAP+/AID//wAA/78AgP//AAD/vwCA//8AAP+/AIAAAAAA/z8AgAAAAAD/PwCAAAAAAP8/AIAAAAAA/z//f/9/////v/9//3////+//3//f////7//f/9/////v/////8AAP+//////wAA/7//////AAD/v/////8AAP+///8AgP///////wCA////////AID///////8AgP////8AAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//vwCA//////+/AID//////78AgP//////vwCA//////+/AIAAAP///78AgAAA////vwCAAAD///+/AIAAAP///7//f/9/////v/9//3////+//3//f////7//f/9/////v/////8AAP+//////wAA/7//////AAD/v/////8AAP+/6wTrhP9//7/rBOuE/3//v+sE64T/f/+/6wTrhP9//7///wCA////////AID///////8AgP///////wCA/////wCA//////+/AID//////78AgP//////vwCA//////+/AIAAAP///78AgAAA////vwCAAAD///+/AIAAAP///7//f319////v/9/fX3///+//399ff///7//f319////v3z9AAAAAP+/fP0AAAAA/798/QAAAAD/v3z9AAAAAP+///8AgP///////wCA////////AID///////8AgP////8AAACA/3//vwAAAID/f/+/AAAAgP9//78AAACA/3//vwCA//8AAP+/AID//wAA/78AgP//AAD/vwCA//8AAP+/AIAAAAAA/z8AgAAAAAD/PwCAAAAAAP8/AIAAAAAA/z//f/9/////v/9//3////+//3//f////7//f/9/////v/////8AAP+//////wAA/7//////AAD/v/////8AAP+/AAAAgP9//78AAACA/3//vwAAAID/f/+/AAAAgP9//7///wCA////////AID///////8AgP///////wCA/////wCA//////+/AID//////78AgP//////vwCA//////+/AIAAAP///78AgAAA////vwCAAAD///+/AIAAAP///7//f/9/////v/9//3////+//3//f////7//f/9/////v/////8AAP+//////wAA/7//////AAD/v/////8AAP+/")
 }]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ysr5b"]
-size = Vector3(0.24633789, 0.20904541, 1.2519531)
 
 [sub_resource type="Animation" id="Animation_58ihc"]
 resource_name = "attack_1"
@@ -804,9 +795,10 @@ _data = {
 &"idle": SubResource("Animation_fyfmh")
 }
 
-[node name="Goblin Fighter" type="CharacterBody3D" node_paths=PackedStringArray("mesh")]
+[node name="Goblin Fighter" type="CharacterBody3D" node_paths=PackedStringArray("mesh", "animation_tree")]
 script = ExtResource("1_0abcb")
 mesh = NodePath("blockbench_export/root/Skeleton3D/root")
+animation_tree = NodePath("AnimationTree")
 
 [node name="ColliderBox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8970947, -0.075618684)
@@ -817,6 +809,7 @@ collision_layer = 2
 collision_mask = 2
 input_ray_pickable = false
 script = ExtResource("2_7qvvb")
+damage_cooldown = 0.5
 metadata/_custom_type_script = "uid://bup84jc4r6ntk"
 
 [node name="HurtBox" type="CollisionShape3D" parent="HurtBoxComponent"]
@@ -843,17 +836,6 @@ script = ExtResource("5_otpvk")
 textures = Array[Texture2D]([ExtResource("6_4aw2e")])
 metadata/_custom_type_script = "uid://dttil0sv674li"
 
-[node name="HitBoxManagerComponent" type="Node" parent="." node_paths=PackedStringArray("animation_tree")]
-script = ExtResource("7_ysr5b")
-animation_tree = NodePath("../AnimationTree")
-state_damage = Dictionary[String, float]({
-"attack_1": 10.0,
-"attack_2": 10.0,
-"attack_3": 10.0,
-"idle": 0.0
-})
-metadata/_custom_type_script = "uid://bk2oaelgxw5ca"
-
 [node name="DeathEffectComponent" type="Node" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("8_otpvk")
 health_component = NodePath("../HealthComponent")
@@ -867,14 +849,28 @@ metadata/_custom_type_script = "uid://cq7lqaygbe8nd"
 script = ExtResource("10_4aw2e")
 metadata/_custom_type_script = "uid://cvbsf3t3ym1my"
 
-[node name="StateComponent" type="Node" parent="."]
-script = ExtResource("11_fyfmh")
-metadata/_custom_type_script = "uid://cnc7l45tw0e6h"
-
 [node name="OutlineComponent" type="Node" parent="." node_paths=PackedStringArray("outline_mesh")]
 script = ExtResource("12_8ug1i")
 outline_mesh = NodePath("../blockbench_export/root/Skeleton3D/root/outline")
 metadata/_custom_type_script = "uid://cpe7wu1hl4t2o"
+
+[node name="StateComponent" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
+script = ExtResource("11_8ug1i")
+hitbox = NodePath("../HitBox")
+metadata/_custom_type_script = "uid://bip8d6nn1kr6u"
+
+[node name="HitBox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 2
+collision_mask = 2
+input_ray_pickable = false
+script = ExtResource("9_7qvvb")
+metadata/_custom_type_script = "uid://ckb7ois1d6gdk"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
+transform = Transform3D(1, 2.954621e-07, -5.9604645e-08, -2.4913012e-08, 1, 1.5832484e-08, 2.9802322e-08, -4.6030618e-07, 1, 2.9989366e-07, 0.82757527, -0.92906547)
+shape = SubResource("BoxShape3D_2ywn4")
+debug_color = Color(0.99999994, 0.008468846, 0.0696841, 0.41960785)
 
 [node name="HealthBarComponent" type="TextureProgressBar" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -904,14 +900,14 @@ bones/1/name = "hip"
 bones/1/parent = 0
 bones/1/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/1/enabled = true
-bones/1/position = Vector3(0, -0.019244257, -0.005755742)
+bones/1/position = Vector3(0, -0.015404189, -0.00959581)
 bones/1/rotation = Quaternion(0.065403126, 0, 0, 0.99785894)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "waist"
 bones/2/parent = 1
 bones/2/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1875, 0.125)
 bones/2/enabled = true
-bones/2/position = Vector3(0, 0.19186401, 0.125)
+bones/2/position = Vector3(0, 0.19470394, 0.125)
 bones/2/rotation = Quaternion(-0.043619387, 0, 0, 0.99904823)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "chest"
@@ -919,7 +915,7 @@ bones/3/parent = 2
 bones/3/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0625, 0)
 bones/3/enabled = true
 bones/3/position = Vector3(0, 0.0625, 0)
-bones/3/rotation = Quaternion(-0.031852305, 0, 0, 0.99949265)
+bones/3/rotation = Quaternion(-0.038519233, 0, 0, 0.9992579)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "right_arm"
 bones/4/parent = 3
@@ -933,14 +929,14 @@ bones/5/parent = 4
 bones/5/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0125)
 bones/5/enabled = true
 bones/5/position = Vector3(0, 0, 0.0125)
-bones/5/rotation = Quaternion(-0.008635256, -0.012332424, -0.5735115, 0.8190592)
+bones/5/rotation = Quaternion(-0.014367219, -0.020518513, -0.57339644, 0.818895)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "lower_arm"
 bones/6/parent = 5
 bones/6/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.275, 0.03125, 0.0625)
 bones/6/enabled = true
 bones/6/position = Vector3(0.275, 0.03125, 0.0625)
-bones/6/rotation = Quaternion(0, 0.31979913, 0, 0.9474854)
+bones/6/rotation = Quaternion(0, 0.33238822, 0, 0.9431427)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "hand"
 bones/7/parent = 6
@@ -968,14 +964,14 @@ bones/10/parent = 9
 bones/10/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03125, -0.03125, 0.0125)
 bones/10/enabled = true
 bones/10/position = Vector3(-0.03125, -0.03125, 0.0125)
-bones/10/rotation = Quaternion(-0.008635256, 0.012332424, 0.5735115, 0.8190592)
+bones/10/rotation = Quaternion(-0.014367219, 0.020518513, 0.57339644, 0.818895)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/name = "lower_arm2"
 bones/11/parent = 10
 bones/11/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.275, 0.03125, 0.0625)
 bones/11/enabled = true
 bones/11/position = Vector3(-0.275, 0.03125, 0.0625)
-bones/11/rotation = Quaternion(0, -0.32929406, 0, 0.94422746)
+bones/11/rotation = Quaternion(0, -0.34811297, 0, 0.9374526)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/name = "hand2"
 bones/12/parent = 11
@@ -989,14 +985,14 @@ bones/13/parent = 3
 bones/13/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3125, -0.03125)
 bones/13/enabled = true
 bones/13/position = Vector3(0, 0.3125, -0.03125)
-bones/13/rotation = Quaternion(-0.12880905, 0, 0, 0.9916694)
+bones/13/rotation = Quaternion(-0.14200042, 0, 0, 0.9898667)
 bones/13/scale = Vector3(1, 1, 1)
 bones/14/name = "head"
 bones/14/parent = 13
 bones/14/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, -0.0625)
 bones/14/enabled = true
 bones/14/position = Vector3(0, 0.125, -0.0625)
-bones/14/rotation = Quaternion(0.1188387, 0, 0, 0.9929136)
+bones/14/rotation = Quaternion(0.12545055, 0, 0, 0.99209994)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/name = "jaw"
 bones/15/parent = 14
@@ -1031,14 +1027,14 @@ bones/19/parent = 18
 bones/19/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09375, 0)
 bones/19/enabled = true
 bones/19/position = Vector3(0, -0.09375, 0)
-bones/19/rotation = Quaternion(0.093085684, -0.12723829, 0.02911195, 0.98706543)
+bones/19/rotation = Quaternion(0.08320302, -0.12752326, 0.027837161, 0.98794746)
 bones/19/scale = Vector3(1, 1, 1)
 bones/20/name = "lower_leg"
 bones/20/parent = 19
 bones/20/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0625, -0.21875, -0.14375)
 bones/20/enabled = true
 bones/20/position = Vector3(0.0625, -0.21875, -0.14375)
-bones/20/rotation = Quaternion(-0.24423987, 0, 0, 0.9697149)
+bones/20/rotation = Quaternion(-0.2345399, 0, 0, 0.9721065)
 bones/20/scale = Vector3(1, 1, 1)
 bones/21/name = "foot"
 bones/21/parent = 20
@@ -1059,14 +1055,14 @@ bones/23/parent = 22
 bones/23/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09375, 0.0625)
 bones/23/enabled = true
 bones/23/position = Vector3(0, -0.09375, 0.0625)
-bones/23/rotation = Quaternion(0.093085684, 0.12723829, -0.02911195, 0.98706543)
+bones/23/rotation = Quaternion(0.08320302, 0.12752326, -0.027837161, 0.98794746)
 bones/23/scale = Vector3(1, 1, 1)
 bones/24/name = "lower_leg2"
 bones/24/parent = 23
 bones/24/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, -0.21875, -0.14375)
 bones/24/enabled = true
 bones/24/position = Vector3(-0.0625, -0.21875, -0.14375)
-bones/24/rotation = Quaternion(-0.24423987, 0, 0, 0.9697149)
+bones/24/rotation = Quaternion(-0.2345399, 0, 0, 0.9721065)
 bones/24/scale = Vector3(1, 1, 1)
 bones/25/name = "foot2"
 bones/25/parent = 24
@@ -1077,7 +1073,7 @@ bones/25/rotation = Quaternion(0.087155744, 0, 0, 0.9961947)
 bones/25/scale = Vector3(1, 1, 1)
 
 [node name="root" type="MeshInstance3D" parent="blockbench_export/root/Skeleton3D"]
-material_override = SubResource("ShaderMaterial_76mh5")
+material_override = SubResource("ShaderMaterial_ne65p")
 mesh = SubResource("ArrayMesh_mwyke")
 skin = SubResource("Skin_n6lqa")
 
@@ -1087,28 +1083,13 @@ mesh = SubResource("ArrayMesh_8ug1i")
 skin = SubResource("Skin_n6lqa")
 skeleton = NodePath("../..")
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="blockbench_export/root/Skeleton3D"]
-transform = Transform3D(0.27817908, 0.9396927, 0.19898269, -0.77581966, 0.34195107, -0.5302579, -0.56632173, -0.006868039, 0.8241557, 0.35347924, 0.7308671, -0.07500258)
-bone_name = "sword"
-bone_idx = 8
-
-[node name="HitBox" type="Area3D" parent="blockbench_export/root/Skeleton3D/BoneAttachment3D"]
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("9_7qvvb")
-metadata/_custom_type_script = "uid://ckb7ois1d6gdk"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="blockbench_export/root/Skeleton3D/BoneAttachment3D/HitBox"]
-transform = Transform3D(1, 2.954621e-07, -5.9604645e-08, -2.4912879e-08, 1, 1.5832484e-08, 2.9802322e-08, -4.6030618e-07, 1, 0.06069614, -9.407582e-10, -0.5241146)
-shape = SubResource("BoxShape3D_ysr5b")
-debug_color = Color(0.99999994, 0.008468846, 0.0696841, 0.41960785)
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="blockbench_export"]
 libraries = {
 &"": SubResource("AnimationLibrary_w7fbm")
 }
 
 [node name="Character Lights" type="Node3D" parent="."]
+visible = false
 
 [node name="Front light" type="OmniLight3D" parent="Character Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8864441, -0.6850137)

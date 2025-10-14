@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c2xxhl08keeq2" path="res://scripts/Character3D.gd" id="1_mf2e7"]
 [ext_resource type="Script" uid="uid://cvi5du2su6uo2" path="res://scripts/components/HealthComponent.gd" id="2_ffsub"]
 [ext_resource type="Script" uid="uid://b4hww5osf0iye" path="res://scripts/components/SoulComponent.gd" id="3_b85oe"]
-[ext_resource type="Texture2D" uid="uid://ch5ikt3ve8n1l" path="res://assets/_Grim_UI.png" id="5_delfk"]
+[ext_resource type="Texture2D" uid="uid://ch5ikt3ve8n1l" path="res://assets/ui/_Grim_UI.png" id="5_delfk"]
 [ext_resource type="Script" uid="uid://bup84jc4r6ntk" path="res://scripts/components/HurtBoxComponent.gd" id="5_r6jgy"]
 [ext_resource type="Script" uid="uid://dbm0eunb3sh4f" path="res://scripts/components/HealthBarComponent.gd" id="6_yplgq"]
 [ext_resource type="Script" uid="uid://dttil0sv674li" path="res://scripts/components/TextureReplacerComponent.gd" id="8_o8qwa"]
@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://pxw3sdljbiqo" path="res://scripts/components/DeathEffectComponent.gd" id="9_xu6hi"]
 [ext_resource type="Script" uid="uid://bk2oaelgxw5ca" path="res://scripts/components/HitBoxManagerComponent.gd" id="10_kbgrf"]
 [ext_resource type="Script" uid="uid://cvbsf3t3ym1my" path="res://scripts/components/MovementComponent.gd" id="11_kbgrf"]
-[ext_resource type="Script" uid="uid://cnc7l45tw0e6h" path="res://scripts/components/StateComponent.gd" id="12_tsaid"]
+[ext_resource type="Script" uid="uid://bip8d6nn1kr6u" path="res://scripts/components/StateComponent.gd" id="12_tsaid"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gljjg"]
 radius = 0.41357422

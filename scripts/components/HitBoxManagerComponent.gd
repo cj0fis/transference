@@ -10,7 +10,7 @@ class_name HitBoxManagerComponent extends Component
 
 var hitboxes: Array[HitBox]
 
-func _ready() -> void:
+func _ready() -> void: 
 	for child in Tools.get_children_recursive(parent):
 		if child is HitBox:
 			hitboxes.append(child)

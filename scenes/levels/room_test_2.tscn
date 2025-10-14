@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://h3n2r3oggepx" path="res://assets/props and levels/floor_set_0.png" id="3_iyhy2"]
 [ext_resource type="PackedScene" uid="uid://me14lg4tr321" path="res://scenes/goblins/goblin_fighter/goblin_fighter.tscn" id="4_iyhy2"]
 [ext_resource type="PackedScene" uid="uid://c32ag4wrs3hqu" path="res://scenes/kobolds/kobold_fighter/kobold_fighter.tscn" id="5_r8243"]
-[ext_resource type="Texture2D" uid="uid://bqeoadwhjvejd" path="res://assets/props and levels/Floor Tile Set_0.png" id="7_vjscq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vjscq"]
 size = Vector3(15.50415, 1, 18.41687)
@@ -318,12 +317,15 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7lc6b")
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lwl77"]
+load_path = "res://.godot/imported/Floor Tile Set_0.png-d8cc4d23409d0d427ae5e9c604d5acfb.s3tc.ctex"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bunpk"]
 resource_name = "material_0"
 transparency = 2
 alpha_scissor_threshold = 0.05
 alpha_antialiasing_mode = 0
-albedo_texture = ExtResource("7_vjscq")
+albedo_texture = SubResource("CompressedTexture2D_lwl77")
 texture_filter = 0
 texture_repeat = false
 
@@ -2758,6 +2760,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4864521, -1.9073486e-06, 3.
 
 [node name="blockbench_export" type="Node3D" parent="." index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.967554, 0, -3.4102871)
+visible = false
 
 [node name="Node" type="Node3D" parent="blockbench_export" index="0"]
 

@@ -1,8 +1,8 @@
-[gd_scene load_steps=40 format=4 uid="uid://dejkrjst2cyd5"]
+[gd_scene load_steps=38 format=4 uid="uid://dejkrjst2cyd5"]
 
 [ext_resource type="Script" uid="uid://c2xxhl08keeq2" path="res://scripts/Character3D.gd" id="1_f54ev"]
 [ext_resource type="Script" uid="uid://bup84jc4r6ntk" path="res://scripts/components/HurtBoxComponent.gd" id="2_hj670"]
-[ext_resource type="Texture2D" uid="uid://ch5ikt3ve8n1l" path="res://assets/_Grim_UI.png" id="2_n0l7x"]
+[ext_resource type="Texture2D" uid="uid://ch5ikt3ve8n1l" path="res://assets/ui/_Grim_UI.png" id="2_n0l7x"]
 [ext_resource type="Script" uid="uid://cvi5du2su6uo2" path="res://scripts/components/HealthComponent.gd" id="3_1r4g4"]
 [ext_resource type="Script" uid="uid://b4hww5osf0iye" path="res://scripts/components/SoulComponent.gd" id="4_ql1wu"]
 [ext_resource type="Script" uid="uid://dttil0sv674li" path="res://scripts/components/TextureReplacerComponent.gd" id="5_crllt"]
@@ -10,8 +10,6 @@
 [ext_resource type="Script" uid="uid://cq7lqaygbe8nd" path="res://scripts/components/HitEffectComponent.gd" id="8_cwy6o"]
 [ext_resource type="Script" uid="uid://cvbsf3t3ym1my" path="res://scripts/components/MovementComponent.gd" id="9_hj670"]
 [ext_resource type="Script" uid="uid://pxw3sdljbiqo" path="res://scripts/components/DeathEffectComponent.gd" id="9_ot78k"]
-[ext_resource type="Script" uid="uid://cnc7l45tw0e6h" path="res://scripts/components/StateComponent.gd" id="10_1r4g4"]
-[ext_resource type="Script" uid="uid://bk2oaelgxw5ca" path="res://scripts/components/HitBoxManagerComponent.gd" id="10_6kffp"]
 [ext_resource type="Script" uid="uid://cpe7wu1hl4t2o" path="res://scripts/components/OutlineComponent.gd" id="11_ql1wu"]
 [ext_resource type="Shader" uid="uid://bddfg3sif24rb" path="res://assets/shaders and materials/character_effects.gdshader" id="14_crllt"]
 
@@ -51,15 +49,15 @@ graph_offset = Vector2(-224, 13)
 atlas = ExtResource("2_n0l7x")
 region = Rect2(67, 1821, 42, 6)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ools8"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hj670"]
 noise_type = 3
 frequency = 0.0403
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cwy6o"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1r4g4"]
 resource_local_to_scene = true
-noise = SubResource("FastNoiseLite_ools8")
+noise = SubResource("FastNoiseLite_hj670")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ot78k"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ql1wu"]
 resource_local_to_scene = true
 resource_name = "Character Effects Material"
 render_priority = 0
@@ -68,7 +66,7 @@ shader_parameter/hit_color = Color(1, 1, 1, 1)
 shader_parameter/show_hit_color = false
 shader_parameter/light_color = Color(1, 0, 0, 1)
 shader_parameter/amount = 0.0010000000475
-shader_parameter/noise = SubResource("NoiseTexture2D_cwy6o")
+shader_parameter/noise = SubResource("NoiseTexture2D_1r4g4")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nfjoa"]
 resource_name = "material_0"
@@ -1027,7 +1025,9 @@ shape = SubResource("CapsuleShape3D_gljjg")
 [node name="HurtBoxComponent" type="Area3D" parent="."]
 collision_layer = 2
 collision_mask = 2
+input_ray_pickable = false
 script = ExtResource("2_hj670")
+damage_cooldown = 0.5
 metadata/_custom_type_script = "uid://bup84jc4r6ntk"
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="HurtBoxComponent"]
@@ -1062,18 +1062,9 @@ script = ExtResource("9_ot78k")
 health_component = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://pxw3sdljbiqo"
 
-[node name="HitBoxManagerComponent" type="Node" parent="." node_paths=PackedStringArray("animation_tree")]
-script = ExtResource("10_6kffp")
-animation_tree = NodePath("../AnimationTree")
-metadata/_custom_type_script = "uid://bk2oaelgxw5ca"
-
 [node name="MovementComponent" type="Node" parent="."]
 script = ExtResource("9_hj670")
 metadata/_custom_type_script = "uid://cvbsf3t3ym1my"
-
-[node name="StateComponent" type="Node" parent="."]
-script = ExtResource("10_1r4g4")
-metadata/_custom_type_script = "uid://cnc7l45tw0e6h"
 
 [node name="OutlineComponent" type="Node" parent="."]
 script = ExtResource("11_ql1wu")
@@ -1102,21 +1093,21 @@ bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/0/enabled = true
 bones/0/position = Vector3(0, 0.53125, 0)
-bones/0/rotation = Quaternion(0.0026026145, -0.047996312, 0.00012506043, 0.9988442)
+bones/0/rotation = Quaternion(4.557903e-05, -0.047996473, 2.1901567e-06, 0.99884754)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "lower_chest2"
 bones/1/parent = 0
 bones/1/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09375, 0)
 bones/1/enabled = true
 bones/1/position = Vector3(0, 0.09375, 0)
-bones/1/rotation = Quaternion(0.0012916633, -0.1305261, 0.00017005067, 0.99144405)
+bones/1/rotation = Quaternion(2.2620592e-05, -0.13052619, 2.9780572e-06, 0.99144495)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "upper_chest"
 bones/2/parent = 1
 bones/2/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15625, 0.01875)
 bones/2/enabled = true
 bones/2/position = Vector3(0, 0.15625, 0.01875)
-bones/2/rotation = Quaternion(0.016767163, -0.0876315, -0.042315356, 0.99511266)
+bones/2/rotation = Quaternion(0.004028754, -0.08708271, -0.04343354, 0.99524575)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "left_arm"
 bones/3/parent = 2
@@ -1186,7 +1177,7 @@ bones/12/parent = 11
 bones/12/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15625, 0)
 bones/12/enabled = true
 bones/12/position = Vector3(0, 0.15625, 0)
-bones/12/rotation = Quaternion(0.05234787, -0.0034196475, 0.043485135, 0.9976759)
+bones/12/rotation = Quaternion(0.06511342, -0.002862775, 0.04352534, 0.99692404)
 bones/12/scale = Vector3(1, 1, 1)
 bones/13/name = "jaw4"
 bones/13/parent = 12
@@ -1200,7 +1191,7 @@ bones/14/parent = 0
 bones/14/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09375, -0.05625, -0.025)
 bones/14/enabled = true
 bones/14/position = Vector3(-0.11481067, -0.05625, -0.048087023)
-bones/14/rotation = Quaternion(0.13038883, 0.049697425, -0.005986773, 0.9901985)
+bones/14/rotation = Quaternion(0.13034785, 0.043359213, -0.0068211304, 0.99049634)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/name = "left_calf2"
 bones/15/parent = 14
@@ -1221,7 +1212,7 @@ bones/17/parent = 0
 bones/17/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09375, -0.05625, -0.025)
 bones/17/enabled = true
 bones/17/position = Vector3(0.09375, -0.05625, -0.025)
-bones/17/rotation = Quaternion(0, -0.18005954, 0, 0.9836557)
+bones/17/rotation = Quaternion(0, -0.17376052, 0, 0.98478794)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "right_calf2"
 bones/18/parent = 17
@@ -1242,25 +1233,25 @@ bones/20/parent = 0
 bones/20/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.125)
 bones/20/enabled = true
 bones/20/position = Vector3(0, 0, 0.125)
-bones/20/rotation = Quaternion(0.14976011, -0.084206365, 0.026710302, 0.9847679)
+bones/20/rotation = Quaternion(0.15080605, -0.12822452, 0.019976519, 0.9800087)
 bones/20/scale = Vector3(1, 1, 1)
 bones/21/name = "tail_middle"
 bones/21/parent = 20
 bones/21/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00625, 0.19375)
 bones/21/enabled = true
 bones/21/position = Vector3(0, -0.00625, 0.19375)
-bones/21/rotation = Quaternion(0, -0.04392843, 0, 0.99903476)
+bones/21/rotation = Quaternion(0, -0.107732795, 0, 0.9941799)
 bones/21/scale = Vector3(1, 1, 1)
 bones/22/name = "tail_end"
 bones/22/parent = 21
 bones/22/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00625, 0.30625)
 bones/22/enabled = true
 bones/22/position = Vector3(0, 0.00625, 0.30625)
-bones/22/rotation = Quaternion(0, -0.09847893, 0, 0.99513924)
+bones/22/rotation = Quaternion(0, -0.19341174, 0, 0.98111767)
 bones/22/scale = Vector3(1, 1, 1)
 
 [node name="root" type="MeshInstance3D" parent="blockbench_export/root/Skeleton3D"]
-material_override = SubResource("ShaderMaterial_ot78k")
+material_override = SubResource("ShaderMaterial_ql1wu")
 mesh = SubResource("ArrayMesh_dforq")
 skin = SubResource("Skin_h2wh0")
 
