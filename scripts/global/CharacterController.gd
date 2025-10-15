@@ -1,12 +1,18 @@
 extends Node3D
 
+#constants 
+const CURSOR = preload("uid://i6ktuqbtofuq")
+
+
+
 
 var active_char: Character3D = null
 var movement: MovementComponent
 var char_state: StateComponent
 var next_active_char: Character3D = null	#holds a reference to the set char during soul transition
 var soul_mode: bool = false
-var paused = true
+
+
 
 var selected_character: Character3D
 
@@ -151,13 +157,7 @@ func _physics_process(delta: float) -> void:
 	#if Input.is_action_just_pressed("scroll_down"):
 		#active_cam.size /= 0.9
 		
-	if Input.is_action_just_pressed("pause"):
-		if paused == true:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-			paused = false
-		else:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-			paused = true
+
 		
 	
 

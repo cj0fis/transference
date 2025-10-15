@@ -1014,9 +1014,10 @@ _data = {
 &"walk": SubResource("Animation_hj670")
 }
 
-[node name="kobold_skirmisher" type="CharacterBody3D" node_paths=PackedStringArray("mesh")]
+[node name="kobold_skirmisher" type="CharacterBody3D" node_paths=PackedStringArray("mesh", "animation_tree")]
 script = ExtResource("1_f54ev")
 mesh = NodePath("blockbench_export/root/Skeleton3D/root")
+animation_tree = NodePath("AnimationTree")
 
 [node name="ColliderBox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6550293, 0)
@@ -1027,7 +1028,6 @@ collision_layer = 2
 collision_mask = 2
 input_ray_pickable = false
 script = ExtResource("2_hj670")
-damage_cooldown = 0.5
 metadata/_custom_type_script = "uid://bup84jc4r6ntk"
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="HurtBoxComponent"]
@@ -1093,21 +1093,21 @@ bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/0/enabled = true
 bones/0/position = Vector3(0, 0.53125, 0)
-bones/0/rotation = Quaternion(4.557903e-05, -0.047996473, 2.1901567e-06, 0.99884754)
+bones/0/rotation = Quaternion(0.008018817, -0.047994927, 0.00038531897, 0.9988153)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "lower_chest2"
 bones/1/parent = 0
 bones/1/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09375, 0)
 bones/1/enabled = true
 bones/1/position = Vector3(0, 0.09375, 0)
-bones/1/rotation = Quaternion(2.2620592e-05, -0.13052619, 2.9780572e-06, 0.99144495)
+bones/1/rotation = Quaternion(0.003963948, -0.13052516, 0.0005218637, 0.991437)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "upper_chest"
 bones/2/parent = 1
 bones/2/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15625, 0.01875)
 bones/2/enabled = true
 bones/2/position = Vector3(0, 0.15625, 0.01875)
-bones/2/rotation = Quaternion(0.004028754, -0.08708271, -0.04343354, 0.99524575)
+bones/2/rotation = Quaternion(0.04470491, -0.08878523, -0.039837837, 0.99424934)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "left_arm"
 bones/3/parent = 2
@@ -1177,7 +1177,7 @@ bones/12/parent = 11
 bones/12/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15625, 0)
 bones/12/enabled = true
 bones/12/position = Vector3(0, 0.15625, 0)
-bones/12/rotation = Quaternion(0.06511342, -0.002862775, 0.04352534, 0.99692404)
+bones/12/rotation = Quaternion(0.02585858, -0.0045722136, 0.043379094, 0.9987135)
 bones/12/scale = Vector3(1, 1, 1)
 bones/13/name = "jaw4"
 bones/13/parent = 12
@@ -1191,7 +1191,7 @@ bones/14/parent = 0
 bones/14/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09375, -0.05625, -0.025)
 bones/14/enabled = true
 bones/14/position = Vector3(-0.11481067, -0.05625, -0.048087023)
-bones/14/rotation = Quaternion(0.13034785, 0.043359213, -0.0068211304, 0.99049634)
+bones/14/rotation = Quaternion(0.13046163, 0.063982, -0.0041044834, 0.9893782)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/name = "left_calf2"
 bones/15/parent = 14
@@ -1212,7 +1212,7 @@ bones/17/parent = 0
 bones/17/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09375, -0.05625, -0.025)
 bones/17/enabled = true
 bones/17/position = Vector3(0.09375, -0.05625, -0.025)
-bones/17/rotation = Quaternion(0, -0.17376052, 0, 0.98478794)
+bones/17/rotation = Quaternion(0, -0.19423611, 0, 0.9809548)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "right_calf2"
 bones/18/parent = 17
@@ -1233,21 +1233,21 @@ bones/20/parent = 0
 bones/20/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.125)
 bones/20/enabled = true
 bones/20/position = Vector3(0, 0, 0.125)
-bones/20/rotation = Quaternion(0.15080605, -0.12822452, 0.019976519, 0.9800087)
+bones/20/rotation = Quaternion(0.14662927, 0.0076861926, 0.04051395, 0.9883317)
 bones/20/scale = Vector3(1, 1, 1)
 bones/21/name = "tail_middle"
 bones/21/parent = 20
 bones/21/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00625, 0.19375)
 bones/21/enabled = true
 bones/21/position = Vector3(0, -0.00625, 0.19375)
-bones/21/rotation = Quaternion(0, -0.107732795, 0, 0.9941799)
+bones/21/rotation = Quaternion(0, 0.08771473, 0, 0.9961457)
 bones/21/scale = Vector3(1, 1, 1)
 bones/22/name = "tail_end"
 bones/22/parent = 21
 bones/22/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00625, 0.30625)
 bones/22/enabled = true
 bones/22/position = Vector3(0, 0.00625, 0.30625)
-bones/22/rotation = Quaternion(0, -0.19341174, 0, 0.98111767)
+bones/22/rotation = Quaternion(0, 0.09954283, 0, 0.99503326)
 bones/22/scale = Vector3(1, 1, 1)
 
 [node name="root" type="MeshInstance3D" parent="blockbench_export/root/Skeleton3D"]

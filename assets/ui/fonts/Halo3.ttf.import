@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://0e81lobddqs0"
-path="res://.godot/imported/Odderf Basic.ttf-99c2ece06a3557092169a65bc4914688.fontdata"
+uid="uid://cpaydoy2ssiox"
+path="res://.godot/imported/Halo3.ttf-09eee6bf1866be59b4459b48c925973d.fontdata"
 
 [deps]
 
-source_file="res://assets/ui/Odderf Basic.ttf"
-dest_files=["res://.godot/imported/Odderf Basic.ttf-99c2ece06a3557092169a65bc4914688.fontdata"]
+source_file="res://assets/ui/fonts/Halo3.ttf"
+dest_files=["res://.godot/imported/Halo3.ttf-09eee6bf1866be59b4459b48c925973d.fontdata"]
 
 [params]
 

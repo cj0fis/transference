@@ -24,14 +24,8 @@ var current_2d_path: String
 var current_gui_scene: Control
 var current_control_path: String
 
-enum level_names{
-	hub,
-	gloom_hollows
-}
-#dictionary with shortcuts for filepaths
-var levels: Dictionary[String, String] = {
 
-}
+
 
 
 func _ready() -> void:
