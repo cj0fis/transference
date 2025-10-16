@@ -24,13 +24,19 @@ var current_2d_path: String
 var current_gui_scene: Control
 var current_control_path: String
 
+enum level_names{
+	hub,
+	gloom_hollows
+}
+#dictionary with shortcuts for filepaths
+var levels: Dictionary[String, String] = {
 
-
+}
 
 
 func _ready() -> void:
 	GlobalManager.game_controller = self
-	#change_3d_scene("res://scenes/levels/dungeon_room.tscn")
+	change_3d_scene("res://scenes/levels/dungeon_room.tscn")
 
 #holds references to which scenes are being kept in the background
 var persisted_dict: Dictionary[String, Node3D]
