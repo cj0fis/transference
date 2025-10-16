@@ -15,7 +15,8 @@ var pause_animation_time: float = 0.2
 
 func _ready() -> void:
 	screen_size = sub_viewport_container.size
-
+	pause_panel.position.x -= pause_panel.size.x
+	#pause_panel.modulate.a = 0
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -30,10 +31,11 @@ func pause() -> void:
 	get_tree().paused = true
 	controls_display.visible = false
 	var t = create_tween().set_parallel(true)
-	t.tween_property(blur_effect.material, "shader_parameter/amount", 1.0, 0.2)
-	t.tween_property(sub_viewport_container,"size",  screen_size * Vector2(0.5,1.0), pause_animation_time)
-	t.tween_property(sub_viewport_container,"position",  screen_size * Vector2(0.5,0), pause_animation_time)
-	t.tween_property(pause_panel,"position",  screen_size * Vector2(0,0), pause_animation_time)
+	#t.tween_property(sub_viewport_container, "stretch_shrink", 1, pause_animation_time)
+	t.tween_property(blur_effect.material, "shader_parameter/amount", 1.5, 0.2)
+	t.tween_property(sub_viewport_container,"size",  screen_size * Vector2(2.0,1.0), pause_animation_time)
+	t.tween_property(sub_viewport_container,"position",  screen_size * Vector2(-0.25,0), pause_animation_time)
+	t.tween_property(pause_panel,"position",  Vector2(0,0), pause_animation_time)
 	
 	#tween camera
 	#smart_cam.vertical_angle = 15
@@ -51,10 +53,11 @@ func unpause() -> void:
 	can_toggle = false
 	
 	var t = create_tween().set_parallel(true)
+	#t.tween_property(sub_viewport_container, "stretch_shrink", 1, pause_animation_time)
 	t.tween_property(blur_effect.material, "shader_parameter/amount", 0.0, 0.2)
 	t.tween_property(sub_viewport_container,"size",  screen_size, pause_animation_time)
 	t.tween_property(sub_viewport_container,"position",  Vector2(0,0), pause_animation_time)
-	t.tween_property(pause_panel,"position",  screen_size  * Vector2(-0.5,0), pause_animation_time)
+	t.tween_property(pause_panel,"position",  Vector2(-pause_panel.size.x,0), pause_animation_time)
 	
 	#tween camera
 	#smart_cam.vertical_angle = 30

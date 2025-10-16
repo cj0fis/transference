@@ -1,13 +1,7 @@
-res://scenes/kobolds/kobold_skirmisher/kobold_skirmisher.tscn
-res://assets/shaders and materials/character_effects_material.tres
 res://scenes/goblins/goblin_skirmisher/goblin_skirmisher_behavior_tree.tres
-res://scripts/Character3D.gd
 res://scenes/game_controller.tscn
-res://scripts/global/CharacterController.gd
-res://scripts/SmartCam3D.gd
-res://scenes/ui_manager.gd
-res://assets/shaders and materials/pause_effect.gdshader
-res://scripts/global/global_audio.gd
+res://assets/shaders and materials/character_effects_material.tres
 res://assets/ui/ui_theme.tres
+res://assets/shaders and materials/pause_effect.gdshader
 res://scripts/global/game_controller.gd
-res://scenes/levels/dungeon_room.tscn
+res://scenes/ui_manager.gd
