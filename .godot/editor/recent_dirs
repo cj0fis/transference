@@ -1,7 +1,6 @@
-res://scenes
-res://assets/shaders and materials
-res://scripts
 res://scripts/components
+res://scripts
+res://scenes
 res://scenes/goblins/goblin_skirmisher
 res://scripts/states/custom
 res://scenes/levels

@@ -18,7 +18,6 @@ func init_texture_progress_bar() -> void:
 	max_value = tex.region.size.x
 	value = max_value
 	rounded = true
-	scale = Vector2(2.5,2.5)
 
 func assign_components() -> void:
 	if get_parent() is Character3D:

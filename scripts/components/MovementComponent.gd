@@ -45,7 +45,7 @@ func stop_following() -> void:
 func move_to_pos(pos: Vector3, margin: float) -> void:
 	stop_following()
 	move_mode = "position"
-	face_target = true
+	face_target = false
 	target_position = pos
 	target_margin = margin
 
