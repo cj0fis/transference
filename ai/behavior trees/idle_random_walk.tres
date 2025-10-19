@@ -1,0 +1,34 @@
+[gd_resource type="BehaviorTree" load_steps=12 format=3 uid="uid://ddfxevooubiga"]
+
+[ext_resource type="Script" uid="uid://b5knhggypfja0" path="res://ai/tasks/enter_normal_stance.gd" id="1_u8jii"]
+[ext_resource type="Script" uid="uid://bqm331vn6a81t" path="res://ai/tasks/get_random_pos.gd" id="2_ymbem"]
+[ext_resource type="Script" uid="uid://es6q2xoob68a" path="res://ai/tasks/move_to_pos.gd" id="3_v6g1u"]
+[ext_resource type="Script" uid="uid://khon8mbh385j" path="res://ai/tasks/await_move.gd" id="4_j7hsl"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_nlttg"]
+
+[sub_resource type="BTAction" id="BTAction_kcr66"]
+script = ExtResource("1_u8jii")
+
+[sub_resource type="BTAction" id="BTAction_h2clv"]
+script = ExtResource("2_ymbem")
+origin_var = "home_pos"
+output_var = "target_pos"
+
+[sub_resource type="BTAction" id="BTAction_1ncj7"]
+script = ExtResource("3_v6g1u")
+position_var = "target_pos"
+
+[sub_resource type="BTAction" id="BTAction_gwq8x"]
+script = ExtResource("4_j7hsl")
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_t1bp7"]
+min_duration = 2.0
+max_duration = 3.0
+
+[sub_resource type="BTSequence" id="BTSequence_g08vb"]
+children = [SubResource("BTAction_kcr66"), SubResource("BTAction_h2clv"), SubResource("BTAction_1ncj7"), SubResource("BTAction_gwq8x"), SubResource("BTRandomWait_t1bp7")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_nlttg")
+root_task = SubResource("BTSequence_g08vb")

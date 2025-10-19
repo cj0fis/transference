@@ -3,11 +3,11 @@ extends Control
 
 
 @onready var pause_screen: Control = $"Pause Screen"
-@onready var sub_viewport_container: SubViewportContainer = $"../SubViewportContainer"
+@onready var sub_viewport_container: SubViewportContainer = $SubViewportContainer
 @onready var pause_panel: Panel = $"Pause Screen/pause panel"
 @onready var blur_effect: ColorRect = $"Pause Screen/blur effect"
-@onready var smart_cam: SmartCam3D = $"../SubViewportContainer/SubViewport/World3D/smart_cam"
-@onready var controls_display: HBoxContainer = $"Controls Display"
+@onready var smart_cam: SmartCam3D = $SubViewportContainer/SubViewport/World3D/smart_cam
+@onready var hud: Control = $HUD
 
 @onready var screen_size: Vector2
 
@@ -29,18 +29,20 @@ func pause() -> void:
 		return
 	can_toggle = false
 	get_tree().paused = true
-	controls_display.visible = false
+	hud.visible = false
 	var t = create_tween().set_parallel(true)
 	#t.tween_property(sub_viewport_container, "stretch_shrink", 1, pause_animation_time)
 	t.tween_property(blur_effect.material, "shader_parameter/amount", 1.5, 0.2)
+	t.tween_property(blur_effect.material, "shader_parameter/dim", 0.3, 0.2)
 	t.tween_property(sub_viewport_container,"size",  screen_size * Vector2(2.0,1.0), pause_animation_time)
 	t.tween_property(sub_viewport_container,"position",  screen_size * Vector2(-0.25,0), pause_animation_time)
 	t.tween_property(pause_panel,"position",  Vector2(0,0), pause_animation_time)
 	
 	#tween camera
 	#smart_cam.vertical_angle = 15
-	t.tween_property(smart_cam, "horizontal_angle", CharacterController.active_char.rotation.y / PI * 180 + 30, pause_animation_time)
+	t.tween_property(smart_cam, "horizontal_angle", CharacterController.active_char.rotation.y / PI * 180 + 15, pause_animation_time)
 	t.tween_property(smart_cam, "size", 2.5, pause_animation_time)
+	t.tween_property(smart_cam, "distance", 2.0, pause_animation_time)
 	
 	await t.finished
 	can_toggle = true
@@ -55,6 +57,7 @@ func unpause() -> void:
 	var t = create_tween().set_parallel(true)
 	#t.tween_property(sub_viewport_container, "stretch_shrink", 1, pause_animation_time)
 	t.tween_property(blur_effect.material, "shader_parameter/amount", 0.0, 0.2)
+	t.tween_property(blur_effect.material, "shader_parameter/dim", 0.0, 0.2)
 	t.tween_property(sub_viewport_container,"size",  screen_size, pause_animation_time)
 	t.tween_property(sub_viewport_container,"position",  Vector2(0,0), pause_animation_time)
 	t.tween_property(pause_panel,"position",  Vector2(-pause_panel.size.x,0), pause_animation_time)
@@ -63,10 +66,11 @@ func unpause() -> void:
 	#smart_cam.vertical_angle = 30
 	t.tween_property(smart_cam, "horizontal_angle", 45.0, pause_animation_time)
 	t.tween_property(smart_cam, "size", 7.5, pause_animation_time)
+	t.tween_property(smart_cam, "distance", 2.5, pause_animation_time)
 	await t.finished
 	can_toggle = true
 	get_tree().paused = false
-	controls_display.visible = true
+	hud.visible = true
 	
 func toggle_pause() -> void:
 	if get_tree().paused:

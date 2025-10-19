@@ -1,6 +1,21 @@
 
 class_name SmartCam3D extends Camera3D
 
+enum SmartCamMode{
+	TOPDOWN,
+	TRADITIONAL_3D
+}
+
+@export var mode:= SmartCamMode.TOPDOWN:
+	set(value):
+		mode = value
+		match value:
+			SmartCamMode.TOPDOWN:
+				projection = Camera3D.PROJECTION_ORTHOGONAL
+			SmartCamMode.TRADITIONAL_3D:
+				projection = Camera3D.PROJECTION_PERSPECTIVE
+		distance = distance
+				
 @export var target: Node3D
 @export var smooth_speed: float = 5.0
 
@@ -8,7 +23,18 @@ class_name SmartCam3D extends Camera3D
 @export_range(-180.0, 180.0, 5.0) var horizontal_angle: float = 0.0
 @export var vertical_offset: float = 1.0
 
-var distance: float = 15.0
+var distance_from_target: float
+
+@export var distance: float = 15.0:
+	set(value):
+		distance = value
+		match mode:
+			SmartCamMode.TOPDOWN:
+				size = distance
+				distance_from_target = 15.0
+			SmartCamMode.TRADITIONAL_3D:
+				distance_from_target = distance
+			
 var target_position: Vector3
 
 func _ready() -> void:
@@ -16,9 +42,6 @@ func _ready() -> void:
 		CharacterController.set_active_cam(self)
 	rotation.y = horizontal_angle * PI/180.0 + PI
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion and not CharacterController.paused:
-		horizontal_angle -= event.relative.x * 0.15
 
 
 func _physics_process(delta: float) -> void:
@@ -36,10 +59,9 @@ func _physics_process(delta: float) -> void:
 				#projection = PROJECTION_ORTHOGONAL
 				
 	##Z locks the camera's rotation to the player's rotation
-	#if CharacterController.paused:
-		#if Input.is_key_pressed(KEY_Z):
-			#horizontal_angle = rad_to_deg(lerp_angle(deg_to_rad(horizontal_angle), target.rotation.y + PI, 0.5))
-			#print("rotating")
+		#if CharacterController.controller_type == CharacterController.ControllerType.WASD:
+			#horizontal_angle = rad_to_deg(target.rotation.y + PI)
+
 	
 	var lerp_weight = clampf(delta * smooth_speed, 0.0, 1.0)
 	#if abs(fmod(target.rotation_degrees.y + 180, 360) - horizontal_angle) > 45.0:
@@ -48,7 +70,7 @@ func _physics_process(delta: float) -> void:
 	
 	rotation.x = lerp_angle(rotation.x, -PI/180.0 * vertical_angle, lerp_weight)
 	rotation.y = lerp_angle(rotation.y, PI/180.0 * horizontal_angle + PI, lerp_weight)
-	var offset := Vector3(0, distance * sin(PI/180.0 * vertical_angle), -distance * cos(PI/180.0 * vertical_angle))
+	var offset := Vector3(0, distance_from_target * sin(PI/180.0 * vertical_angle), -distance_from_target * cos(PI/180.0 * vertical_angle))
 	offset = offset.rotated(Vector3.UP, rotation.y - PI) + Vector3(0,vertical_offset,0)
 	
 	if target:

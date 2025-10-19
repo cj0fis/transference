@@ -31,6 +31,7 @@ region = Rect2(480, 128, 16, 16)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1awvl"]
 shader = ExtResource("8_qtg6w")
 shader_parameter/amount = 0.0
+shader_parameter/dim = 0.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6ul8"]
 draw_center = false
@@ -51,6 +52,7 @@ data = PackedByteArray("//uQxAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAABUAABeDAABAgYJ
 script = ExtResource("1_vq0e2")
 
 [node name="GUI" type="Control" parent="."]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,8 +62,10 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
+script = ExtResource("5_d6ul8")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="GUI"]
+process_mode = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -70,13 +74,11 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 stretch_shrink = 3
-mouse_target = true
 
 [node name="SubViewport" type="SubViewport" parent="GUI/SubViewportContainer"]
 handle_input_locally = false
 physics_object_picking = true
 physics_object_picking_sort = true
-physics_object_picking_first_only = true
 size = Vector2i(640, 360)
 size_2d_override = Vector2i(1920, 1080)
 size_2d_override_stretch = true
@@ -96,10 +98,11 @@ transform = Transform3D(-0.7071068, 0.35355338, -0.61237246, 0, 0.8660254, 0.500
 top_level = true
 projection = 1
 current = true
-size = 7.5
+size = 9.889
 script = ExtResource("2_ts4rt")
 smooth_speed = 15.0
 horizontal_angle = 45.0
+distance = 5.27
 
 [node name="screen filter" type="MeshInstance3D" parent="GUI/SubViewportContainer/SubViewport/World3D/smart_cam"]
 transform = Transform3D(0.9999997, 7.553467e-09, 2.3841858e-07, 1.0430813e-07, 0.8660254, -0.49999985, 0, 0.5, 0.86602527, -0.38272715, 0.47087812, -0.7490616)
@@ -120,7 +123,7 @@ environment = ExtResource("4_rc0pn")
 
 [node name="dungeon_room" parent="GUI/SubViewportContainer/SubViewport/World3D" instance=ExtResource("5_1awvl")]
 
-[node name="Game UI" type="Control" parent="GUI"]
+[node name="HUD" type="Control" parent="GUI"]
 process_mode = 3
 layout_mode = 1
 anchors_preset = 15
@@ -128,9 +131,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("5_d6ul8")
+mouse_filter = 2
 
-[node name="Controls Display" type="HBoxContainer" parent="GUI/Game UI"]
+[node name="Controls Display" type="HBoxContainer" parent="GUI/HUD"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -142,15 +145,15 @@ grow_vertical = 0
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="move" type="HBoxContainer" parent="GUI/Game UI/Controls Display"]
+[node name="move" type="HBoxContainer" parent="GUI/HUD/Controls Display"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="GUI/Game UI/Controls Display/move"]
+[node name="TextureRect" type="TextureRect" parent="GUI/HUD/Controls Display/move"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_h0hye")
 expand_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GUI/Game UI/Controls Display/move"]
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI/HUD/Controls Display/move"]
 layout_mode = 2
 theme = ExtResource("8_1awvl")
 text = "Move
@@ -159,15 +162,15 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="stance" type="HBoxContainer" parent="GUI/Game UI/Controls Display"]
+[node name="stance" type="HBoxContainer" parent="GUI/HUD/Controls Display"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="GUI/Game UI/Controls Display/stance"]
+[node name="TextureRect" type="TextureRect" parent="GUI/HUD/Controls Display/stance"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_burlk")
 expand_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GUI/Game UI/Controls Display/stance"]
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI/HUD/Controls Display/stance"]
 layout_mode = 2
 theme = ExtResource("8_1awvl")
 text = "Change Stance"
@@ -175,15 +178,17 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="Pause Screen" type="Control" parent="GUI/Game UI"]
+[node name="Pause Screen" type="Control" parent="GUI"]
+process_mode = 3
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="blur effect" type="ColorRect" parent="GUI/Game UI/Pause Screen"]
+[node name="blur effect" type="ColorRect" parent="GUI/Pause Screen"]
 material = SubResource("ShaderMaterial_1awvl")
 layout_mode = 1
 anchors_preset = 15
@@ -191,8 +196,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="pause panel" type="Panel" parent="GUI/Game UI/Pause Screen"]
+[node name="pause panel" type="Panel" parent="GUI/Pause Screen"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -202,7 +208,7 @@ theme = ExtResource("8_1awvl")
 theme_override_styles/panel = SubResource("StyleBoxFlat_d6ul8")
 metadata/_edit_use_anchors_ = true
 
-[node name="buttons" type="VBoxContainer" parent="GUI/Game UI/Pause Screen/pause panel"]
+[node name="buttons" type="VBoxContainer" parent="GUI/Pause Screen/pause panel"]
 layout_mode = 0
 offset_left = 142.0
 offset_top = 288.0
@@ -210,57 +216,34 @@ offset_right = 790.0
 offset_bottom = 1099.0
 theme_override_constants/separation = 35
 
-[node name="menu button" type="Button" parent="GUI/Game UI/Pause Screen/pause panel/buttons"]
+[node name="menu button" type="Button" parent="GUI/Pause Screen/pause panel/buttons"]
 layout_mode = 2
 focus_mode = 1
 text = "Main Menu"
 
-[node name="controls button" type="Button" parent="GUI/Game UI/Pause Screen/pause panel/buttons"]
+[node name="controls button" type="Button" parent="GUI/Pause Screen/pause panel/buttons"]
 layout_mode = 2
 focus_mode = 1
 text = "Controls"
 
-[node name="settings button" type="Button" parent="GUI/Game UI/Pause Screen/pause panel/buttons"]
+[node name="settings button" type="Button" parent="GUI/Pause Screen/pause panel/buttons"]
 layout_mode = 2
 focus_mode = 1
 text = "Settings"
 
-[node name="button" type="Button" parent="GUI/Game UI/Pause Screen/pause panel/buttons"]
+[node name="button" type="Button" parent="GUI/Pause Screen/pause panel/buttons"]
 layout_mode = 2
 focus_mode = 1
 theme_override_colors/font_color = Color(0.88, 0.017599983, 0.017599983, 1)
 theme_override_colors/font_focus_color = Color(0.9490196, 0, 0, 1)
 text = "KILL YOURSELF"
 
-[node name="stats button" type="Button" parent="GUI/Game UI/Pause Screen/pause panel/buttons"]
+[node name="stats button" type="Button" parent="GUI/Pause Screen/pause panel/buttons"]
 layout_mode = 2
 focus_mode = 1
 text = "Stats"
 
-[node name="ColorRect" type="ColorRect" parent="GUI/Game UI/Pause Screen/pause panel"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -780.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.07, 0.07, 0.07, 0.45882353)
-
-[node name="ColorRect2" type="ColorRect" parent="GUI/Game UI/Pause Screen/pause panel"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 300.0
-offset_right = -1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.07, 0.07, 0.07, 0.45882353)
-
-[node name="title label" type="Label" parent="GUI/Game UI/Pause Screen/pause panel"]
+[node name="title label" type="Label" parent="GUI/Pause Screen/pause panel"]
 layout_mode = 0
 offset_left = 133.5
 offset_right = 1786.5
@@ -278,7 +261,7 @@ text = "transference"
 label_settings = SubResource("LabelSettings_1awvl")
 horizontal_alignment = 3
 
-[node name="PausedLabelOutline" type="RichTextLabel" parent="GUI/Game UI/Pause Screen/pause panel"]
+[node name="PausedLabelOutline" type="RichTextLabel" parent="GUI/Pause Screen/pause panel"]
 visible = false
 layout_mode = 1
 anchors_preset = 5

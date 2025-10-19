@@ -1,11 +1,34 @@
-[gd_resource type="BehaviorTree" load_steps=16 format=3 uid="uid://c0ar0hqcsn0yi"]
+[gd_resource type="BehaviorTree" load_steps=30 format=3 uid="uid://c0ar0hqcsn0yi"]
 
 [ext_resource type="Script" uid="uid://5l4e3jgfhlou" path="res://ai/tasks/near_active_char.gd" id="1_oypkg"]
-[ext_resource type="Script" uid="uid://d17178pcp7vds" path="res://ai/tasks/get_active_character_pos.gd" id="2_a7pf2"]
-[ext_resource type="Script" uid="uid://ckfskao7vhvh8" path="res://ai/tasks/move_to_active_character.gd" id="3_rpa5y"]
+[ext_resource type="Script" uid="uid://dsanbo2ar5kh6" path="res://ai/tasks/get_agent_position.gd" id="1_rglm4"]
+[ext_resource type="Script" uid="uid://d17178pcp7vds" path="res://ai/tasks/get_active_character_pos.gd" id="3_nbtns"]
+[ext_resource type="Script" uid="uid://bqm331vn6a81t" path="res://ai/tasks/get_random_pos.gd" id="4_a7pf2"]
 [ext_resource type="Script" uid="uid://khon8mbh385j" path="res://ai/tasks/await_move.gd" id="4_rglm4"]
+[ext_resource type="Script" uid="uid://es6q2xoob68a" path="res://ai/tasks/move_to_pos.gd" id="5_rpa5y"]
+[ext_resource type="Script" uid="uid://b5knhggypfja0" path="res://ai/tasks/enter_normal_stance.gd" id="6_nbtns"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_jq66o"]
+var/var/name = &"var"
+var/var/type = 3
+var/var/value = 0.0
+var/var/hint = 0
+var/var/hint_string = ""
+var/target_pos/name = &"target_pos"
+var/target_pos/type = 9
+var/target_pos/value = Vector3(0, 0, 0)
+var/target_pos/hint = 0
+var/target_pos/hint_string = ""
+var/home_pos/name = &"home_pos"
+var/home_pos/type = 9
+var/home_pos/value = Vector3(0, 0, 0)
+var/home_pos/hint = 0
+var/home_pos/hint_string = ""
+var/active_char_pos/name = &"active_char_pos"
+var/active_char_pos/type = 3
+var/active_char_pos/value = 0.0
+var/active_char_pos/hint = 0
+var/active_char_pos/hint_string = ""
 
 [sub_resource type="BBVariant" id="BBVariant_jq66o"]
 type = 1
@@ -16,32 +39,80 @@ resource_name = "true"
 property = &"use_ai"
 value = SubResource("BBVariant_jq66o")
 
+[sub_resource type="BTAction" id="BTAction_3otvg"]
+custom_name = "get spawn pos"
+script = ExtResource("1_rglm4")
+output_var = "home_pos"
+
+[sub_resource type="BTRunLimit" id="BTRunLimit_rglm4"]
+children = [SubResource("BTAction_3otvg")]
+
+[sub_resource type="BTAlwaysSucceed" id="BTAlwaysSucceed_rglm4"]
+children = [SubResource("BTRunLimit_rglm4")]
+
 [sub_resource type="BTAction" id="BTAction_bt2xi"]
 script = ExtResource("1_oypkg")
 distance = 5
 
-[sub_resource type="BTAction" id="BTAction_322ct"]
-script = ExtResource("2_a7pf2")
+[sub_resource type="BTAction" id="BTAction_sl4y6"]
+custom_name = "update active char position"
+script = ExtResource("3_nbtns")
+output_var = "active_char_pos"
 
-[sub_resource type="BTAction" id="BTAction_nbtns"]
-script = ExtResource("3_rpa5y")
-distance = 2.0
+[sub_resource type="BTAction" id="BTAction_2oiap"]
+custom_name = "get a random point near the player"
+script = ExtResource("4_a7pf2")
+max_distance = 2.0
+origin_var = "active_char_pos"
+output_var = "target_pos"
+
+[sub_resource type="BTCooldown" id="BTCooldown_nv5kx"]
+duration = 5.0
+custom_name = "update this point every 5 seconds"
+children = [SubResource("BTAction_2oiap")]
+
+[sub_resource type="BTAlwaysSucceed" id="BTAlwaysSucceed_322ct"]
+children = [SubResource("BTCooldown_nv5kx")]
+
+[sub_resource type="BTAction" id="BTAction_lf0rp"]
+script = ExtResource("5_rpa5y")
+position_var = "target_pos"
 
 [sub_resource type="BTAction" id="BTAction_tccbh"]
 script = ExtResource("4_rglm4")
 
 [sub_resource type="BTSequence" id="BTSequence_a7pf2"]
 custom_name = "pursue"
-children = [SubResource("BTAction_bt2xi"), SubResource("BTAction_322ct"), SubResource("BTAction_nbtns"), SubResource("BTAction_tccbh")]
+children = [SubResource("BTAction_bt2xi"), SubResource("BTAction_sl4y6"), SubResource("BTAlwaysSucceed_322ct"), SubResource("BTAction_lf0rp"), SubResource("BTAction_tccbh")]
 
-[sub_resource type="BTSelector" id="BTSelector_oypkg"]
+[sub_resource type="BTAction" id="BTAction_qradv"]
+script = ExtResource("6_nbtns")
+
+[sub_resource type="BTAction" id="BTAction_rpa5y"]
+script = ExtResource("4_a7pf2")
+origin_var = "home_pos"
+output_var = "target_pos"
+
+[sub_resource type="BTAction" id="BTAction_rglm4"]
+script = ExtResource("5_rpa5y")
+position_var = "target_pos"
+
+[sub_resource type="BTAction" id="BTAction_322ct"]
+script = ExtResource("4_rglm4")
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_rpa5y"]
+min_duration = 2.0
+max_duration = 3.0
+
+[sub_resource type="BTSequence" id="BTSequence_nbtns"]
 custom_name = "patrol"
+children = [SubResource("BTAction_qradv"), SubResource("BTAction_rpa5y"), SubResource("BTAction_rglm4"), SubResource("BTAction_322ct"), SubResource("BTRandomWait_rpa5y")]
 
 [sub_resource type="BTSelector" id="BTSelector_bt2xi"]
-children = [SubResource("BTSequence_a7pf2"), SubResource("BTSelector_oypkg")]
+children = [SubResource("BTSequence_a7pf2"), SubResource("BTSequence_nbtns")]
 
 [sub_resource type="BTSequence" id="BTSequence_vihjs"]
-children = [SubResource("BTCheckAgentProperty_oypkg"), SubResource("BTSelector_bt2xi")]
+children = [SubResource("BTCheckAgentProperty_oypkg"), SubResource("BTAlwaysSucceed_rglm4"), SubResource("BTSelector_bt2xi")]
 
 [resource]
 blackboard_plan = SubResource("BlackboardPlan_jq66o")

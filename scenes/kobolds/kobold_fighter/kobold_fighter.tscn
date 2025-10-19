@@ -75,15 +75,15 @@ graph_offset = Vector2(-294, 12)
 atlas = ExtResource("6_nsl7t")
 region = Rect2(67, 1821, 42, 6)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_7qqnf"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qw84r"]
 noise_type = 3
 frequency = 0.0403
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5mnwr"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nsl7t"]
 resource_local_to_scene = true
-noise = SubResource("FastNoiseLite_7qqnf")
+noise = SubResource("FastNoiseLite_qw84r")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_d2vah"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7qqnf"]
 resource_local_to_scene = true
 resource_name = "Character Effects Material"
 render_priority = 0
@@ -93,7 +93,7 @@ shader_parameter/show_hit_color = false
 shader_parameter/light_color = Color(1, 0, 0, 1)
 shader_parameter/amount = 0.0010000000475
 shader_parameter/albedo = ExtResource("6_7qqnf")
-shader_parameter/noise = SubResource("NoiseTexture2D_5mnwr")
+shader_parameter/noise = SubResource("NoiseTexture2D_nsl7t")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jo3kl"]
 resource_name = "material_0"
@@ -885,7 +885,6 @@ collision_layer = 2
 collision_mask = 2
 input_ray_pickable = false
 script = ExtResource("2_rbg4x")
-damage_cooldown = 0.5
 metadata/_custom_type_script = "uid://bup84jc4r6ntk"
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="HurtBoxComponent"]
@@ -912,18 +911,6 @@ script = ExtResource("5_qw84r")
 textures = Array[Texture2D]([ExtResource("6_7qqnf")])
 metadata/_custom_type_script = "uid://dttil0sv674li"
 
-[node name="HealthBarComponent" type="TextureProgressBar" parent="."]
-modulate = Color(1, 1, 1, 0)
-offset_right = 42.0
-offset_bottom = 6.0
-max_value = 42.0
-value = 42.0
-rounded = true
-texture_progress = SubResource("AtlasTexture_efshp")
-script = ExtResource("7_7qqnf")
-fade_out_time = 3.0
-metadata/_custom_type_script = "uid://dbm0eunb3sh4f"
-
 [node name="HitEffectComponent" type="Node" parent="."]
 script = ExtResource("8_5mnwr")
 metadata/_custom_type_script = "uid://cq7lqaygbe8nd"
@@ -945,6 +932,22 @@ metadata/_custom_type_script = "uid://cpe7wu1hl4t2o"
 [node name="StateComponent" type="Node" parent="."]
 script = ExtResource("13_nsl7t")
 metadata/_custom_type_script = "uid://bip8d6nn1kr6u"
+
+[node name="HealthBarComponent" type="TextureProgressBar" parent="." node_paths=PackedStringArray("position_marker")]
+modulate = Color(1, 1, 1, 0)
+offset_right = 42.0
+offset_bottom = 6.0
+max_value = 42.0
+value = 42.0
+rounded = true
+texture_progress = SubResource("AtlasTexture_efshp")
+script = ExtResource("7_7qqnf")
+fade_out_time = 3.0
+position_marker = NodePath("../health bar pos")
+metadata/_custom_type_script = "uid://dbm0eunb3sh4f"
+
+[node name="health bar pos" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3070305, 1.9110712, 0)
 
 [node name="Character Lights" type="Node3D" parent="."]
 visible = false
@@ -982,14 +985,14 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
 bones/1/enabled = true
 bones/1/position = Vector3(0, 0.625, 0)
-bones/1/rotation = Quaternion(0.0024200138, -0.40274534, 0.0010648315, 0.9153083)
+bones/1/rotation = Quaternion(0.0031502023, -0.40274435, 0.0013861221, 0.9153061)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "lower_chest"
 bones/2/parent = 1
 bones/2/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
 bones/2/enabled = true
 bones/2/position = Vector3(0.005065707, 0.125, 0.0056359107)
-bones/2/rotation = Quaternion(0.0025931208, 0.19508967, -0.00051580387, 0.9807819)
+bones/2/rotation = Quaternion(0.0033755405, 0.19508918, -0.00067143684, 0.98077947)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "upper chest"
 bones/3/parent = 2
@@ -1003,7 +1006,7 @@ bones/4/parent = 3
 bones/4/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1875, 0.28125, 0)
 bones/4/enabled = true
 bones/4/position = Vector3(0.2241225, 0.27167934, 0.049733743)
-bones/4/rotation = Quaternion(-0.63098323, 0.5944202, -0.18046068, 0.46471354)
+bones/4/rotation = Quaternion(-0.6324041, 0.5929084, -0.18157233, 0.46428037)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "lower_right_arm"
 bones/5/parent = 4
@@ -1031,7 +1034,7 @@ bones/8/parent = 3
 bones/8/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 0.28125, 0)
 bones/8/enabled = true
 bones/8/position = Vector3(-0.23025252, 0.28125, -0.11746158)
-bones/8/rotation = Quaternion(-0.21272328, -0.6873821, 0.07827382, 0.6900202)
+bones/8/rotation = Quaternion(-0.2142227, -0.6885251, 0.0803903, 0.6881709)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/name = "lower_left_arm"
 bones/9/parent = 8
@@ -1052,14 +1055,14 @@ bones/11/parent = 3
 bones/11/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28125, 0)
 bones/11/enabled = true
 bones/11/position = Vector3(0, 0.28125, 0)
-bones/11/rotation = Quaternion(-0.06827041, 0.25817177, 0.018293003, 0.9635103)
+bones/11/rotation = Quaternion(-0.0698076, 0.2581423, 0.018704893, 0.9634001)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/name = "head2"
 bones/12/parent = 11
 bones/12/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
 bones/12/enabled = true
 bones/12/position = Vector3(0, 0.125, 0)
-bones/12/rotation = Quaternion(0.08715452, 0.0052677067, 0.00046086466, 0.9961808)
+bones/12/rotation = Quaternion(0.08715368, 0.0068571107, 0.00059991947, 0.9961711)
 bones/12/scale = Vector3(1, 1, 1)
 bones/13/name = "jaw2"
 bones/13/parent = 12
@@ -1073,7 +1076,7 @@ bones/14/parent = 1
 bones/14/rest = Transform3D(0.9848077, 0, -0.17364818, 0, 1, 0, 0.17364818, 0, 0.9848077, -0.125, 0, 0)
 bones/14/enabled = true
 bones/14/position = Vector3(-0.125, 0, 0)
-bones/14/rotation = Quaternion(0, 0.20156886, 0, 0.9794744)
+bones/14/rotation = Quaternion(0, 0.20352188, 0, 0.9790705)
 bones/14/scale = Vector3(0.99999994, 1, 0.99999994)
 bones/15/name = "right_calf"
 bones/15/parent = 14
@@ -1094,7 +1097,7 @@ bones/17/parent = 1
 bones/17/rest = Transform3D(0.9848077, 0, 0.17364818, 0, 1, 0, -0.17364818, 0, 0.9848077, 0.125, 0, 0)
 bones/17/enabled = true
 bones/17/position = Vector3(0.125, 0, 0)
-bones/17/rotation = Quaternion(0, 0.08056924, 0, 0.9967491)
+bones/17/rotation = Quaternion(0, 0.07858118, 0, 0.99690783)
 bones/17/scale = Vector3(0.99999994, 1, 0.99999994)
 bones/18/name = "left_calf"
 bones/18/parent = 17
@@ -1115,26 +1118,26 @@ bones/20/parent = 1
 bones/20/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.125)
 bones/20/enabled = true
 bones/20/position = Vector3(0, 0, 0.125)
-bones/20/rotation = Quaternion(0, -0.058806084, 0, 0.99826944)
+bones/20/rotation = Quaternion(0, -0.05681504, 0, 0.9983847)
 bones/20/scale = Vector3(1, 1, 1)
 bones/21/name = "tail_middle"
 bones/21/parent = 20
 bones/21/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0625, 0.25)
 bones/21/enabled = true
 bones/21/position = Vector3(0, -0.0625, 0.25)
-bones/21/rotation = Quaternion(0, -0.09967201, 0, 0.9950204)
+bones/21/rotation = Quaternion(0, -0.0837844, 0, 0.9964839)
 bones/21/scale = Vector3(1, 1, 1)
 bones/22/name = "tail_end"
 bones/22/parent = 21
 bones/22/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0.35625)
 bones/22/enabled = true
 bones/22/position = Vector3(0, -0.1, 0.35625)
-bones/22/rotation = Quaternion(-0.046319366, -0.055352226, 0.027274778, 0.997019)
+bones/22/rotation = Quaternion(-0.046642415, -0.043417938, 0.026718568, 0.9976099)
 bones/22/scale = Vector3(1, 1, 1)
 
 [node name="root2" type="MeshInstance3D" parent="blockbench_export/root2/Skeleton3D"]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
-material_override = SubResource("ShaderMaterial_d2vah")
+material_override = SubResource("ShaderMaterial_7qqnf")
 mesh = SubResource("ArrayMesh_n4miy")
 skin = SubResource("Skin_y4rn7")
 

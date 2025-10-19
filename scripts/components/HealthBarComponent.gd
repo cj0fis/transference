@@ -7,6 +7,7 @@ var health_component: HealthComponent
 var time_since_health_update: float = 0
 
 @export var fade_out_time: float = 0.0
+@export var position_marker: Marker3D
 
 const UI_TEX = preload("uid://ch5ikt3ve8n1l")
 
@@ -39,11 +40,11 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	if CharacterController.active_cam:
-		var screen_pos = CharacterController.active_cam.unproject_position(parent.global_position + Vector3(0,1.75,0))
+		var screen_pos = CharacterController.active_cam.unproject_position(position_marker.global_position)
 		global_position = lerp(global_position, screen_pos + Vector2(-get_rect().size.x / 2.0, 0), 0.8)
 	
 	time_since_health_update += delta
-	if time_since_health_update >= fade_out_time:
+	if time_since_health_update >= fade_out_time and modulate.a == 1.0:
 		fade_out()
 	
 func update_health(_delta) -> void:

@@ -6,6 +6,17 @@ var move_component: MovementComponent = null
 var combo_num = 0
 @export var hitbox: HitBox
 
+var target: Character3D		##the character that this chararcter will target when attacking
+
+enum STATES{
+	SEEKING,
+	INVESTIGATING,
+	ATTACKING,
+	IDLING
+}
+
+var current_state: STATES = STATES.SEEKING
+
 func assign_components() -> void:
 	move_component = parent.get_component(MovementComponent)
 
@@ -23,10 +34,12 @@ func toggle_stance() -> void:
 func enter_attack_stance() -> void:
 	parent.animation_tree.set("parameters/stance/transition_request", "attack")
 	attack_stance = true
+	move_component.move_lock = true
 	
 func enter_normal_stance() -> void:
 	parent.animation_tree.set("parameters/stance/transition_request", "normal")
 	attack_stance = false
+	move_component.move_lock = false
 
 
 ##plays the attack animation and enables hitboxes
@@ -45,7 +58,7 @@ func attack() -> void:
 		attack_cooldown = attacks[combo_num].cooldown
 
 ##play the attack animation and deal instant damage to the target. does not enable hitboxes
-func attack_target(target: Character3D) -> void:
+func attack_target() -> void:
 	move_component.move_to_pos(target.global_position, 1.0)
 	await move_component.TARGET_REACHED
 	if parent.global_position.distance_to(target.global_position) <= 1.5:

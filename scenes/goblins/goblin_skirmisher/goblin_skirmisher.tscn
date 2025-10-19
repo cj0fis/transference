@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=4 uid="uid://beniili1qlklo"]
+[gd_scene load_steps=62 format=4 uid="uid://beniili1qlklo"]
 
 [ext_resource type="Script" uid="uid://c2xxhl08keeq2" path="res://scripts/Character3D.gd" id="1_igen2"]
 [ext_resource type="Texture2D" uid="uid://ch5ikt3ve8n1l" path="res://assets/ui/_Grim_UI.png" id="2_1r547"]
@@ -20,6 +20,7 @@
 [ext_resource type="Shader" uid="uid://bddfg3sif24rb" path="res://assets/shaders and materials/character_effects.gdshader" id="15_py6d1"]
 [ext_resource type="Script" uid="uid://drumiwdfo4ryv" path="res://scripts/components/NameComponent.gd" id="18_hujiq"]
 [ext_resource type="BehaviorTree" uid="uid://c0ar0hqcsn0yi" path="res://scenes/goblins/goblin_skirmisher/goblin_skirmisher_behavior_tree.tres" id="18_ptu6q"]
+[ext_resource type="BehaviorTree" uid="uid://ddfxevooubiga" path="res://ai/behavior trees/idle_random_walk.tres" id="19_ptu6q"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gljjg"]
 radius = 0.41357422
@@ -56,11 +57,11 @@ xfade_time = 0.2
 input_0/name = "idle"
 input_0/auto_advance = false
 input_0/break_loop_at_end = false
-input_0/reset = true
+input_0/reset = false
 input_1/name = "move"
 input_1/auto_advance = false
 input_1/break_loop_at_end = false
-input_1/reset = true
+input_1/reset = false
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jqqf3"]
 animation = &"right_stab"
@@ -77,7 +78,7 @@ input_1/break_loop_at_end = false
 input_1/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_k8jv0"]
-graph_offset = Vector2(-930.00073, -91.30475)
+graph_offset = Vector2(-774.86786, -22.719301)
 nodes/output/position = Vector2(120, 186.66667)
 nodes/idle/node = SubResource("AnimationNodeAnimation_qgemf")
 nodes/idle/position = Vector2(-426.66666, -40)
@@ -139,13 +140,13 @@ bottom_radius = 0.0
 [sub_resource type="Resource" id="Resource_qgemf"]
 script = ExtResource("13_qgemf")
 name = &"attack_1"
-cooldown = 0.1
+cooldown = 0.25
 metadata/_custom_type_script = "uid://dmq658hb5gu71"
 
 [sub_resource type="Resource" id="Resource_8a486"]
 script = ExtResource("13_qgemf")
 name = &"attack_2"
-cooldown = 0.1
+cooldown = 0.25
 metadata/_custom_type_script = "uid://dmq658hb5gu71"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qgemf"]
@@ -156,15 +157,23 @@ region = Rect2(67, 1821, 42, 6)
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_hujiq"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ghdjm"]
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_andvv"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_qgemf"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_8a486"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_56y0r"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ptu6q"]
 noise_type = 3
 frequency = 0.0403
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ptu6q"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hujiq"]
 resource_local_to_scene = true
-noise = SubResource("FastNoiseLite_ghdjm")
+noise = SubResource("FastNoiseLite_ptu6q")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hujiq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_andvv"]
 resource_local_to_scene = true
 resource_name = "Character Effects Material"
 render_priority = 0
@@ -174,7 +183,7 @@ shader_parameter/show_hit_color = false
 shader_parameter/light_color = Color(1, 0, 0, 1)
 shader_parameter/amount = 0.0010000000475
 shader_parameter/albedo = ExtResource("6_py6d1")
-shader_parameter/noise = SubResource("NoiseTexture2D_ptu6q")
+shader_parameter/noise = SubResource("NoiseTexture2D_hujiq")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdypm"]
 resource_name = "material_0"
@@ -1057,7 +1066,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5767822, -0.8360138)
 shape = SubResource("BoxShape3D_qgemf")
 debug_color = Color(0.9840731, 0, 0.351476, 0.41960785)
 
-[node name="HealthBarComponent" type="TextureProgressBar" parent="."]
+[node name="HealthBarComponent" type="TextureProgressBar" parent="." node_paths=PackedStringArray("position_marker")]
 modulate = Color(1, 1, 1, 0)
 offset_right = 42.0
 offset_bottom = 6.0
@@ -1068,7 +1077,11 @@ rounded = true
 texture_progress = SubResource("AtlasTexture_1nbvi")
 script = ExtResource("7_4om8o")
 fade_out_time = 3.0
+position_marker = NodePath("../health bar pos")
 metadata/_custom_type_script = "uid://dbm0eunb3sh4f"
+
+[node name="health bar pos" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4941406, 0)
 
 [node name="NameComponent" type="RichTextLabel" parent="."]
 visible = false
@@ -1083,6 +1096,22 @@ script = ExtResource("18_hujiq")
 [node name="BTPlayer" type="BTPlayer" parent="."]
 behavior_tree = ExtResource("18_ptu6q")
 blackboard_plan = SubResource("BlackboardPlan_hujiq")
+
+[node name="LimboHSM" type="LimboHSM" parent="."]
+blackboard_plan = SubResource("BlackboardPlan_hujiq")
+
+[node name="Aggro" type="BTState" parent="LimboHSM"]
+blackboard_plan = SubResource("BlackboardPlan_andvv")
+
+[node name="Attacking" type="BTState" parent="LimboHSM"]
+blackboard_plan = SubResource("BlackboardPlan_qgemf")
+
+[node name="Idling" type="BTState" parent="LimboHSM"]
+behavior_tree = ExtResource("19_ptu6q")
+blackboard_plan = SubResource("BlackboardPlan_8a486")
+
+[node name="Fleeing" type="BTState" parent="LimboHSM"]
+blackboard_plan = SubResource("BlackboardPlan_56y0r")
 
 [node name="Character Lights" type="Node3D" parent="."]
 visible = false
@@ -1111,7 +1140,7 @@ bones/0/name = "root_2"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/0/enabled = true
-bones/0/position = Vector3(0, -0.09196811, -0.0033466206)
+bones/0/position = Vector3(0, -0.09199819, -0.0033340876)
 bones/0/rotation = Quaternion(0, 0, 0, 1)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "hip"
@@ -1126,7 +1155,7 @@ bones/2/parent = 1
 bones/2/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 bones/2/enabled = true
 bones/2/position = Vector3(0, 0.25, 0)
-bones/2/rotation = Quaternion(0.10269818, 0, 0, 0.99471265)
+bones/2/rotation = Quaternion(0.10281113, 0, 0, 0.99470097)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "right_arm"
 bones/3/parent = 2
@@ -1140,7 +1169,7 @@ bones/4/parent = 3
 bones/4/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1875, 0.5625, 0.0625)
 bones/4/enabled = true
 bones/4/position = Vector3(0.1875, 0.5625, 0.0625)
-bones/4/rotation = Quaternion(-0.07082086, -0.10964258, -0.53793776, 0.83281803)
+bones/4/rotation = Quaternion(-0.07083745, -0.10963184, -0.5380639, 0.8327365)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "lower_arm"
 bones/5/parent = 4
@@ -1175,7 +1204,7 @@ bones/9/parent = 8
 bones/9/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 0.5625, 0.0625)
 bones/9/enabled = true
 bones/9/position = Vector3(-0.1875, 0.5625, 0.0625)
-bones/9/rotation = Quaternion(-0.07082086, 0.10964258, 0.53793776, 0.83281803)
+bones/9/rotation = Quaternion(-0.07083745, 0.10963184, 0.5380639, 0.8327365)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/name = "lower_arm2"
 bones/10/parent = 9
@@ -1224,14 +1253,14 @@ bones/16/parent = 15
 bones/16/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.1875, 0.0625)
 bones/16/enabled = true
 bones/16/position = Vector3(0.125, 0.1875, 0.0625)
-bones/16/rotation = Quaternion(0.1934675, -0.21214734, 0.042890713, 0.9569348)
+bones/16/rotation = Quaternion(0.19351934, -0.21214506, 0.042902205, 0.95692444)
 bones/16/scale = Vector3(1, 1, 1)
 bones/17/name = "lower_leg"
 bones/17/parent = 16
 bones/17/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0625, -0.1875, -0.14375)
 bones/17/enabled = true
 bones/17/position = Vector3(0.0625, -0.1875, -0.14375)
-bones/17/rotation = Quaternion(-0.3244, 0, 0, 0.94592005)
+bones/17/rotation = Quaternion(-0.3244484, 0, 0, 0.9459034)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "foot"
 bones/18/parent = 17
@@ -1252,14 +1281,14 @@ bones/20/parent = 19
 bones/20/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, 0.1875, 0.0625)
 bones/20/enabled = true
 bones/20/position = Vector3(-0.125, 0.1875, 0.0625)
-bones/20/rotation = Quaternion(0.1934675, 0.21214734, -0.042890713, 0.9569348)
+bones/20/rotation = Quaternion(0.19351934, 0.21214506, -0.042902205, 0.95692444)
 bones/20/scale = Vector3(1, 1, 1)
 bones/21/name = "lower_leg2"
 bones/21/parent = 20
 bones/21/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, -0.1875, -0.14375)
 bones/21/enabled = true
 bones/21/position = Vector3(-0.0625, -0.1875, -0.14375)
-bones/21/rotation = Quaternion(-0.3244, 0, 0, 0.94592005)
+bones/21/rotation = Quaternion(-0.3244484, 0, 0, 0.9459034)
 bones/21/scale = Vector3(1, 1, 1)
 bones/22/name = "foot2"
 bones/22/parent = 21
@@ -1270,7 +1299,7 @@ bones/22/rotation = Quaternion(0.13052619, 0, 0, 0.9914449)
 bones/22/scale = Vector3(1, 1, 1)
 
 [node name="root" type="MeshInstance3D" parent="blockbench_export/root/Skeleton3D"]
-material_override = SubResource("ShaderMaterial_hujiq")
+material_override = SubResource("ShaderMaterial_andvv")
 mesh = SubResource("ArrayMesh_oi2u6")
 skin = SubResource("Skin_jf50w")
 

@@ -12,7 +12,7 @@ class HOT:
 		_amount = amount
 		_time = time
 		_time_remaining = time
-		_hps = _amount / _time
+		_hps = _amount / _time if time > 0 else _amount
 		active = true
 	func update_timer(delta: float):
 		_time_remaining -= delta
@@ -40,8 +40,11 @@ var HOTs: Array[HOT] = []
 ##adds a new HOT instance to apply health over time
 func apply_health(amount: float, seconds: float = 0.5) -> void:
 	#current_health = clampf(current_health + amount, 0, max_health)
-	HOTs.append(HOT.new(amount, seconds))
-
+	#HOTs.append(HOT.new(amount, seconds))
+	current_health = clamp(current_health + amount, 0.0, max_health)
+	HEALTH_UPDATE.emit(amount)
+	if current_health <= 0:
+		IS_DEAD.emit()
 
 func _physics_process(delta: float) -> void:
 	if current_health <= 0:
