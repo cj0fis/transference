@@ -1,4 +1,4 @@
-[gd_scene load_steps=249 format=4 uid="uid://5ys78ufeih7i"]
+[gd_scene load_steps=249 format=4 uid="uid://cd6iv2rg3h1x5"]
 
 [ext_resource type="Texture2D" uid="uid://d4iywk3ifhrjo" path="res://assets/props and levels/Wall Tile Set_0.png" id="1_na0ux"]
 [ext_resource type="PackedScene" uid="uid://beniili1qlklo" path="res://scenes/goblins/goblin_skirmisher/goblin_skirmisher.tscn" id="2_d26f2"]
@@ -3811,7 +3811,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_e305u")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l40gv"]
-size = Vector3(100, 1, 100)
+size = Vector3(100, 0.05, 100)
 
 [node name="TESTING GROUNDS" type="Node3D"]
 
@@ -4451,7 +4451,7 @@ skeleton = NodePath("")
 [node name="characters" type="Node3D" parent="."]
 
 [node name="goblin_skirmisher" parent="characters" instance=ExtResource("2_d26f2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55056477, 0.06442696, 0.4821458)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.551, 0, 0.482)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="characters/goblin_skirmisher"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -4469,6 +4469,7 @@ collision_layer = 5
 collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="level/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025390625, 0)
 shape = SubResource("BoxShape3D_l40gv")
 
 [node name="Top RIght2" type="MeshInstance3D" parent="level"]
@@ -4657,9 +4658,11 @@ skeleton = NodePath("")
 transform = Transform3D(0.83651626, -0.25881907, 0.4829629, -0.5450847, -0.48296288, 0.6852951, 0.055885702, -0.83651626, -0.5450847, -0.5523134, 5.7534437, -3.8911498)
 light_energy = 3.0
 shadow_enabled = true
+shadow_blur = 0.379
 
 [node name="OmniLight3D" type="OmniLight3D" parent="lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5834122, 2.5953898)
 visible = false
 light_energy = 5.0
+shadow_enabled = true
 omni_range = 15.0

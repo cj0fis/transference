@@ -45,7 +45,6 @@ func _ready() -> void:
 	if CharacterController and not CharacterController.active_cam:
 		CharacterController.set_active_cam(self)
 	rotation.y = horizontal_angle * PI/180.0 + PI
-	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func _physics_process(delta: float) -> void:

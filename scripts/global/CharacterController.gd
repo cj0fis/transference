@@ -18,7 +18,14 @@ enum ControllerType{
 				if movement:
 					movement.move_mode = MovementComponent.MoveMode.NONE
 					movement.look_mode = MovementComponent.LookMode.NONE
-					#movement.target_node = $mouse_highlight
+					Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+				if active_cam:
+					active_cam.match_target_rotation = true
+				$mouse_highlight.visible = false
+			ControllerType.CLICK_TO_MOVE:
+				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+				if active_cam:
+					active_cam.match_target_rotation = false
 					
 
 
@@ -66,6 +73,7 @@ func _ready() -> void:
 	soul_mesh.top_level = true
 	soul_mesh.visible = false
 	add_child(soul_mesh)
+	controller_type = controller_type	#call the setter function again, as it effects some other nodes
 	
 #handles everything involved in swapping bodies
 func bodyswap(character: Character3D) -> void:
@@ -134,6 +142,9 @@ func _physics_process(delta: float) -> void:
 		#print("swap random")
 		#bodyswap(rand_char)
 	
+	if Input.is_action_just_pressed("o"):
+		controller_type = (controller_type + 1) % ControllerType.keys().size()
+	
 	if Input.is_action_just_pressed("space"):
 		movement.jump_backwards()
 	
@@ -159,7 +170,7 @@ func _physics_process(delta: float) -> void:
 
 		ControllerType.WASD:
 			var input_dir = Vector3(Input.get_axis("move_west", "move_east"), 0, Input.get_axis("move_north", "move_south"))
-			active_char.velocity = input_dir.rotated(Vector3.UP, active_cam.rotation.y) * movement.move_speed
+			active_char.velocity = input_dir.rotated(Vector3.UP, active_char.rotation.y) * movement.move_speed
 			
 
 	if char_state.attack_stance:

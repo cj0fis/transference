@@ -34,6 +34,7 @@ func pause() -> void:
 	camera_settings["distance"] = smart_cam.distance
 	camera_settings["vertical_angle"] = smart_cam.vertical_angle
 	camera_settings["mouse_mode"] = Input.mouse_mode
+	camera_settings["match_target_rotation"] = smart_cam.match_target_rotation
 		
 		
 	can_toggle = false
@@ -63,7 +64,7 @@ func unpause() -> void:
 		return
 	
 	can_toggle = false
-	smart_cam.match_target_rotation = true
+	smart_cam.match_target_rotation = camera_settings["match_target_rotation"]
 	var t = create_tween().set_parallel(true)
 	#t.tween_property(sub_viewport_container, "stretch_shrink", 1, pause_animation_time)
 	t.tween_property(blur_effect.material, "shader_parameter/amount", 0.0, 0.2)
