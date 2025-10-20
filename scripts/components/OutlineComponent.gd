@@ -31,10 +31,15 @@ func _on_mouse_exit() -> void:
 		
 func _on_death() -> void:
 	print("die")
+	
+	# Play the death sound
+	var death_sfx: AudioStreamPlayer = get_parent().get_node("Death")
+	if death_sfx:
+		death_sfx.play()
+	
+	# Tween the outline transparency
 	var t = create_tween()
 	t.tween_property(outline_mesh, "transparency", 1.0, 1.5)
-	#outline_mesh.visible = false
-		
 var outline_color = Color.WHITE
 func _process(_delta: float) -> void:
 	#if hover_timer > 0.0:

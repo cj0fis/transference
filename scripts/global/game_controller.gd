@@ -15,7 +15,7 @@ class_name GameController extends Node
 @onready var world_2d: Node2D = $GUI/SubViewportContainer/SubViewport/World2D
 @onready var sub_viewport: SubViewport = $GUI/SubViewportContainer/SubViewport
 @onready var persisted_scenes: Node3D = $GUI/SubViewportContainer/SubViewport/PersistedScenes
-@onready var global_audio: AudioStreamPlayer = $GlobalAudio
+
 
 var current_3d_scene: Node3D
 var current_3d_path: String

@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://me14lg4tr321"]
+[gd_scene load_steps=48 format=4 uid="uid://me14lg4tr321"]
 
 [ext_resource type="Script" uid="uid://c2xxhl08keeq2" path="res://scripts/Character3D.gd" id="1_0abcb"]
 [ext_resource type="Texture2D" uid="uid://ch5ikt3ve8n1l" path="res://assets/ui/_Grim_UI.png" id="2_6igti"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://cpe7wu1hl4t2o" path="res://scripts/components/OutlineComponent.gd" id="12_8ug1i"]
 [ext_resource type="Material" uid="uid://dwp6iwnn4bcdm" path="res://assets/shaders and materials/outline_material.tres" id="14_w7fbm"]
 [ext_resource type="Shader" uid="uid://bddfg3sif24rb" path="res://assets/shaders and materials/character_effects.gdshader" id="15_2ywn4"]
+[ext_resource type="AudioStream" uid="uid://q5k1duvmngi1" path="res://assets/audio/deathSFX.mp3" id="18_ne65p"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gljjg"]
 radius = 0.41357422
@@ -900,14 +901,14 @@ bones/1/name = "hip"
 bones/1/parent = 0
 bones/1/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/1/enabled = true
-bones/1/position = Vector3(0, -0.015404189, -0.00959581)
+bones/1/position = Vector3(0, -0.0013860554, -0.023613945)
 bones/1/rotation = Quaternion(0.065403126, 0, 0, 0.99785894)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "waist"
 bones/2/parent = 1
 bones/2/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1875, 0.125)
 bones/2/enabled = true
-bones/2/position = Vector3(0, 0.19470394, 0.125)
+bones/2/position = Vector3(0, 0.20520677, 0.125)
 bones/2/rotation = Quaternion(-0.043619387, 0, 0, 0.99904823)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "chest"
@@ -915,7 +916,7 @@ bones/3/parent = 2
 bones/3/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0625, 0)
 bones/3/enabled = true
 bones/3/position = Vector3(0, 0.0625, 0)
-bones/3/rotation = Quaternion(-0.038519233, 0, 0, 0.9992579)
+bones/3/rotation = Quaternion(-0.062989004, 0, 0, 0.99801433)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "right_arm"
 bones/4/parent = 3
@@ -929,14 +930,14 @@ bones/5/parent = 4
 bones/5/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0125)
 bones/5/enabled = true
 bones/5/position = Vector3(0, 0, 0.0125)
-bones/5/rotation = Quaternion(-0.014367219, -0.020518513, -0.57339644, 0.818895)
+bones/5/rotation = Quaternion(-0.035436574, -0.050608676, -0.5724807, 0.8175872)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "lower_arm"
 bones/6/parent = 5
 bones/6/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.275, 0.03125, 0.0625)
 bones/6/enabled = true
 bones/6/position = Vector3(0.275, 0.03125, 0.0625)
-bones/6/rotation = Quaternion(0, 0.33238822, 0, 0.9431427)
+bones/6/rotation = Quaternion(0, 0.37820905, 0, 0.9257203)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/name = "hand"
 bones/7/parent = 6
@@ -964,14 +965,14 @@ bones/10/parent = 9
 bones/10/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03125, -0.03125, 0.0125)
 bones/10/enabled = true
 bones/10/position = Vector3(-0.03125, -0.03125, 0.0125)
-bones/10/rotation = Quaternion(-0.014367219, 0.020518513, 0.57339644, 0.818895)
+bones/10/rotation = Quaternion(-0.035436574, 0.050608676, 0.5724807, 0.8175872)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/name = "lower_arm2"
 bones/11/parent = 10
 bones/11/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.275, 0.03125, 0.0625)
 bones/11/enabled = true
 bones/11/position = Vector3(-0.275, 0.03125, 0.0625)
-bones/11/rotation = Quaternion(0, -0.34811297, 0, 0.9374526)
+bones/11/rotation = Quaternion(0, -0.41602984, 0, 0.909351)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/name = "hand2"
 bones/12/parent = 11
@@ -985,14 +986,14 @@ bones/13/parent = 3
 bones/13/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3125, -0.03125)
 bones/13/enabled = true
 bones/13/position = Vector3(0, 0.3125, -0.03125)
-bones/13/rotation = Quaternion(-0.14200042, 0, 0, 0.9898667)
+bones/13/rotation = Quaternion(-0.19034277, 0, 0, 0.9817177)
 bones/13/scale = Vector3(1, 1, 1)
 bones/14/name = "head"
 bones/14/parent = 13
 bones/14/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, -0.0625)
 bones/14/enabled = true
 bones/14/position = Vector3(0, 0.125, -0.0625)
-bones/14/rotation = Quaternion(0.12545055, 0, 0, 0.99209994)
+bones/14/rotation = Quaternion(0.14972351, 0, 0, 0.988728)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/name = "jaw"
 bones/15/parent = 14
@@ -1027,14 +1028,14 @@ bones/19/parent = 18
 bones/19/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09375, 0)
 bones/19/enabled = true
 bones/19/position = Vector3(0, -0.09375, 0)
-bones/19/rotation = Quaternion(0.08320302, -0.12752326, 0.027837161, 0.98794746)
+bones/19/rotation = Quaternion(0.046840146, -0.12846012, 0.02313193, 0.99033785)
 bones/19/scale = Vector3(1, 1, 1)
 bones/20/name = "lower_leg"
 bones/20/parent = 19
 bones/20/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0625, -0.21875, -0.14375)
 bones/20/enabled = true
 bones/20/position = Vector3(0.0625, -0.21875, -0.14375)
-bones/20/rotation = Quaternion(-0.2345399, 0, 0, 0.9721065)
+bones/20/rotation = Quaternion(-0.198648, 0, 0, 0.98007095)
 bones/20/scale = Vector3(1, 1, 1)
 bones/21/name = "foot"
 bones/21/parent = 20
@@ -1055,14 +1056,14 @@ bones/23/parent = 22
 bones/23/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09375, 0.0625)
 bones/23/enabled = true
 bones/23/position = Vector3(0, -0.09375, 0.0625)
-bones/23/rotation = Quaternion(0.08320302, 0.12752326, -0.027837161, 0.98794746)
+bones/23/rotation = Quaternion(0.046840146, 0.12846012, -0.02313193, 0.99033785)
 bones/23/scale = Vector3(1, 1, 1)
 bones/24/name = "lower_leg2"
 bones/24/parent = 23
 bones/24/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, -0.21875, -0.14375)
 bones/24/enabled = true
 bones/24/position = Vector3(-0.0625, -0.21875, -0.14375)
-bones/24/rotation = Quaternion(-0.2345399, 0, 0, 0.9721065)
+bones/24/rotation = Quaternion(-0.198648, 0, 0, 0.98007095)
 bones/24/scale = Vector3(1, 1, 1)
 bones/25/name = "foot2"
 bones/25/parent = 24
@@ -1105,3 +1106,6 @@ omni_range = 6.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04550171, 1.2451248, 0.77023315)
 light_energy = 0.155
 omni_range = 1.2854149
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_ne65p")

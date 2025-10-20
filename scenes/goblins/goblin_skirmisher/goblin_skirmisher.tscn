@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=4 uid="uid://beniili1qlklo"]
+[gd_scene load_steps=60 format=4 uid="uid://beniili1qlklo"]
 
 [ext_resource type="Script" uid="uid://c2xxhl08keeq2" path="res://scripts/Character3D.gd" id="1_igen2"]
 [ext_resource type="Texture2D" uid="uid://ch5ikt3ve8n1l" path="res://assets/ui/_Grim_UI.png" id="2_1r547"]
@@ -20,6 +20,9 @@
 [ext_resource type="Shader" uid="uid://bddfg3sif24rb" path="res://assets/shaders and materials/character_effects.gdshader" id="15_py6d1"]
 [ext_resource type="Script" uid="uid://drumiwdfo4ryv" path="res://scripts/components/NameComponent.gd" id="18_hujiq"]
 [ext_resource type="BehaviorTree" uid="uid://c0ar0hqcsn0yi" path="res://scenes/goblins/goblin_skirmisher/goblin_skirmisher_behavior_tree.tres" id="18_ptu6q"]
+[ext_resource type="Script" uid="uid://esoihxr3gkb4" path="res://scenes/goblins/goblin_skirmisher/audio_component.gd" id="21_hujiq"]
+[ext_resource type="AudioStream" uid="uid://c8tbepk2q6spm" path="res://assets/audio/Grass Sounds.mp3" id="22_andvv"]
+[ext_resource type="AudioStream" uid="uid://q5k1duvmngi1" path="res://assets/audio/deathSFX.mp3" id="23_andvv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gljjg"]
 radius = 0.41357422
@@ -156,15 +159,15 @@ region = Rect2(67, 1821, 42, 6)
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_hujiq"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ghdjm"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qgemf"]
 noise_type = 3
 frequency = 0.0403
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ptu6q"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8a486"]
 resource_local_to_scene = true
-noise = SubResource("FastNoiseLite_ghdjm")
+noise = SubResource("FastNoiseLite_qgemf")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hujiq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_56y0r"]
 resource_local_to_scene = true
 resource_name = "Character Effects Material"
 render_priority = 0
@@ -174,7 +177,7 @@ shader_parameter/show_hit_color = false
 shader_parameter/light_color = Color(1, 0, 0, 1)
 shader_parameter/amount = 0.0010000000475
 shader_parameter/albedo = ExtResource("6_py6d1")
-shader_parameter/noise = SubResource("NoiseTexture2D_ptu6q")
+shader_parameter/noise = SubResource("NoiseTexture2D_8a486")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdypm"]
 resource_name = "material_0"
@@ -1109,7 +1112,7 @@ bones/0/name = "root_2"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/0/enabled = true
-bones/0/position = Vector3(0, -0.09335986, -0.0027667247)
+bones/0/position = Vector3(0, -0.08259704, -0.007251233)
 bones/0/rotation = Quaternion(0, 0, 0, 1)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "hip"
@@ -1124,7 +1127,7 @@ bones/2/parent = 1
 bones/2/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 bones/2/enabled = true
 bones/2/position = Vector3(0, 0.25, 0)
-bones/2/rotation = Quaternion(0.107514195, 0, 0, 0.99420357)
+bones/2/rotation = Quaternion(0.06996108, 0, 0, 0.9975498)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "right_arm"
 bones/3/parent = 2
@@ -1138,7 +1141,7 @@ bones/4/parent = 3
 bones/4/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1875, 0.5625, 0.0625)
 bones/4/enabled = true
 bones/4/position = Vector3(0.1875, 0.5625, 0.0625)
-bones/4/rotation = Quaternion(-0.07152735, -0.109183, -0.54330426, 0.82932717)
+bones/4/rotation = Quaternion(-0.06595043, -0.112639375, -0.50094324, 0.855581)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "lower_arm"
 bones/5/parent = 4
@@ -1173,7 +1176,7 @@ bones/9/parent = 8
 bones/9/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 0.5625, 0.0625)
 bones/9/enabled = true
 bones/9/position = Vector3(-0.1875, 0.5625, 0.0625)
-bones/9/rotation = Quaternion(-0.07152735, 0.109183, 0.54330426, 0.82932717)
+bones/9/rotation = Quaternion(-0.06595043, 0.112639375, 0.50094324, 0.855581)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/name = "lower_arm2"
 bones/10/parent = 9
@@ -1222,14 +1225,14 @@ bones/16/parent = 15
 bones/16/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.1875, 0.0625)
 bones/16/enabled = true
 bones/16/position = Vector3(0.125, 0.1875, 0.0625)
-bones/16/rotation = Quaternion(0.19655685, -0.21200775, 0.0435756, 0.9563051)
+bones/16/rotation = Quaternion(0.17245948, -0.21303597, 0.038233347, 0.9609432)
 bones/16/scale = Vector3(1, 1, 1)
 bones/17/name = "lower_leg"
 bones/17/parent = 16
 bones/17/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0625, -0.1875, -0.14375)
 bones/17/enabled = true
 bones/17/position = Vector3(0.0625, -0.1875, -0.14375)
-bones/17/rotation = Quaternion(-0.32746023, 0, 0, 0.94486505)
+bones/17/rotation = Quaternion(-0.30360904, 0, 0, 0.9527967)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "foot"
 bones/18/parent = 17
@@ -1250,14 +1253,14 @@ bones/20/parent = 19
 bones/20/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, 0.1875, 0.0625)
 bones/20/enabled = true
 bones/20/position = Vector3(-0.125, 0.1875, 0.0625)
-bones/20/rotation = Quaternion(0.19655685, 0.21200775, -0.0435756, 0.9563051)
+bones/20/rotation = Quaternion(0.17245948, 0.21303597, -0.038233347, 0.9609432)
 bones/20/scale = Vector3(1, 1, 1)
 bones/21/name = "lower_leg2"
 bones/21/parent = 20
 bones/21/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, -0.1875, -0.14375)
 bones/21/enabled = true
 bones/21/position = Vector3(-0.0625, -0.1875, -0.14375)
-bones/21/rotation = Quaternion(-0.32746023, 0, 0, 0.94486505)
+bones/21/rotation = Quaternion(-0.30360904, 0, 0, 0.9527967)
 bones/21/scale = Vector3(1, 1, 1)
 bones/22/name = "foot2"
 bones/22/parent = 21
@@ -1268,7 +1271,7 @@ bones/22/rotation = Quaternion(0.13052619, 0, 0, 0.9914449)
 bones/22/scale = Vector3(1, 1, 1)
 
 [node name="root" type="MeshInstance3D" parent="blockbench_export/root/Skeleton3D"]
-material_override = SubResource("ShaderMaterial_hujiq")
+material_override = SubResource("ShaderMaterial_56y0r")
 mesh = SubResource("ArrayMesh_oi2u6")
 skin = SubResource("Skin_jf50w")
 
@@ -1282,3 +1285,12 @@ skeleton = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_12gtr")
 }
+
+[node name="AudioComponent" type="Node" parent="."]
+script = ExtResource("21_hujiq")
+
+[node name="Footsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_andvv")
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_andvv")

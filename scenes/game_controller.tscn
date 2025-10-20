@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://bp5bwuv6kyprb" path="res://scripts/global/game_controller.gd" id="1_vq0e2"]
 [ext_resource type="Script" uid="uid://cswm1qu1263m2" path="res://scripts/SmartCam3D.gd" id="2_ts4rt"]
 [ext_resource type="Shader" uid="uid://dhoago6pts7v5" path="res://assets/shaders and materials/screen_effects.gdshader" id="3_rc0pn"]
-[ext_resource type="AudioStream" uid="uid://q5k1duvmngi1" path="res://assets/audio/deathSFX.mp3" id="5_h843c"]
-[ext_resource type="Script" uid="uid://d3u8j0xy35g2u" path="res://scripts/global/global_audio.gd" id="6_e85df"]
+[ext_resource type="AudioStream" uid="uid://b16xv4y7d6r3k" path="res://assets/audio/Transference_Wandering_Ambience.mp3" id="4_h843c"]
+[ext_resource type="Script" uid="uid://jlvuf7uj3oai" path="res://scenes/global_audio.gd" id="5_h843c"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_burlk"]
 size = Vector2(2, 2)
@@ -68,6 +68,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_h0hye")
 
 [node name="PersistedScenes" type="Node3D" parent="GUI/SubViewportContainer/SubViewport"]
 
-[node name="GlobalAudio" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_h843c")
-script = ExtResource("6_e85df")
+[node name="Main_Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_h843c")
+volume_db = -7.117
+script = ExtResource("5_h843c")
