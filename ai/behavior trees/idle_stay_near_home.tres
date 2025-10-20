@@ -24,12 +24,9 @@ script = ExtResource("2_cq0uy")
 script = ExtResource("3_3rne0")
 min_distance = 0.0
 max_distance = 1.0
-origin_var = "spawn_position"
-output_var = "target_pos"
 
 [sub_resource type="BTAction" id="BTAction_xnn55"]
 script = ExtResource("4_tlepx")
-position_var = "target_pos"
 
 [sub_resource type="BTAction" id="BTAction_lurtl"]
 script = ExtResource("5_ybc4u")

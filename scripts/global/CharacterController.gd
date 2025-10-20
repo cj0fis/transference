@@ -154,7 +154,7 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_pressed("right_click"):
 				if selected_character and selected_character != active_char:
 					movement.move_to_pos(selected_character.global_position, 1.0)
-				else:
+				elif mouse_world_pos:
 					movement.move_to_pos(mouse_world_pos, 0.05)
 
 		ControllerType.WASD:

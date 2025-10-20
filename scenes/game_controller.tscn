@@ -1,10 +1,9 @@
-[gd_scene load_steps=22 format=4 uid="uid://cuj5hwa6y1che"]
+[gd_scene load_steps=21 format=4 uid="uid://cuj5hwa6y1che"]
 
 [ext_resource type="Script" uid="uid://bp5bwuv6kyprb" path="res://scripts/global/game_controller.gd" id="1_vq0e2"]
 [ext_resource type="Script" uid="uid://cswm1qu1263m2" path="res://scripts/SmartCam3D.gd" id="2_ts4rt"]
 [ext_resource type="Shader" uid="uid://dhoago6pts7v5" path="res://assets/shaders and materials/screen_effects.gdshader" id="3_rc0pn"]
 [ext_resource type="Environment" uid="uid://cs3s7nrh6oj83" path="res://assets/dark_environment.tres" id="4_rc0pn"]
-[ext_resource type="PackedScene" uid="uid://osb5gev1acp3" path="res://scenes/levels/dungeon_room.tscn" id="5_1awvl"]
 [ext_resource type="Texture2D" uid="uid://bodmaemsklg35" path="res://assets/ui/Keyboard & Mouse Icons.png" id="5_burlk"]
 [ext_resource type="Script" uid="uid://dgcjo1ofqrmbt" path="res://scenes/ui_manager.gd" id="5_d6ul8"]
 [ext_resource type="Theme" uid="uid://2i0mvbnu3xr6" path="res://assets/ui/ui_theme.tres" id="8_1awvl"]
@@ -130,8 +129,6 @@ spot_angle = 14.305193
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="GUI/SubViewportContainer/SubViewport/World3D"]
 environment = ExtResource("4_rc0pn")
-
-[node name="dungeon_room" parent="GUI/SubViewportContainer/SubViewport/World3D" instance=ExtResource("5_1awvl")]
 
 [node name="HUD" type="Control" parent="GUI"]
 process_mode = 3

@@ -8,15 +8,15 @@
 [ext_resource type="BehaviorTree" uid="uid://brbjqblcjnnlc" path="res://ai/behavior trees/idle_stay_near_home.tres" id="4_ptu6q"]
 [ext_resource type="Script" uid="uid://dttil0sv674li" path="res://scripts/components/TextureReplacerComponent.gd" id="5_3t8co"]
 [ext_resource type="BehaviorTree" uid="uid://cil0vqx1tvvfx" path="res://ai/behavior trees/seeking.tres" id="5_hujiq"]
-[ext_resource type="Script" uid="uid://bw4s04puvk7r" path="res://scripts/states/idle.gd" id="5_qgemf"]
+[ext_resource type="Script" path="res://scripts/states/idle.gd" id="5_qgemf"]
 [ext_resource type="Script" path="res://ai/tasks/enter_attack_stance.gd" id="6_andvv"]
 [ext_resource type="Script" uid="uid://bk2oaelgxw5ca" path="res://scripts/components/HitBoxManagerComponent.gd" id="6_hit1j"]
 [ext_resource type="Texture2D" uid="uid://djoi6145f876q" path="res://scenes/goblins/goblin_skirmisher/small_goblin1.png" id="6_py6d1"]
 [ext_resource type="Script" uid="uid://dbm0eunb3sh4f" path="res://scripts/components/HealthBarComponent.gd" id="7_4om8o"]
-[ext_resource type="Script" uid="uid://b6k4hjbya1yqr" path="res://ai/tasks/look_at_active_char.gd" id="7_8a486"]
+[ext_resource type="Script" path="res://ai/tasks/look_at_active_char.gd" id="7_8a486"]
 [ext_resource type="Script" uid="uid://ckb7ois1d6gdk" path="res://scripts/components/HitBox.gd" id="8_bscs8"]
 [ext_resource type="Script" uid="uid://pxw3sdljbiqo" path="res://scripts/components/DeathEffectComponent.gd" id="8_yh1gt"]
-[ext_resource type="Script" uid="uid://c3cf4hh782gig" path="res://scripts/states/attack_mode.gd" id="9_56y0r"]
+[ext_resource type="Script" path="res://scripts/states/attack_mode.gd" id="9_56y0r"]
 [ext_resource type="Script" uid="uid://cq7lqaygbe8nd" path="res://scripts/components/HitEffectComponent.gd" id="10_t561v"]
 [ext_resource type="Script" uid="uid://cvbsf3t3ym1my" path="res://scripts/components/MovementComponent.gd" id="10_ydcl6"]
 [ext_resource type="Script" uid="uid://bip8d6nn1kr6u" path="res://scripts/components/StateComponent.gd" id="12_andvv"]
@@ -25,7 +25,7 @@
 [ext_resource type="Material" uid="uid://dwp6iwnn4bcdm" path="res://assets/shaders and materials/outline_material.tres" id="15_1nbvi"]
 [ext_resource type="Shader" uid="uid://bddfg3sif24rb" path="res://assets/shaders and materials/character_effects.gdshader" id="15_py6d1"]
 [ext_resource type="Script" uid="uid://drumiwdfo4ryv" path="res://scripts/components/NameComponent.gd" id="18_hujiq"]
-[ext_resource type="Script" uid="uid://d1lvy8fddd1ha" path="res://scripts/states/HSM.gd" id="19_hujiq"]
+[ext_resource type="Script" path="res://scripts/states/HSM.gd" id="19_hujiq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gljjg"]
 radius = 0.41357422
@@ -183,15 +183,15 @@ metadata/_custom_type_script = "uid://dmq658hb5gu71"
 atlas = ExtResource("2_1r547")
 region = Rect2(67, 1821, 42, 6)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_hujiq"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_56y0r"]
 noise_type = 3
 frequency = 0.0403
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_andvv"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jtxwo"]
 resource_local_to_scene = true
-noise = SubResource("FastNoiseLite_hujiq")
+noise = SubResource("FastNoiseLite_56y0r")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qgemf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lrrrn"]
 resource_local_to_scene = true
 resource_name = "Character Effects Material"
 render_priority = 0
@@ -200,7 +200,8 @@ shader_parameter/hit_color = Color(1, 1, 1, 1)
 shader_parameter/show_hit_color = false
 shader_parameter/light_color = Color(1, 0, 0, 1)
 shader_parameter/amount = 0.0010000000475
-shader_parameter/noise = SubResource("NoiseTexture2D_andvv")
+shader_parameter/albedo = ExtResource("6_py6d1")
+shader_parameter/noise = SubResource("NoiseTexture2D_jtxwo")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdypm"]
 resource_name = "material_0"
@@ -1160,7 +1161,7 @@ bones/0/name = "root_2"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/0/enabled = true
-bones/0/position = Vector3(0, -0.08268189, -0.0072158794)
+bones/0/position = Vector3(0, -0.09702043, -0.0012414863)
 bones/0/rotation = Quaternion(0, 0, 0, 1)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "hip"
@@ -1175,7 +1176,7 @@ bones/2/parent = 1
 bones/2/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 bones/2/enabled = true
 bones/2/position = Vector3(0, 0.25, 0)
-bones/2/rotation = Quaternion(0.070362285, 0, 0, 0.9975215)
+bones/2/rotation = Quaternion(0.12024834, 0, 0, 0.9927439)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "right_arm"
 bones/3/parent = 2
@@ -1189,7 +1190,7 @@ bones/4/parent = 3
 bones/4/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1875, 0.5625, 0.0625)
 bones/4/enabled = true
 bones/4/position = Vector3(0.1875, 0.5625, 0.0625)
-bones/4/rotation = Quaternion(-0.066010825, -0.11260399, -0.501402, 0.8553122)
+bones/4/rotation = Quaternion(-0.07338277, -0.10794469, -0.5573975, 0.8199214)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "lower_arm"
 bones/5/parent = 4
@@ -1224,7 +1225,7 @@ bones/9/parent = 8
 bones/9/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 0.5625, 0.0625)
 bones/9/enabled = true
 bones/9/position = Vector3(-0.1875, 0.5625, 0.0625)
-bones/9/rotation = Quaternion(-0.066010825, 0.11260399, 0.501402, 0.8553122)
+bones/9/rotation = Quaternion(-0.07338277, 0.10794469, 0.5573975, 0.8199214)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/name = "lower_arm2"
 bones/10/parent = 9
@@ -1273,14 +1274,14 @@ bones/16/parent = 15
 bones/16/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.1875, 0.0625)
 bones/16/enabled = true
 bones/16/position = Vector3(0.125, 0.1875, 0.0625)
-bones/16/rotation = Quaternion(0.17271711, -0.21302569, 0.038290463, 0.96089685)
+bones/16/rotation = Quaternion(0.20472126, -0.21162765, 0.045385607, 0.9545906)
 bones/16/scale = Vector3(1, 1, 1)
 bones/17/name = "lower_leg"
 bones/17/parent = 16
 bones/17/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0625, -0.1875, -0.14375)
 bones/17/enabled = true
 bones/17/position = Vector3(0.0625, -0.1875, -0.14375)
-bones/17/rotation = Quaternion(-0.30386454, 0, 0, 0.95271534)
+bones/17/rotation = Quaternion(-0.33552212, 0, 0, 0.94203246)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "foot"
 bones/18/parent = 17
@@ -1301,14 +1302,14 @@ bones/20/parent = 19
 bones/20/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, 0.1875, 0.0625)
 bones/20/enabled = true
 bones/20/position = Vector3(-0.125, 0.1875, 0.0625)
-bones/20/rotation = Quaternion(0.17271711, 0.21302569, -0.038290463, 0.96089685)
+bones/20/rotation = Quaternion(0.20472126, 0.21162765, -0.045385607, 0.9545906)
 bones/20/scale = Vector3(1, 1, 1)
 bones/21/name = "lower_leg2"
 bones/21/parent = 20
 bones/21/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, -0.1875, -0.14375)
 bones/21/enabled = true
 bones/21/position = Vector3(-0.0625, -0.1875, -0.14375)
-bones/21/rotation = Quaternion(-0.30386454, 0, 0, 0.95271534)
+bones/21/rotation = Quaternion(-0.33552212, 0, 0, 0.94203246)
 bones/21/scale = Vector3(1, 1, 1)
 bones/22/name = "foot2"
 bones/22/parent = 21
@@ -1319,7 +1320,7 @@ bones/22/rotation = Quaternion(0.13052619, 0, 0, 0.9914449)
 bones/22/scale = Vector3(1, 1, 1)
 
 [node name="root" type="MeshInstance3D" parent="blockbench_export/root/Skeleton3D"]
-material_override = SubResource("ShaderMaterial_qgemf")
+material_override = SubResource("ShaderMaterial_lrrrn")
 mesh = SubResource("ArrayMesh_oi2u6")
 skin = SubResource("Skin_jf50w")
 

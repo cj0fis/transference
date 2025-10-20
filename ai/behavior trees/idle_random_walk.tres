@@ -17,11 +17,9 @@ script = ExtResource("1_u8jii")
 
 [sub_resource type="BTAction" id="BTAction_h2clv"]
 script = ExtResource("2_ymbem")
-output_var = "target_pos"
 
 [sub_resource type="BTAction" id="BTAction_1ncj7"]
 script = ExtResource("3_v6g1u")
-position_var = "target_pos"
 
 [sub_resource type="BTAction" id="BTAction_gwq8x"]
 script = ExtResource("4_j7hsl")

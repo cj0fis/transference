@@ -1,3 +1,8 @@
+OmniLight3D
+DirectionalLight3D
+Node3D
+CollisionShape3D
+StaticBody3D
 BTState
 CSGMesh3D
 MeshInstance3D
@@ -7,8 +12,3 @@ Marker3D
 Button
 VBoxContainer
 Label
-ColorRect
-PanelContainer
-SpotLight3D
-Panel
-RichTextLabel
