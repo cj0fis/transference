@@ -3,40 +3,22 @@ class_name Character3D extends CharacterBody3D
 
 @export var mesh: MeshInstance3D = null
 @export var animation_tree: AnimationTree
-var state_machine: StateMachine
+var state_machine: HSM
 var is_mouse_over: bool = false		#true if the mouse is over this character's mesh
 
 var use_ai: bool = true
 
 func _ready() -> void:
 	set_character_effect_material()
+	
+	add_to_group("characters")
+	for child in get_children():
+		if child is HSM:
+			state_machine = child
 	if not Engine.is_editor_hint() and not CharacterController.active_char:
 		CharacterController.bodyswap(self)
 		CharacterController.enabled = true
-	add_to_group("characters")
-	for child in get_children():
-		if child is StateMachine:
-			state_machine = child
-	
-func _physics_process(delta: float) -> void:
-	if Engine.is_editor_hint():
-		return
-	if state_machine:
-		state_machine.process_physics(delta)
-	
-	
 
-func _unhandled_input(event: InputEvent) -> void:
-	if Engine.is_editor_hint():
-		return
-	if state_machine:
-		state_machine.process_input(event)
-		
-func _process(delta: float) -> void:
-	if Engine.is_editor_hint():
-		return
-	if state_machine:
-		state_machine.process_frame(delta)
 
 
 #calling this function makes this character the active character

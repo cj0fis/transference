@@ -1,12 +1,12 @@
 [gd_resource type="BehaviorTree" load_steps=30 format=3 uid="uid://c0ar0hqcsn0yi"]
 
 [ext_resource type="Script" uid="uid://5l4e3jgfhlou" path="res://ai/tasks/near_active_char.gd" id="1_oypkg"]
-[ext_resource type="Script" uid="uid://dsanbo2ar5kh6" path="res://ai/tasks/get_agent_position.gd" id="1_rglm4"]
+[ext_resource type="Script" path="res://ai/tasks/get_agent_position.gd" id="1_rglm4"]
 [ext_resource type="Script" uid="uid://d17178pcp7vds" path="res://ai/tasks/get_active_character_pos.gd" id="3_nbtns"]
-[ext_resource type="Script" uid="uid://bqm331vn6a81t" path="res://ai/tasks/get_random_pos.gd" id="4_a7pf2"]
+[ext_resource type="Script" path="res://ai/tasks/get_random_pos.gd" id="4_a7pf2"]
 [ext_resource type="Script" uid="uid://khon8mbh385j" path="res://ai/tasks/await_move.gd" id="4_rglm4"]
-[ext_resource type="Script" uid="uid://es6q2xoob68a" path="res://ai/tasks/move_to_pos.gd" id="5_rpa5y"]
-[ext_resource type="Script" uid="uid://b5knhggypfja0" path="res://ai/tasks/enter_normal_stance.gd" id="6_nbtns"]
+[ext_resource type="Script" path="res://ai/tasks/move_to_pos.gd" id="5_rpa5y"]
+[ext_resource type="Script" path="res://ai/tasks/enter_normal_stance.gd" id="6_nbtns"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_jq66o"]
 var/var/name = &"var"

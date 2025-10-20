@@ -1,18 +1,22 @@
 [gd_resource type="BehaviorTree" load_steps=12 format=3 uid="uid://ddfxevooubiga"]
 
-[ext_resource type="Script" uid="uid://b5knhggypfja0" path="res://ai/tasks/enter_normal_stance.gd" id="1_u8jii"]
-[ext_resource type="Script" uid="uid://bqm331vn6a81t" path="res://ai/tasks/get_random_pos.gd" id="2_ymbem"]
-[ext_resource type="Script" uid="uid://es6q2xoob68a" path="res://ai/tasks/move_to_pos.gd" id="3_v6g1u"]
+[ext_resource type="Script" path="res://ai/tasks/enter_normal_stance.gd" id="1_u8jii"]
+[ext_resource type="Script" path="res://ai/tasks/get_random_pos.gd" id="2_ymbem"]
+[ext_resource type="Script" path="res://ai/tasks/move_to_pos.gd" id="3_v6g1u"]
 [ext_resource type="Script" uid="uid://khon8mbh385j" path="res://ai/tasks/await_move.gd" id="4_j7hsl"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_nlttg"]
+var/target_pos/name = &"target_pos"
+var/target_pos/type = 3
+var/target_pos/value = 0.0
+var/target_pos/hint = 0
+var/target_pos/hint_string = ""
 
 [sub_resource type="BTAction" id="BTAction_kcr66"]
 script = ExtResource("1_u8jii")
 
 [sub_resource type="BTAction" id="BTAction_h2clv"]
 script = ExtResource("2_ymbem")
-origin_var = "home_pos"
 output_var = "target_pos"
 
 [sub_resource type="BTAction" id="BTAction_1ncj7"]

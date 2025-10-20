@@ -101,9 +101,16 @@ func _physics_process(delta: float) -> void:
 		MoveMode.NONE:
 			pass
 		MoveMode.NODE:
-			parent.velocity = (target_node.global_position - parent.global_position).normalized() * speed * Vector3(1,0,1)
+			if parent.global_position.distance_to(target_node.global_position) > target_margin and not move_lock:
+				parent.velocity = (target_node.global_position - parent.global_position).normalized() * speed * Vector3(1,0,1)
+			else:
+				parent.velocity = Vector3.ZERO
+				TARGET_REACHED.emit()
+				target_reached = true
+				stop()
+		
 		MoveMode.POSITION:
-			if parent.position.distance_to(target_position) > target_margin and not move_lock:
+			if parent.global_position.distance_to(target_position) > target_margin and not move_lock:
 				parent.velocity = (target_position - parent.global_position).normalized() * speed * Vector3(1,0,1) #dont move in the y direction
 			
 			else:
@@ -113,13 +120,13 @@ func _physics_process(delta: float) -> void:
 				stop()
 				
 			##FIXME: fix this code to detect when a character collides with something and stops moving, and then set the move mode to none
-			#if parent.get_real_velocity().length() == 0.0 and parent.velocity.length() != 0:
+			if parent.get_real_velocity().length() == 0.0 and parent.velocity.length() != 0:
 				#parent.velocity = Vector3.ZERO
-				#TARGET_REACHED.emit()
-				#target_reached = true
-				#move_mode = MoveMode.NONE
+				TARGET_REACHED.emit()
+				target_reached = true
+				move_mode = MoveMode.NONE
 			
-	
+
 	
 	match look_mode:
 		LookMode.VELOCITY:
@@ -135,7 +142,9 @@ func _physics_process(delta: float) -> void:
 			parent.rotation.y = lerp_angle(parent.rotation.y, target_rotation, 0.2)
 
 	
-
+	#if parent == CharacterController.active_char:
+		#print("look_mode: ", LookMode.keys()[look_mode])
+		#print("move_mode: ", MoveMode.keys()[move_mode])
 
 
 	#apply gravity

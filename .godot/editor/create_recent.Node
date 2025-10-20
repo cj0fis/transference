@@ -1,4 +1,6 @@
 BTState
+CSGMesh3D
+MeshInstance3D
 LimboState
 LimboHSM
 Marker3D
@@ -10,5 +12,3 @@ PanelContainer
 SpotLight3D
 Panel
 RichTextLabel
-TextureRect
-Control

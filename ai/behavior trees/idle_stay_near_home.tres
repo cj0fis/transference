@@ -1,0 +1,46 @@
+[gd_resource type="BehaviorTree" load_steps=12 format=3 uid="uid://brbjqblcjnnlc"]
+
+[ext_resource type="Script" path="res://ai/tasks/enter_normal_stance.gd" id="2_cq0uy"]
+[ext_resource type="Script" path="res://ai/tasks/get_random_pos.gd" id="3_3rne0"]
+[ext_resource type="Script" path="res://ai/tasks/move_to_pos.gd" id="4_tlepx"]
+[ext_resource type="Script" uid="uid://khon8mbh385j" path="res://ai/tasks/await_move.gd" id="5_ybc4u"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_mynqu"]
+var/spawn_position/name = &"spawn_position"
+var/spawn_position/type = 9
+var/spawn_position/value = Vector3(0, 0, 0)
+var/spawn_position/hint = 0
+var/spawn_position/hint_string = ""
+var/target_pos/name = &"target_pos"
+var/target_pos/type = 9
+var/target_pos/value = Vector3(0, 0, 0)
+var/target_pos/hint = 0
+var/target_pos/hint_string = ""
+
+[sub_resource type="BTAction" id="BTAction_1p2qf"]
+script = ExtResource("2_cq0uy")
+
+[sub_resource type="BTAction" id="BTAction_mcvv0"]
+script = ExtResource("3_3rne0")
+min_distance = 0.0
+max_distance = 1.0
+origin_var = "spawn_position"
+output_var = "target_pos"
+
+[sub_resource type="BTAction" id="BTAction_xnn55"]
+script = ExtResource("4_tlepx")
+position_var = "target_pos"
+
+[sub_resource type="BTAction" id="BTAction_lurtl"]
+script = ExtResource("5_ybc4u")
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_hwc4l"]
+min_duration = 2.0
+max_duration = 3.0
+
+[sub_resource type="BTSequence" id="BTSequence_s3b3k"]
+children = [SubResource("BTAction_1p2qf"), SubResource("BTAction_mcvv0"), SubResource("BTAction_xnn55"), SubResource("BTAction_lurtl"), SubResource("BTRandomWait_hwc4l")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_mynqu")
+root_task = SubResource("BTSequence_s3b3k")
