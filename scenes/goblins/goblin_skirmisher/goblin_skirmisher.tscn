@@ -1134,24 +1134,6 @@ scroll_active = false
 autowrap_mode = 0
 script = ExtResource("18_hujiq")
 
-[node name="Character Lights" type="Node3D" parent="."]
-visible = false
-
-[node name="Front light" type="OmniLight3D" parent="Character Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8864441, -0.36353302)
-light_color = Color(0.9931099, 0.7901237, 0.6140929, 1)
-light_energy = 2.0
-light_indirect_energy = 0.815
-light_volumetric_fog_energy = 4.022
-light_size = 0.791
-light_specular = 1.27
-omni_range = 6.0
-
-[node name="Back light" type="OmniLight3D" parent="Character Lights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04550171, 1.2451248, 0.77023315)
-light_energy = 0.155
-omni_range = 1.2854149
-
 [node name="blockbench_export" type="Node3D" parent="."]
 
 [node name="root" type="Node3D" parent="blockbench_export"]
@@ -1161,7 +1143,7 @@ bones/0/name = "root_2"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/0/enabled = true
-bones/0/position = Vector3(0, -0.09702043, -0.0012414863)
+bones/0/position = Vector3(0, -0.08662063, -0.005574738)
 bones/0/rotation = Quaternion(0, 0, 0, 1)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "hip"
@@ -1176,7 +1158,7 @@ bones/2/parent = 1
 bones/2/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 bones/2/enabled = true
 bones/2/position = Vector3(0, 0.25, 0)
-bones/2/rotation = Quaternion(0.12024834, 0, 0, 0.9927439)
+bones/2/rotation = Quaternion(0.08399297, 0, 0, 0.9964664)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "right_arm"
 bones/3/parent = 2
@@ -1190,7 +1172,7 @@ bones/4/parent = 3
 bones/4/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1875, 0.5625, 0.0625)
 bones/4/enabled = true
 bones/4/position = Vector3(0.1875, 0.5625, 0.0625)
-bones/4/rotation = Quaternion(-0.07338277, -0.10794469, -0.5573975, 0.8199214)
+bones/4/rotation = Quaternion(-0.06805238, -0.11138207, -0.5169092, 0.8460307)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "lower_arm"
 bones/5/parent = 4
@@ -1225,7 +1207,7 @@ bones/9/parent = 8
 bones/9/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1875, 0.5625, 0.0625)
 bones/9/enabled = true
 bones/9/position = Vector3(-0.1875, 0.5625, 0.0625)
-bones/9/rotation = Quaternion(-0.07338277, 0.10794469, 0.5573975, 0.8199214)
+bones/9/rotation = Quaternion(-0.06805238, 0.11138207, 0.5169092, 0.8460307)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/name = "lower_arm2"
 bones/10/parent = 9
@@ -1274,14 +1256,14 @@ bones/16/parent = 15
 bones/16/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0.1875, 0.0625)
 bones/16/enabled = true
 bones/16/position = Vector3(0.125, 0.1875, 0.0625)
-bones/16/rotation = Quaternion(0.20472126, -0.21162765, 0.045385607, 0.9545906)
+bones/16/rotation = Quaternion(0.18146782, -0.21266787, 0.040230446, 0.9592828)
 bones/16/scale = Vector3(1, 1, 1)
 bones/17/name = "lower_leg"
 bones/17/parent = 16
 bones/17/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0625, -0.1875, -0.14375)
 bones/17/enabled = true
 bones/17/position = Vector3(0.0625, -0.1875, -0.14375)
-bones/17/rotation = Quaternion(-0.33552212, 0, 0, 0.94203246)
+bones/17/rotation = Quaternion(-0.31253523, 0, 0, 0.94990623)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/name = "foot"
 bones/18/parent = 17
@@ -1302,14 +1284,14 @@ bones/20/parent = 19
 bones/20/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, 0.1875, 0.0625)
 bones/20/enabled = true
 bones/20/position = Vector3(-0.125, 0.1875, 0.0625)
-bones/20/rotation = Quaternion(0.20472126, 0.21162765, -0.045385607, 0.9545906)
+bones/20/rotation = Quaternion(0.18146782, 0.21266787, -0.040230446, 0.9592828)
 bones/20/scale = Vector3(1, 1, 1)
 bones/21/name = "lower_leg2"
 bones/21/parent = 20
 bones/21/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, -0.1875, -0.14375)
 bones/21/enabled = true
 bones/21/position = Vector3(-0.0625, -0.1875, -0.14375)
-bones/21/rotation = Quaternion(-0.33552212, 0, 0, 0.94203246)
+bones/21/rotation = Quaternion(-0.31253523, 0, 0, 0.94990623)
 bones/21/scale = Vector3(1, 1, 1)
 bones/22/name = "foot2"
 bones/22/parent = 21

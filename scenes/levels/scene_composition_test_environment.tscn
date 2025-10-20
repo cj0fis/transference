@@ -1,0 +1,122 @@
+[gd_scene load_steps=13 format=3 uid="uid://bkm5n4njgble2"]
+
+[ext_resource type="PackedScene" uid="uid://beniili1qlklo" path="res://scenes/goblins/goblin_skirmisher/goblin_skirmisher.tscn" id="1_pumgx"]
+[ext_resource type="Material" uid="uid://cq7tllp7jagom" path="res://assets/shaders and materials/material_test.tres" id="1_wwn6v"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xx0q4"]
+size = Vector3(14.135, 0.5, 19.14)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pumgx"]
+size = Vector3(10, 0.5, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wwn6v"]
+size = Vector3(2, 2, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_te8vf"]
+size = Vector3(2, 2, 12.355)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dehop"]
+size = Vector3(2, 2, 4.235)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0y855"]
+size = Vector3(2, 2, 7.745)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tfa5e"]
+size = Vector3(14.21, 0.5, 11.11)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dehop"]
+sky_top_color = Color(0.24262059, 0.46131164, 0.6924861, 1)
+
+[sub_resource type="Sky" id="Sky_tfa5e"]
+sky_material = SubResource("ProceduralSkyMaterial_dehop")
+
+[sub_resource type="Environment" id="Environment_0y855"]
+background_mode = 2
+sky = SubResource("Sky_tfa5e")
+ssao_enabled = true
+ssao_intensity = 2.96
+volumetric_fog_density = 0.2533
+
+[node name="SCENE_COMPOSITION_TEST_ENVIRONMENT" type="Node3D"]
+
+[node name="block out" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="block out"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.7745275)
+material_override = ExtResource("1_wwn6v")
+mesh = SubResource("BoxMesh_xx0q4")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="block out"]
+transform = Transform3D(0.24756503, -0.94274354, 0.22348714, 0.9684004, 0.23358046, -0.0874127, 0.030205518, 0.23806536, 0.9707794, 4.5501623, 2.2803068, 0.020816788)
+material_override = ExtResource("1_wwn6v")
+mesh = SubResource("BoxMesh_pumgx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="block out"]
+transform = Transform3D(0.24756505, -0.8415284, -0.48014772, 0.9684004, 0.23037195, 0.09554882, 0.03020552, -0.48862982, 0.8719683, 5.72131, 2.2588408, -8.889703)
+material_override = ExtResource("1_wwn6v")
+mesh = SubResource("BoxMesh_pumgx")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="block out"]
+transform = Transform3D(0.28467217, 0.013516948, 0.9585298, 0.95817566, -0.03462515, -0.28407875, 0.02934932, 0.99930906, -0.022808421, 1.1495417, 7.5666866, -3.196638)
+material_override = ExtResource("1_wwn6v")
+mesh = SubResource("BoxMesh_wwn6v")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="block out"]
+transform = Transform3D(-0.40089813, 0.021876108, -0.9158614, 0.22954293, -0.9654268, -0.123537436, -0.8868997, -0.25975534, 0.3820162, 0.7484318, 5.473224, 4.099206)
+material_override = ExtResource("1_wwn6v")
+mesh = SubResource("BoxMesh_te8vf")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="block out"]
+transform = Transform3D(-0.96966785, -0.23634404, 0.06234024, 0.074669756, -0.04357241, 0.99625593, -0.23274286, 0.97069234, 0.059898496, -3.3761559, 1.0032243, 0.91267014)
+material_override = ExtResource("1_wwn6v")
+mesh = SubResource("BoxMesh_dehop")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="block out"]
+transform = Transform3D(-0.9440888, -0.24441762, -0.221262, -0.14731976, -0.2876468, 0.9463383, -0.2949471, 0.9260238, 0.23555647, -4.0410566, 2.7332325, 5.8607373)
+material_override = ExtResource("1_wwn6v")
+mesh = SubResource("BoxMesh_0y855")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="block out"]
+transform = Transform3D(-0.977396, -0.20201795, 0.062340237, 0.073087506, -0.046177335, 0.99625593, -0.19838293, 0.9782929, 0.059898496, 4.936977, 1.6890553, 4.7707124)
+material_override = ExtResource("1_wwn6v")
+mesh = SubResource("BoxMesh_dehop")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="block out"]
+transform = Transform3D(0.9903066, 0.013516951, -0.13824108, -0.13770723, -0.03462515, -0.9898677, -0.018166635, 0.99930924, -0.032428123, 3.3222017, 1.1458745, -4.8504944)
+material_override = ExtResource("1_wwn6v")
+mesh = SubResource("BoxMesh_wwn6v")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="block out"]
+transform = Transform3D(0.9967297, 0.03240174, 0.07403131, 0.08009918, -0.27474627, -0.9581747, -0.010706721, 0.96097094, -0.276443, -2.3823674, 3.887515, -5.9808035)
+material_override = ExtResource("1_wwn6v")
+mesh = SubResource("BoxMesh_wwn6v")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="block out"]
+transform = Transform3D(0.12611502, -0.9915228, -0.031276405, 0.63356256, 0.05624423, 0.7716444, -0.7633436, -0.11713142, 0.6352848, -3.6133373, 2.1569061, -0.7536386)
+material_override = ExtResource("1_wwn6v")
+mesh = SubResource("BoxMesh_tfa5e")
+skeleton = NodePath("../..")
+
+[node name="lights" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="lights"]
+transform = Transform3D(0.57851434, -0.6995263, 0.41950482, 0.17400335, 0.6083056, 0.7743947, -0.79689664, -0.37500322, 0.4736334, 6.1316357, 12.389008, 4.094776)
+shadow_enabled = true
+
+[node name="characters" type="Node3D" parent="."]
+
+[node name="goblin_skirmisher" parent="." instance=ExtResource("1_pumgx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24880117, 0.3491373, 5.426415)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0y855")

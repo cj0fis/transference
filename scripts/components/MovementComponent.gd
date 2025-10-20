@@ -59,7 +59,7 @@ func move_to_char(target: Character3D, margin: float) -> void:
 func move_to_pos(pos: Vector3, margin: float) -> void:
 	stop()
 	move_mode = MoveMode.POSITION
-	look_mode = LookMode.POSITION
+	look_mode = LookMode.VELOCITY
 	target_position = pos
 	target_margin = margin
 	target_reached = false
@@ -119,12 +119,12 @@ func _physics_process(delta: float) -> void:
 				target_reached = true
 				stop()
 				
-			##FIXME: fix this code to detect when a character collides with something and stops moving, and then set the move mode to none
-			if parent.get_real_velocity().length() == 0.0 and parent.velocity.length() != 0:
-				#parent.velocity = Vector3.ZERO
-				TARGET_REACHED.emit()
-				target_reached = true
-				move_mode = MoveMode.NONE
+			###FIXME: fix this code to detect when a character collides with something and stops moving, and then set the move mode to none
+			#if parent.get_real_velocity().length() == 0.0 and parent.velocity.length() != 0:
+				##parent.velocity = Vector3.ZERO
+				#TARGET_REACHED.emit()
+				#target_reached = true
+				#move_mode = MoveMode.NONE
 			
 
 	

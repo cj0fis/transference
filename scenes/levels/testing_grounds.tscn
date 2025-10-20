@@ -1,4 +1,4 @@
-[gd_scene load_steps=249 format=4 uid="uid://cd6iv2rg3h1x5"]
+[gd_scene load_steps=252 format=4 uid="uid://cd6iv2rg3h1x5"]
 
 [ext_resource type="Texture2D" uid="uid://d4iywk3ifhrjo" path="res://assets/props and levels/Wall Tile Set_0.png" id="1_na0ux"]
 [ext_resource type="PackedScene" uid="uid://beniili1qlklo" path="res://scenes/goblins/goblin_skirmisher/goblin_skirmisher.tscn" id="2_d26f2"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bkfjn3ekox6sn" path="res://assets/props and levels/walls_1.png" id="3_nq56l"]
 [ext_resource type="Texture2D" uid="uid://cs52akgx7kgdo" path="res://assets/props and levels/walls_2.png" id="4_lolu0"]
 [ext_resource type="Texture2D" uid="uid://h3n2r3oggepx" path="res://assets/props and levels/floor_set_0.png" id="5_cy2d7"]
+[ext_resource type="PackedScene" uid="uid://me14lg4tr321" path="res://scenes/goblins/goblin_fighter/goblin_fighter.tscn" id="7_nq56l"]
+[ext_resource type="PackedScene" uid="uid://c32ag4wrs3hqu" path="res://scenes/kobolds/kobold_fighter/kobold_fighter.tscn" id="8_lolu0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wsu8b"]
 resource_name = "material_0"
@@ -3813,6 +3815,13 @@ shadow_mesh = SubResource("ArrayMesh_e305u")
 [sub_resource type="BoxShape3D" id="BoxShape3D_l40gv"]
 size = Vector3(100, 0.05, 100)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l40gv"]
+albedo_texture = ExtResource("3_nq56l")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_offset = Vector3(-0.62, 0, 0)
+uv1_triplanar = true
+texture_filter = 0
+
 [node name="TESTING GROUNDS" type="Node3D"]
 
 [node name="BrandonsRoomTest" type="Node3D" parent="."]
@@ -4461,6 +4470,7 @@ visible = false
 
 [node name="dark_floor" type="MeshInstance3D" parent="level"]
 transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 6, -6, 0, -6)
+visible = false
 mesh = SubResource("ArrayMesh_hastw")
 skeleton = NodePath("")
 
@@ -4472,185 +4482,196 @@ collision_mask = 5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025390625, 0)
 shape = SubResource("BoxShape3D_l40gv")
 
-[node name="Top RIght2" type="MeshInstance3D" parent="level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 6)
-mesh = SubResource("ArrayMesh_56ady")
-skeleton = NodePath("")
+[node name="dirt" type="Node3D" parent="level"]
 
-[node name="Top2" type="MeshInstance3D" parent="level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 6)
-mesh = SubResource("ArrayMesh_2pulb")
-skeleton = NodePath("")
+[node name="grass" type="Node3D" parent="level/dirt"]
 
-[node name="Top3" type="MeshInstance3D" parent="level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
-mesh = SubResource("ArrayMesh_2pulb")
-skeleton = NodePath("")
-
-[node name="Top4" type="MeshInstance3D" parent="level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
-mesh = SubResource("ArrayMesh_2pulb")
-skeleton = NodePath("")
-
-[node name="Top6" type="MeshInstance3D" parent="level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
-mesh = SubResource("ArrayMesh_2pulb")
-skeleton = NodePath("")
-
-[node name="Top5" type="MeshInstance3D" parent="level"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6, 0, 8)
-mesh = SubResource("ArrayMesh_2pulb")
-skeleton = NodePath("")
-
-[node name="Top Left2" type="MeshInstance3D" parent="level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6)
-mesh = SubResource("ArrayMesh_6ybal")
-skeleton = NodePath("")
-
-[node name="Bottom Left" type="MeshInstance3D" parent="level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 10)
-mesh = SubResource("ArrayMesh_3thfc")
-skeleton = NodePath("")
-
-[node name="Bottom" type="MeshInstance3D" parent="level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 10)
-mesh = SubResource("ArrayMesh_ug1n6")
-skeleton = NodePath("")
-
-[node name="Bottom2" type="MeshInstance3D" parent="level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
-mesh = SubResource("ArrayMesh_ug1n6")
-skeleton = NodePath("")
-
-[node name="Bottom4" type="MeshInstance3D" parent="level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 10)
-mesh = SubResource("ArrayMesh_ug1n6")
-skeleton = NodePath("")
-
-[node name="Bottom5" type="MeshInstance3D" parent="level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 10)
-mesh = SubResource("ArrayMesh_ug1n6")
-skeleton = NodePath("")
-
-[node name="Bottom3" type="MeshInstance3D" parent="level"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, 0, 8)
-mesh = SubResource("ArrayMesh_ug1n6")
-skeleton = NodePath("")
-
-[node name="Bottom RIght" type="MeshInstance3D" parent="level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 10)
-mesh = SubResource("ArrayMesh_fu5ly")
-skeleton = NodePath("")
-
-[node name="Center" type="MeshInstance3D" parent="level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 8)
-mesh = SubResource("ArrayMesh_176cr")
-skeleton = NodePath("")
-
-[node name="Center2" type="MeshInstance3D" parent="level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 8)
-mesh = SubResource("ArrayMesh_176cr")
-skeleton = NodePath("")
-
-[node name="Center3" type="MeshInstance3D" parent="level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
-mesh = SubResource("ArrayMesh_176cr")
-skeleton = NodePath("")
-
-[node name="Center4" type="MeshInstance3D" parent="level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 8)
-mesh = SubResource("ArrayMesh_176cr")
-skeleton = NodePath("")
-
-[node name="Bottom Left2" type="MeshInstance3D" parent="level"]
+[node name="Bottom Left2" type="MeshInstance3D" parent="level/dirt/grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.035, 10)
 mesh = SubResource("ArrayMesh_k8s7t")
 skeleton = NodePath("")
 
-[node name="Top Left3" type="MeshInstance3D" parent="level"]
+[node name="Top Left3" type="MeshInstance3D" parent="level/dirt/grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.035, 6)
 mesh = SubResource("ArrayMesh_npmd1")
 skeleton = NodePath("")
 
-[node name="Top7" type="MeshInstance3D" parent="level"]
+[node name="Top7" type="MeshInstance3D" parent="level/dirt/grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.035, 6)
 mesh = SubResource("ArrayMesh_ng476")
 skeleton = NodePath("")
 
-[node name="Top8" type="MeshInstance3D" parent="level"]
+[node name="Top8" type="MeshInstance3D" parent="level/dirt/grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.035, 6)
 mesh = SubResource("ArrayMesh_ng476")
 skeleton = NodePath("")
 
-[node name="Top9" type="MeshInstance3D" parent="level"]
+[node name="Top9" type="MeshInstance3D" parent="level/dirt/grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.035, 6)
 mesh = SubResource("ArrayMesh_ng476")
 skeleton = NodePath("")
 
-[node name="Top10" type="MeshInstance3D" parent="level"]
+[node name="Top10" type="MeshInstance3D" parent="level/dirt/grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.035, 6)
 mesh = SubResource("ArrayMesh_ng476")
 skeleton = NodePath("")
 
-[node name="Top Right" type="MeshInstance3D" parent="level"]
+[node name="Top Right" type="MeshInstance3D" parent="level/dirt/grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.035, 6)
 mesh = SubResource("ArrayMesh_df4bo")
 skeleton = NodePath("")
 
-[node name="Bottom Right" type="MeshInstance3D" parent="level"]
+[node name="Bottom Right" type="MeshInstance3D" parent="level/dirt/grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.035, 10)
 mesh = SubResource("ArrayMesh_50rdy")
 skeleton = NodePath("")
 
-[node name="Bottom6" type="MeshInstance3D" parent="level"]
+[node name="Bottom6" type="MeshInstance3D" parent="level/dirt/grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.035, 10)
 mesh = SubResource("ArrayMesh_i22iy")
 skeleton = NodePath("")
 
-[node name="Bottom9" type="MeshInstance3D" parent="level"]
+[node name="Bottom9" type="MeshInstance3D" parent="level/dirt/grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.035, 10)
 mesh = SubResource("ArrayMesh_i22iy")
 skeleton = NodePath("")
 
-[node name="Bottom10" type="MeshInstance3D" parent="level"]
+[node name="Bottom10" type="MeshInstance3D" parent="level/dirt/grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.035, 10)
 mesh = SubResource("ArrayMesh_i22iy")
 skeleton = NodePath("")
 
-[node name="Bottom11" type="MeshInstance3D" parent="level"]
+[node name="Bottom11" type="MeshInstance3D" parent="level/dirt/grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.035, 10)
 mesh = SubResource("ArrayMesh_i22iy")
 skeleton = NodePath("")
 
-[node name="Bottom7" type="MeshInstance3D" parent="level"]
+[node name="Bottom7" type="MeshInstance3D" parent="level/dirt/grass"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, 0.035, 8)
 mesh = SubResource("ArrayMesh_i22iy")
 skeleton = NodePath("")
 
-[node name="Bottom8" type="MeshInstance3D" parent="level"]
+[node name="Bottom8" type="MeshInstance3D" parent="level/dirt/grass"]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 3.9999998, 0.035, 10)
 mesh = SubResource("ArrayMesh_i22iy")
 skeleton = NodePath("")
 
-[node name="Center5" type="MeshInstance3D" parent="level"]
+[node name="Center5" type="MeshInstance3D" parent="level/dirt/grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.035, 8)
 mesh = SubResource("ArrayMesh_ychfc")
 skeleton = NodePath("")
 
-[node name="Center6" type="MeshInstance3D" parent="level"]
+[node name="Center6" type="MeshInstance3D" parent="level/dirt/grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.035, 8)
 mesh = SubResource("ArrayMesh_ychfc")
 skeleton = NodePath("")
 
-[node name="Center7" type="MeshInstance3D" parent="level"]
+[node name="Center7" type="MeshInstance3D" parent="level/dirt/grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.035, 8)
 mesh = SubResource("ArrayMesh_ychfc")
 skeleton = NodePath("")
 
-[node name="Center8" type="MeshInstance3D" parent="level"]
+[node name="Center8" type="MeshInstance3D" parent="level/dirt/grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.035, 8)
 mesh = SubResource("ArrayMesh_ychfc")
 skeleton = NodePath("")
+
+[node name="Top RIght2" type="MeshInstance3D" parent="level/dirt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 6)
+mesh = SubResource("ArrayMesh_56ady")
+skeleton = NodePath("")
+
+[node name="Top2" type="MeshInstance3D" parent="level/dirt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 6)
+mesh = SubResource("ArrayMesh_2pulb")
+skeleton = NodePath("")
+
+[node name="Top3" type="MeshInstance3D" parent="level/dirt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
+mesh = SubResource("ArrayMesh_2pulb")
+skeleton = NodePath("")
+
+[node name="Top4" type="MeshInstance3D" parent="level/dirt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+mesh = SubResource("ArrayMesh_2pulb")
+skeleton = NodePath("")
+
+[node name="Top6" type="MeshInstance3D" parent="level/dirt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+mesh = SubResource("ArrayMesh_2pulb")
+skeleton = NodePath("")
+
+[node name="Top5" type="MeshInstance3D" parent="level/dirt"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6, 0, 8)
+mesh = SubResource("ArrayMesh_2pulb")
+skeleton = NodePath("")
+
+[node name="Top Left2" type="MeshInstance3D" parent="level/dirt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6)
+mesh = SubResource("ArrayMesh_6ybal")
+skeleton = NodePath("")
+
+[node name="Bottom Left" type="MeshInstance3D" parent="level/dirt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 10)
+mesh = SubResource("ArrayMesh_3thfc")
+skeleton = NodePath("")
+
+[node name="Bottom" type="MeshInstance3D" parent="level/dirt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 10)
+mesh = SubResource("ArrayMesh_ug1n6")
+skeleton = NodePath("")
+
+[node name="Bottom2" type="MeshInstance3D" parent="level/dirt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+mesh = SubResource("ArrayMesh_ug1n6")
+skeleton = NodePath("")
+
+[node name="Bottom4" type="MeshInstance3D" parent="level/dirt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 10)
+mesh = SubResource("ArrayMesh_ug1n6")
+skeleton = NodePath("")
+
+[node name="Bottom5" type="MeshInstance3D" parent="level/dirt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 10)
+mesh = SubResource("ArrayMesh_ug1n6")
+skeleton = NodePath("")
+
+[node name="Bottom3" type="MeshInstance3D" parent="level/dirt"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4, 0, 8)
+mesh = SubResource("ArrayMesh_ug1n6")
+skeleton = NodePath("")
+
+[node name="Bottom RIght" type="MeshInstance3D" parent="level/dirt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 10)
+mesh = SubResource("ArrayMesh_fu5ly")
+skeleton = NodePath("")
+
+[node name="Center" type="MeshInstance3D" parent="level/dirt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 8)
+mesh = SubResource("ArrayMesh_176cr")
+skeleton = NodePath("")
+
+[node name="Center2" type="MeshInstance3D" parent="level/dirt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 8)
+mesh = SubResource("ArrayMesh_176cr")
+skeleton = NodePath("")
+
+[node name="Center3" type="MeshInstance3D" parent="level/dirt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+mesh = SubResource("ArrayMesh_176cr")
+skeleton = NodePath("")
+
+[node name="Center4" type="MeshInstance3D" parent="level/dirt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 8)
+mesh = SubResource("ArrayMesh_176cr")
+skeleton = NodePath("")
+
+[node name="walls" type="Node3D" parent="level"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 0)
+size = Vector3(87, 0.001, 90)
+material = SubResource("StandardMaterial3D_l40gv")
 
 [node name="lights" type="Node3D" parent="."]
 
@@ -4666,3 +4687,39 @@ visible = false
 light_energy = 5.0
 shadow_enabled = true
 omni_range = 15.0
+
+[node name="Goblin Fighter" parent="." instance=ExtResource("7_nq56l")]
+transform = Transform3D(-0.6937915, 0, -0.7201759, 0, 1, 0, 0.7201759, 0, -0.6937915, -8.788973, 0.11045456, -5.61483)
+
+[node name="Goblin Fighter2" parent="." instance=ExtResource("7_nq56l")]
+transform = Transform3D(-0.6937915, 0, -0.7201759, 0, 1, 0, 0.7201759, 0, -0.6937915, -7.3606815, 0.11045456, -8.634265)
+
+[node name="Goblin Fighter3" parent="." instance=ExtResource("7_nq56l")]
+transform = Transform3D(-0.6937915, 0, -0.7201759, 0, 1, 0, 0.7201759, 0, -0.6937915, -4.984293, 0.11045456, -11.811767)
+
+[node name="goblin_skirmisher" parent="." instance=ExtResource("2_d26f2")]
+transform = Transform3D(0.74750835, 0, -0.66425246, 0, 1, 0, 0.66425246, 0, 0.74750835, -9.740515, 0.06771075, 3.1817207)
+
+[node name="goblin_skirmisher2" parent="." instance=ExtResource("2_d26f2")]
+transform = Transform3D(0.74750835, 0, -0.66425246, 0, 1, 0, 0.66425246, 0, 0.74750835, -8.073907, 0.0677117, 9.457345)
+
+[node name="goblin_skirmisher3" parent="." instance=ExtResource("2_d26f2")]
+transform = Transform3D(0.74750835, 0, -0.66425246, 0, 1, 0, 0.66425246, 0, 0.74750835, -5.447117, 0.06771075, 18.277206)
+
+[node name="goblin_skirmisher4" parent="." instance=ExtResource("2_d26f2")]
+transform = Transform3D(0.74750835, 0, -0.66425246, 0, 1, 0, 0.66425246, 0, 0.74750835, 5.00943, 0.0677117, 21.902006)
+
+[node name="kobold_fighter" parent="." instance=ExtResource("8_lolu0")]
+transform = Transform3D(-0.59377, 0, 0.8046348, 0, 1, 0, -0.8046348, 0, -0.59377, 15.493917, 0.051071245, -8.6587515)
+
+[node name="kobold_fighter2" parent="." instance=ExtResource("8_lolu0")]
+transform = Transform3D(-0.92777115, 0, 0.37314975, 0, 1, 0, -0.37314975, 0, -0.92777115, 14.123073, 0.051071245, -14.680137)
+
+[node name="kobold_fighter4" parent="." instance=ExtResource("8_lolu0")]
+transform = Transform3D(-0.7782979, 0, 0.6278952, 0, 1, 0, -0.6278952, 0, -0.7782979, 20.51931, 0.05107029, -12.098482)
+
+[node name="kobold_fighter5" parent="." instance=ExtResource("8_lolu0")]
+transform = Transform3D(-0.7782979, 0, 0.6278952, 0, 1, 0, -0.6278952, 0, -0.7782979, 21.443153, 0.051071245, -6.455469)
+
+[node name="kobold_fighter3" parent="." instance=ExtResource("8_lolu0")]
+transform = Transform3D(-0.988759, 0, -0.14951813, 0, 1, 0, 0.14951813, 0, -0.988759, 7.6344934, 0.051071245, -13.988983)

@@ -35,6 +35,8 @@ func pause() -> void:
 	camera_settings["vertical_angle"] = smart_cam.vertical_angle
 	camera_settings["mouse_mode"] = Input.mouse_mode
 	camera_settings["match_target_rotation"] = smart_cam.match_target_rotation
+	camera_settings["position_offset"] = smart_cam.position_offset
+	camera_settings["rotation_offset"] = smart_cam.rotation_offset
 		
 		
 	can_toggle = false
@@ -54,6 +56,7 @@ func pause() -> void:
 	t.tween_property(smart_cam, "horizontal_angle", CharacterController.active_char.rotation.y / PI * 180 + 15, pause_animation_time)
 	t.tween_property(smart_cam, "vertical_angle", 25.0, pause_animation_time)
 	t.tween_property(smart_cam, "distance", 1.5, pause_animation_time)
+	t.tween_property(smart_cam, "position_offset", Vector3(0,1,0), pause_animation_time)
 	
 	await t.finished
 	can_toggle = true
@@ -78,6 +81,7 @@ func unpause() -> void:
 	t.tween_property(smart_cam, "horizontal_angle", camera_settings["horizontal_angle"], pause_animation_time)
 	t.tween_property(smart_cam, "vertical_angle", camera_settings["vertical_angle"], pause_animation_time)
 	t.tween_property(smart_cam, "distance", camera_settings["distance"], pause_animation_time)
+	t.tween_property(smart_cam, "position_offset", camera_settings["position_offset"], pause_animation_time)
 	
 	await t.finished
 	can_toggle = true

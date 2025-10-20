@@ -21,7 +21,8 @@ enum ControllerType{
 					Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 				if active_cam:
 					active_cam.match_target_rotation = true
-				$mouse_highlight.visible = false
+				if is_node_ready():
+					$mouse_highlight.visible = false
 			ControllerType.CLICK_TO_MOVE:
 				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 				if active_cam:
