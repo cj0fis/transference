@@ -12,5 +12,5 @@ func _enter() -> void:
 func _tick(delta: float) -> Status:
 	if not move_component:
 		return FAILURE
-	move_component.follow_target(CharacterController.active_char, distance)
+	move_component.move_to_char(CharacterController.active_char, distance)
 	return SUCCESS

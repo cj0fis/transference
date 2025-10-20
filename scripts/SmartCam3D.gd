@@ -12,12 +12,16 @@ enum SmartCamMode{
 		match value:
 			SmartCamMode.TOPDOWN:
 				projection = Camera3D.PROJECTION_ORTHOGONAL
+				distance = 7.5
 			SmartCamMode.TRADITIONAL_3D:
 				projection = Camera3D.PROJECTION_PERSPECTIVE
-		distance = distance
+				distance = 4.0
+
 				
 @export var target: Node3D
 @export var smooth_speed: float = 5.0
+
+@export var match_target_rotation: bool = false
 
 @export_range(0.0,90.0,0.5) var vertical_angle: float = 30.0
 @export_range(-180.0, 180.0, 5.0) var horizontal_angle: float = 0.0
@@ -43,13 +47,14 @@ func _ready() -> void:
 	rotation.y = horizontal_angle * PI/180.0 + PI
 
 
-
 func _physics_process(delta: float) -> void:
 	if CharacterController.active_cam == self:
 		if Input.is_action_pressed("left_arrow"):
 			horizontal_angle -= 90.0 * delta
 		if Input.is_action_pressed("right_arrow"):
 			horizontal_angle += 90.0 * delta
+	if Input.is_action_just_pressed("p"):
+		mode = (mode + 1) % SmartCamMode.keys().size()
 		
 		##allows switching between perspective and orthogonal for the camera
 		#if Input.is_action_just_pressed("middle_click") or Input.is_action_just_pressed("p"):
@@ -59,8 +64,8 @@ func _physics_process(delta: float) -> void:
 				#projection = PROJECTION_ORTHOGONAL
 				
 	##Z locks the camera's rotation to the player's rotation
-		#if CharacterController.controller_type == CharacterController.ControllerType.WASD:
-			#horizontal_angle = rad_to_deg(target.rotation.y + PI)
+	if match_target_rotation:
+		horizontal_angle = rad_to_deg(target.rotation.y + PI)
 
 	
 	var lerp_weight = clampf(delta * smooth_speed, 0.0, 1.0)
@@ -80,6 +85,10 @@ func _physics_process(delta: float) -> void:
 		#adjust camera position to account for lerped rotation and offset
 		global_position = target_position + offset
 		
-		
-		
+
+func _unhandled_input(event: InputEvent) -> void:
+	if CharacterController.controller_type != CharacterController.ControllerType.WASD:
+		return
+	if event is InputEventMouseMotion:
+		target.rotation.y -= event.relative.x * 0.002
 	

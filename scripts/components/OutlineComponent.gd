@@ -21,7 +21,7 @@ func _on_mouse_enter() -> void:
 		is_mouse_over = true
 		hover_timer = hover_timeout
 		CharacterController.selected_character = parent
-		print("mouse enter")
+
 	
 func _on_mouse_exit() -> void:
 	if is_mouse_over and parent != CharacterController.active_char:

@@ -1,0 +1,40 @@
+[gd_resource type="BehaviorTree" load_steps=9 format=3 uid="uid://cil0vqx1tvvfx"]
+
+[ext_resource type="Script" uid="uid://ckfskao7vhvh8" path="res://ai/tasks/move_to_active_character.gd" id="1_kcxlh"]
+[ext_resource type="Script" uid="uid://khon8mbh385j" path="res://ai/tasks/await_move.gd" id="4_i4smv"]
+[ext_resource type="Script" uid="uid://5l4e3jgfhlou" path="res://ai/tasks/near_active_char.gd" id="5_a3oey"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_ptu6q"]
+var/target_pos/name = &"target_pos"
+var/target_pos/type = 3
+var/target_pos/value = 0.0
+var/target_pos/hint = 0
+var/target_pos/hint_string = ""
+var/active_char_pos/name = &"active_char_pos"
+var/active_char_pos/type = 3
+var/active_char_pos/value = 0.0
+var/active_char_pos/hint = 0
+var/active_char_pos/hint_string = ""
+var/var/name = &"var"
+var/var/type = 3
+var/var/value = 0.0
+var/var/hint = 0
+var/var/hint_string = ""
+
+[sub_resource type="BTAction" id="BTAction_ooohw"]
+script = ExtResource("1_kcxlh")
+distance = 1.0
+
+[sub_resource type="BTAction" id="BTAction_7yi7i"]
+script = ExtResource("4_i4smv")
+
+[sub_resource type="BTAction" id="BTAction_jvxpb"]
+script = ExtResource("5_a3oey")
+distance = 2
+
+[sub_resource type="BTSequence" id="BTSequence_kwuiy"]
+children = [SubResource("BTAction_ooohw"), SubResource("BTAction_7yi7i"), SubResource("BTAction_jvxpb")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_ptu6q")
+root_task = SubResource("BTSequence_kwuiy")

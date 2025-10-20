@@ -3626,7 +3626,7 @@ shadow_enabled = true
 [node name="characters" type="Node3D" parent="."]
 
 [node name="goblin_skirmisher" parent="characters" instance=ExtResource("2_0ot6t")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 12.526083, 0, 7.4340277)
+transform = Transform3D(-0.6063354, 0, -0.79520905, 0, 1, 0, 0.79520905, 0, -0.6063354, 13.540548, 0, 14.36457)
 
 [node name="Goblin Fighter" parent="characters" instance=ExtResource("6_n6pox")]
 transform = Transform3D(0.8958436, 0, -0.4443694, 0, 1, 0, 0.4443694, 0, 0.8958436, 13.592354, -9.536743e-07, 16.624374)

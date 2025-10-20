@@ -8,15 +8,25 @@ enum ControllerType{
 	WASD
 }
 
+@export var look_at_mouse: bool = true
+
 @export var controller_type: ControllerType = ControllerType.CLICK_TO_MOVE:
 	set(value):
 		controller_type = value
 		match value:
 			ControllerType.WASD:
 				if movement:
-					movement.look_mode = MovementComponent.LookMode.NODE
-					movement.target_node = $mouse_highlight
 					movement.move_mode = MovementComponent.MoveMode.NONE
+					movement.look_mode = MovementComponent.LookMode.NONE
+					Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+				if active_cam:
+					active_cam.match_target_rotation = true
+				$mouse_highlight.visible = false
+			ControllerType.CLICK_TO_MOVE:
+				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+				if active_cam:
+					active_cam.match_target_rotation = false
+					
 
 
 var active_char: Character3D = null
@@ -63,6 +73,7 @@ func _ready() -> void:
 	soul_mesh.top_level = true
 	soul_mesh.visible = false
 	add_child(soul_mesh)
+	controller_type = controller_type	#call the setter function again, as it effects some other nodes
 	
 #handles everything involved in swapping bodies
 func bodyswap(character: Character3D) -> void:
@@ -94,12 +105,14 @@ func exit_soul_mode() -> void:
 	if active_char:		#only stop the character once body swap is complete. this looks cooler in slomo
 		active_char.velocity = Vector3.ZERO
 		active_char.use_ai = true
+		active_char.state_machine.enabled = true
 	active_char = next_active_char
+	active_char.state_machine.enabled = false
 	active_char.use_ai = false
 	movement = active_char.get_component(MovementComponent)
 	if controller_type == ControllerType.WASD:
-		movement.look_mode = MovementComponent.LookMode.NODE
-		movement.target_node = $mouse_highlight
+		#movement.look_mode = MovementComponent.LookMode.NODE
+		#movement.target_node = $mouse_highlight
 		movement.move_mode = MovementComponent.MoveMode.NONE
 	char_state = active_char.get_component(StateComponent)
 	if active_cam:
@@ -129,32 +142,36 @@ func _physics_process(delta: float) -> void:
 		#print("swap random")
 		#bodyswap(rand_char)
 	
+	if Input.is_action_just_pressed("o"):
+		controller_type = (controller_type + 1) % ControllerType.keys().size()
+	
 	if Input.is_action_just_pressed("space"):
 		movement.jump_backwards()
 	
 	
 	if Input.is_action_just_pressed("left_click"):
 			char_state.toggle_stance()
-	var mouse_world_pos = get_mouse_world_hit()
-	if mouse_world_pos != null and mouse_world_pos.distance_to(active_char.global_position) > 0.1:
-		$mouse_highlight.visible = not selected_character		#invisible if selected_character is not null
-		$mouse_highlight.global_position = mouse_world_pos + Vector3(0,0.1,0)
-	else:
-		$mouse_highlight.visible = false
+	
 		
 	match controller_type:
 		ControllerType.CLICK_TO_MOVE:
-
-				if Input.is_action_pressed("right_click"):
-					if selected_character and selected_character != active_char:
-						movement.move_to_pos(selected_character.global_position, 1.0)
-					else:
-						movement.move_to_pos(mouse_world_pos, 0.05)
+			var mouse_world_pos = get_mouse_world_hit()
+			if mouse_world_pos != null and mouse_world_pos.distance_to(active_char.global_position) > 0.1:
+				$mouse_highlight.visible = not selected_character		#invisible if selected_character is not null
+				$mouse_highlight.global_position = mouse_world_pos + Vector3(0,0.1,0)
+			else:
+				$mouse_highlight.visible = false
+			
+			if Input.is_action_pressed("right_click"):
+				if selected_character and selected_character != active_char:
+					movement.move_to_pos(selected_character.global_position, 1.0)
+				elif mouse_world_pos:
+					movement.move_to_pos(mouse_world_pos, 0.05)
 
 		ControllerType.WASD:
 			var input_dir = Vector3(Input.get_axis("move_west", "move_east"), 0, Input.get_axis("move_north", "move_south"))
-			active_char.velocity = input_dir.rotated(Vector3.UP, active_cam.rotation.y) * movement.move_speed
-
+			active_char.velocity = input_dir.rotated(Vector3.UP, active_char.rotation.y) * movement.move_speed
+			
 
 	if char_state.attack_stance:
 		if Input.is_action_just_pressed("right_click"):

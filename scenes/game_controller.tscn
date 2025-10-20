@@ -1,10 +1,9 @@
-[gd_scene load_steps=20 format=4 uid="uid://cuj5hwa6y1che"]
+[gd_scene load_steps=23 format=4 uid="uid://cuj5hwa6y1che"]
 
 [ext_resource type="Script" uid="uid://bp5bwuv6kyprb" path="res://scripts/global/game_controller.gd" id="1_vq0e2"]
 [ext_resource type="Script" uid="uid://cswm1qu1263m2" path="res://scripts/SmartCam3D.gd" id="2_ts4rt"]
 [ext_resource type="Shader" uid="uid://dhoago6pts7v5" path="res://assets/shaders and materials/screen_effects.gdshader" id="3_rc0pn"]
 [ext_resource type="Environment" uid="uid://cs3s7nrh6oj83" path="res://assets/dark_environment.tres" id="4_rc0pn"]
-[ext_resource type="PackedScene" uid="uid://osb5gev1acp3" path="res://scenes/levels/dungeon_room.tscn" id="5_1awvl"]
 [ext_resource type="Texture2D" uid="uid://bodmaemsklg35" path="res://assets/ui/Keyboard & Mouse Icons.png" id="5_burlk"]
 [ext_resource type="Script" uid="uid://dgcjo1ofqrmbt" path="res://scenes/ui_manager.gd" id="5_d6ul8"]
 [ext_resource type="Theme" uid="uid://2i0mvbnu3xr6" path="res://assets/ui/ui_theme.tres" id="8_1awvl"]
@@ -20,16 +19,34 @@ render_priority = 0
 shader = ExtResource("3_rc0pn")
 shader_parameter/scale = 2.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtg6w"]
+atlas = ExtResource("5_burlk")
+region = Rect2(160, 48, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_h0hye"]
 atlas = ExtResource("5_burlk")
-region = Rect2(496, 128, 16, 16)
+region = Rect2(160, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1awvl"]
+atlas = ExtResource("5_burlk")
+region = Rect2(144, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_burlk"]
 atlas = ExtResource("5_burlk")
 region = Rect2(480, 128, 16, 16)
 
+[sub_resource type="Gradient" id="Gradient_1awvl"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kredl"]
+gradient = SubResource("Gradient_1awvl")
+fill = 1
+fill_from = Vector2(0.7065527, 0.6125356)
+fill_to = Vector2(0.4017094, 0.87464386)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1awvl"]
 shader = ExtResource("8_qtg6w")
+shader_parameter/blur_mask = SubResource("GradientTexture2D_kredl")
 shader_parameter/amount = 0.0
 shader_parameter/dim = 0.0
 
@@ -102,7 +119,7 @@ size = 9.889
 script = ExtResource("2_ts4rt")
 smooth_speed = 15.0
 horizontal_angle = 45.0
-distance = 5.27
+distance = 7.5
 
 [node name="screen filter" type="MeshInstance3D" parent="GUI/SubViewportContainer/SubViewport/World3D/smart_cam"]
 transform = Transform3D(0.9999997, 7.553467e-09, 2.3841858e-07, 1.0430813e-07, 0.8660254, -0.49999985, 0, 0.5, 0.86602527, -0.38272715, 0.47087812, -0.7490616)
@@ -120,8 +137,6 @@ spot_angle = 14.305193
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="GUI/SubViewportContainer/SubViewport/World3D"]
 environment = ExtResource("4_rc0pn")
-
-[node name="dungeon_room" parent="GUI/SubViewportContainer/SubViewport/World3D" instance=ExtResource("5_1awvl")]
 
 [node name="HUD" type="Control" parent="GUI"]
 process_mode = 3
@@ -146,17 +161,51 @@ theme_override_constants/separation = 32
 alignment = 1
 
 [node name="move" type="HBoxContainer" parent="GUI/HUD/Controls Display"]
+visible = false
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="GUI/HUD/Controls Display/move"]
 layout_mode = 2
-texture = SubResource("AtlasTexture_h0hye")
+texture = SubResource("AtlasTexture_qtg6w")
 expand_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="GUI/HUD/Controls Display/move"]
 layout_mode = 2
 theme = ExtResource("8_1awvl")
 text = "Move
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="perspective" type="HBoxContainer" parent="GUI/HUD/Controls Display"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="GUI/HUD/Controls Display/perspective"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_h0hye")
+expand_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI/HUD/Controls Display/perspective"]
+layout_mode = 2
+theme = ExtResource("8_1awvl")
+text = "change perspective"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="controls" type="HBoxContainer" parent="GUI/HUD/Controls Display"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="GUI/HUD/Controls Display/controls"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_1awvl")
+expand_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GUI/HUD/Controls Display/controls"]
+layout_mode = 2
+theme = ExtResource("8_1awvl")
+text = "change controls
 "
 fit_content = true
 scroll_active = false
@@ -173,7 +222,7 @@ expand_mode = 2
 [node name="RichTextLabel" type="RichTextLabel" parent="GUI/HUD/Controls Display/stance"]
 layout_mode = 2
 theme = ExtResource("8_1awvl")
-text = "Change Stance"
+text = "change Stance"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
