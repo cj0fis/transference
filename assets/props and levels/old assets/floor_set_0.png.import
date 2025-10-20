@@ -2,21 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhhvs2xla757d"
-path.s3tc="res://.godot/imported/floor_tileset2.png-c7ec1cd0cc6862fd24f730c6dcb104a1.s3tc.ctex"
+uid="uid://h3n2r3oggepx"
+path="res://.godot/imported/floor_set_0.png-8296fd8ae853ebbaeac6762c08d126a8.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
+}
+generator_parameters={
+"md5": "7bf33bd1e63129a0c212c201f18330db"
 }
 
 [deps]
 
-source_file="res://assets/props and levels/floor_tileset2.png"
-dest_files=["res://.godot/imported/floor_tileset2.png-c7ec1cd0cc6862fd24f730c6dcb104a1.s3tc.ctex"]
+source_file="res://assets/props and levels/old assets/floor_set_0.png"
+dest_files=["res://.godot/imported/floor_set_0.png-8296fd8ae853ebbaeac6762c08d126a8.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

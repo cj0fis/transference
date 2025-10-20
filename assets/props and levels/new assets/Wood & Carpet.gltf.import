@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c5ostk3e045ui"
-path="res://.godot/imported/walls.gltf-74fdbaeceb110d0f2f08906d909b8e96.scn"
+uid="uid://cclic8uw23svc"
+path="res://.godot/imported/Wood & Carpet.gltf-65736dc09271ca3073f6d9a47424d9be.scn"
 
 [deps]
 
-source_file="res://assets/props and levels/walls.gltf"
-dest_files=["res://.godot/imported/walls.gltf-74fdbaeceb110d0f2f08906d909b8e96.scn"]
+source_file="res://assets/props and levels/new assets/Wood & Carpet.gltf"
+dest_files=["res://.godot/imported/Wood & Carpet.gltf-65736dc09271ca3073f6d9a47424d9be.scn"]
 
 [params]
 

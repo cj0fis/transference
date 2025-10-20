@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c30wq52j8mt0l"
-path="res://.godot/imported/Wall Tile Set.gltf-bf5c154c5bde372f6fc326d24a192043.scn"
+uid="uid://b6ro4urww672v"
+path="res://.godot/imported/Dining Table.gltf-9687aad14b670ba511ad441d67f0c728.scn"
 
 [deps]
 
-source_file="res://assets/props and levels/Wall Tile Set.gltf"
-dest_files=["res://.godot/imported/Wall Tile Set.gltf-bf5c154c5bde372f6fc326d24a192043.scn"]
+source_file="res://assets/props and levels/new assets/Dining Table.gltf"
+dest_files=["res://.godot/imported/Dining Table.gltf-9687aad14b670ba511ad441d67f0c728.scn"]
 
 [params]
 

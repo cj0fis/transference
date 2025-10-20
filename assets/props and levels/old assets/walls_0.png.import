@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g1i0gus1yt8h"
-path.s3tc="res://.godot/imported/Wall Tile Set_0.png-0c70c7eb4e4ef46e3fbdca86fc6353c3.s3tc.ctex"
+uid="uid://cnhf0dkykg0ew"
+path.s3tc="res://.godot/imported/walls_0.png-ae637fb58d9e04568b163603a04ee624.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "cfcd9652fe883f4b6543882a21d44a8c"
+"md5": "25e9b275b9ffc614d194627bf19d3d29"
 }
 
 [deps]
 
-source_file="res://assets/props and levels/Wall Tile Set_0.png"
-dest_files=["res://.godot/imported/Wall Tile Set_0.png-0c70c7eb4e4ef46e3fbdca86fc6353c3.s3tc.ctex"]
+source_file="res://assets/props and levels/old assets/walls_0.png"
+dest_files=["res://.godot/imported/walls_0.png-ae637fb58d9e04568b163603a04ee624.s3tc.ctex"]
 
 [params]
 

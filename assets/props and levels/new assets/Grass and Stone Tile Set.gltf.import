@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://x4if5pxb3mk4"
-path="res://.godot/imported/Wood & Carpet.gltf-c124afb5f15314f3ec85aa7acebd1bc1.scn"
+uid="uid://j37jx1m7hugx"
+path="res://.godot/imported/Grass and Stone Tile Set.gltf-ff1a56452d068f8371d718a57c727f0b.scn"
 
 [deps]
 
-source_file="res://assets/props and levels/Wood & Carpet.gltf"
-dest_files=["res://.godot/imported/Wood & Carpet.gltf-c124afb5f15314f3ec85aa7acebd1bc1.scn"]
+source_file="res://assets/props and levels/new assets/Grass and Stone Tile Set.gltf"
+dest_files=["res://.godot/imported/Grass and Stone Tile Set.gltf-ff1a56452d068f8371d718a57c727f0b.scn"]
 
 [params]
 

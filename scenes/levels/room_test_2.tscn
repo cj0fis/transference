@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dxmmtuf7qc5ry" path="res://scenes/levels/Level3D.tscn" id="1_agvsp"]
 [ext_resource type="PackedScene" uid="uid://beniili1qlklo" path="res://scenes/goblins/goblin_skirmisher/goblin_skirmisher.tscn" id="3_3hgjq"]
-[ext_resource type="Texture2D" uid="uid://h3n2r3oggepx" path="res://assets/props and levels/floor_set_0.png" id="3_iyhy2"]
+[ext_resource type="Texture2D" uid="uid://h3n2r3oggepx" path="res://assets/props and levels/old assets/floor_set_0.png" id="3_iyhy2"]
 [ext_resource type="PackedScene" uid="uid://me14lg4tr321" path="res://scenes/goblins/goblin_fighter/goblin_fighter.tscn" id="4_iyhy2"]
 [ext_resource type="PackedScene" uid="uid://c32ag4wrs3hqu" path="res://scenes/kobolds/kobold_fighter/kobold_fighter.tscn" id="5_r8243"]
 
@@ -318,7 +318,6 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7lc6b")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lwl77"]
-load_path = "res://.godot/imported/Floor Tile Set_0.png-d8cc4d23409d0d427ae5e9c604d5acfb.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bunpk"]
 resource_name = "material_0"

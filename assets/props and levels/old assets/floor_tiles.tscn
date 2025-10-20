@@ -1,6 +1,7 @@
 [gd_scene load_steps=129 format=4 uid="uid://qnpi4x1pd8ys"]
 
-[ext_resource type="Texture2D" uid="uid://h3n2r3oggepx" path="res://assets/props and levels/floor_set_0.png" id="1_wbg4k"]
+[ext_resource type="Texture2D" uid="uid://h3n2r3oggepx" path="res://assets/props and levels/old assets/floor_set_0.png" id="1_wbg4k"]
+
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m3hci"]
 resource_name = "material_0"
