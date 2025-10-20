@@ -1,3 +1,6 @@
+CollisionShape3D
+StaticBody3D
+OmniLight3D
 Node3D
 Button
 VBoxContainer
@@ -10,5 +13,3 @@ RichTextLabel
 TextureRect
 Control
 TextureButton
-HBoxContainer
-HFlowContainer

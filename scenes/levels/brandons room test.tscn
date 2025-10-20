@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=4 uid="uid://c1hgckcvuxoyi"]
+[gd_scene load_steps=66 format=4 uid="uid://dbrbc81n1dyb2"]
 
 [ext_resource type="PackedScene" uid="uid://cclic8uw23svc" path="res://assets/props and levels/new assets/Wood & Carpet.gltf" id="1_l613n"]
 [ext_resource type="PackedScene" uid="uid://bdi7os3r0rbau" path="res://assets/props and levels/new assets/Wall Tile Set.gltf" id="2_eesu6"]
@@ -844,6 +844,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_fmn4r")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_tsflt"]
+size = Vector3(100, 1, 100)
+
 [node name="BrandonsRoomTest" type="Node3D"]
 
 [node name="Node3D" type="Node3D" parent="."]
@@ -876,6 +879,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 
 [node name="group2" type="Node3D" parent="blockbench_export6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5.9375)
+visible = false
 
 [node name="Node3D" type="Node3D" parent="blockbench_export6/group2"]
 
@@ -2954,11 +2958,44 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6, 0
 [node name="Node3D2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
 
+[node name="Goblin Fighter" parent="." instance=ExtResource("11_a8anm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.072706, -0.010820389, 4.408741)
+
 [node name="kobold_fighter" parent="." instance=ExtResource("9_tsflt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.3008, 0, 4.35711)
 
 [node name="goblin_skirmisher" parent="." instance=ExtResource("10_w8pgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.99849, 0, 4.3837957)
 
-[node name="Goblin Fighter" parent="." instance=ExtResource("11_a8anm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.072706, -0.010820389, 4.408741)
+[node name="lights" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.902786, 4.191755, 4.501734)
+light_color = Color(1, 0.82281584, 0.70946205, 1)
+light_energy = 5.0
+omni_range = 20.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.902786, 4.191755, -8.048289)
+light_color = Color(1, 0.82281584, 0.70946205, 1)
+light_energy = 5.0
+omni_range = 20.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0182867, 4.191755, -8.048289)
+light_color = Color(1, 0.82281584, 0.70946205, 1)
+light_energy = 5.0
+omni_range = 20.0
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0182867, 4.191755, 4.2637787)
+light_color = Color(1, 0.82281584, 0.70946205, 1)
+light_energy = 5.0
+omni_range = 20.0
+
+[node name="floor collider" type="StaticBody3D" parent="."]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor collider"]
+shape = SubResource("BoxShape3D_tsflt")
