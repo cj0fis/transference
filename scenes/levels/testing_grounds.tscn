@@ -1,4 +1,4 @@
-[gd_scene load_steps=252 format=4 uid="uid://cd6iv2rg3h1x5"]
+[gd_scene load_steps=255 format=4 uid="uid://deiwjcmtojq1w"]
 
 [ext_resource type="Texture2D" uid="uid://d4iywk3ifhrjo" path="res://assets/props and levels/Wall Tile Set_0.png" id="1_na0ux"]
 [ext_resource type="PackedScene" uid="uid://beniili1qlklo" path="res://scenes/goblins/goblin_skirmisher/goblin_skirmisher.tscn" id="2_d26f2"]
@@ -3822,6 +3822,15 @@ uv1_offset = Vector3(-0.62, 0, 0)
 uv1_triplanar = true
 texture_filter = 0
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lolu0"]
+data = PackedVector3Array(-43.5, -0.0005, 45, -43.5, -0.0005, -45, -43.5, 0.0005, -45, 43.5, -0.0005, -45, -43.5, -0.0005, -45, -43.5, -0.0005, 45, -43.5, 0.0005, -45, -43.5, -0.0005, -45, 43.5, -0.0005, -45, -43.5, 0.0005, -45, -43.5, 0.0005, 45, -43.5, -0.0005, 45, -43.5, -0.0005, 45, -43.5, 0.0005, 45, 43.5, 0.0005, 45, 43.5, 0.0005, 45, -43.5, 0.0005, 45, -43.5, 0.0005, -45, -43.5, -0.0005, 45, 43.5, -0.0005, 45, 43.5, -0.0005, -45, 43.5, 0.0005, 45, 43.5, -0.0005, 45, -43.5, -0.0005, 45, 43.5, -0.0005, -45, 43.5, -0.0005, 45, 43.5, 0.0005, 45, 43.5, -0.0005, -45, 43.5, 0.0005, -45, -43.5, 0.0005, -45, -43.5, 0.0005, -45, 43.5, 0.0005, -45, 43.5, 0.0005, 45, 43.5, 0.0005, 45, 43.5, 0.0005, -45, 43.5, -0.0005, -45)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_cy2d7"]
+data = PackedVector3Array(-12.5, -2, 12.5, -12.5, -2, -12.5, -12.5, 2, -12.5, 12.5, -2, -12.5, -12.5, -2, -12.5, -12.5, -2, 12.5, -12.5, 2, -12.5, -12.5, -2, -12.5, 12.5, -2, -12.5, -12.5, 2, -12.5, -12.5, 2, 12.5, -12.5, -2, 12.5, -12.5, -2, 12.5, -12.5, 2, 12.5, 12.5, 2, 12.5, 12.5, 2, 12.5, -12.5, 2, 12.5, -12.5, 2, -12.5, -12.5, -2, 12.5, 12.5, -2, 12.5, 12.5, -2, -12.5, 12.5, 2, 12.5, 12.5, -2, 12.5, -12.5, -2, 12.5, 12.5, -2, -12.5, 12.5, -2, 12.5, 12.5, 2, 12.5, 12.5, -2, -12.5, 12.5, 2, -12.5, -12.5, 2, -12.5, -12.5, 2, -12.5, 12.5, 2, -12.5, 12.5, 2, 12.5, 12.5, 2, 12.5, 12.5, 2, -12.5, 12.5, -2, -12.5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_d4i26"]
+data = PackedVector3Array(0, -2, 0, 0, -2, -25, 0, 0, -25, 0, 0, -25, 0, -2, -25, 8, -2, -25, 0, 0, -25, 0, 0, 0, 0, -2, 0, 0, -2, -25, 0, -2, 0, 8, -2, 0, 8, -2, 0, 0, -2, 0, 0, 0, 0, 0, 0, 0, 0, 0, -25, 0, 2, -25, 8, -2, -25, 0, 2, -25, 0, 0, -25, 0, 2, 0, 0, 2, -25, 8, -2, -25, 0, 2, -25, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 8, -2, 0, 8, -2, 0, 8, -2, -25, 0, -2, -25, 8, -2, -25, 8, -2, 0, 0, 2, 0)
+
 [node name="TESTING GROUNDS" type="Node3D"]
 
 [node name="BrandonsRoomTest" type="Node3D" parent="."]
@@ -4475,12 +4484,14 @@ mesh = SubResource("ArrayMesh_hastw")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.189219, 0, 0)
 collision_layer = 5
 collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="level/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025390625, 0)
 shape = SubResource("BoxShape3D_l40gv")
+disabled = true
 
 [node name="dirt" type="Node3D" parent="level"]
 
@@ -4668,10 +4679,44 @@ skeleton = NodePath("")
 
 [node name="walls" type="Node3D" parent="level"]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="level"]
+[node name="csg" type="Node3D" parent="level"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="level/csg"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 0)
 size = Vector3(87, 0.001, 90)
 material = SubResource("StandardMaterial3D_l40gv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="level/csg/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 0)
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="level/csg/CSGBox3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_lolu0")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="level/csg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 2, 31)
+size = Vector3(25, 4, 25)
+material = SubResource("StandardMaterial3D_l40gv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="level/csg/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 0)
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="level/csg/CSGBox3D2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_cy2d7")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="level/csg"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.495989, 2.0347164, 43.466698)
+polygon = PackedVector2Array(0, 0, 0, 2, 8, -2, 0, -2)
+depth = 25.0
+material = SubResource("StandardMaterial3D_l40gv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="level/csg/CSGPolygon3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 0, 0)
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="level/csg/CSGPolygon3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_d4i26")
 
 [node name="lights" type="Node3D" parent="."]
 
@@ -4704,7 +4749,7 @@ transform = Transform3D(0.74750835, 0, -0.66425246, 0, 1, 0, 0.66425246, 0, 0.74
 transform = Transform3D(0.74750835, 0, -0.66425246, 0, 1, 0, 0.66425246, 0, 0.74750835, -8.073907, 0.0677117, 9.457345)
 
 [node name="goblin_skirmisher3" parent="." instance=ExtResource("2_d26f2")]
-transform = Transform3D(0.74750835, 0, -0.66425246, 0, 1, 0, 0.66425246, 0, 0.74750835, -5.447117, 0.06771075, 18.277206)
+transform = Transform3D(0.74750835, 0, -0.66425246, 0, 1, 0, 0.66425246, 0, 0.74750835, -2.9449594, 0.06771075, 15.409502)
 
 [node name="goblin_skirmisher4" parent="." instance=ExtResource("2_d26f2")]
 transform = Transform3D(0.74750835, 0, -0.66425246, 0, 1, 0, 0.66425246, 0, 0.74750835, 5.00943, 0.0677117, 21.902006)

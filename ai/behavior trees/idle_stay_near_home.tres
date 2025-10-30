@@ -20,7 +20,6 @@ var/target_pos/hint_string = ""
 
 [sub_resource type="BTAction" id="BTAction_cq0uy"]
 script = ExtResource("1_j05r4")
-output_var = "spawn_position"
 
 [sub_resource type="BTRunLimit" id="BTRunLimit_3rne0"]
 children = [SubResource("BTAction_cq0uy")]
@@ -34,12 +33,9 @@ script = ExtResource("2_cq0uy")
 [sub_resource type="BTAction" id="BTAction_mcvv0"]
 script = ExtResource("3_3rne0")
 max_distance = 3.0
-origin_var = "spawn_position"
-output_var = "target_pos"
 
 [sub_resource type="BTAction" id="BTAction_xnn55"]
 script = ExtResource("4_tlepx")
-position_var = "target_pos"
 
 [sub_resource type="BTAction" id="BTAction_lurtl"]
 script = ExtResource("5_ybc4u")

@@ -16,8 +16,8 @@ enum SmartCamMode{
 				vertical_angle = 30.0
 			SmartCamMode.TRADITIONAL_3D:
 				projection = Camera3D.PROJECTION_PERSPECTIVE
-				distance = 3.0
-				vertical_angle = 30.0
+				distance = 7.5
+				vertical_angle = 20.0
 
 				
 @export var target: Node3D
@@ -68,7 +68,7 @@ func _physics_process(delta: float) -> void:
 				#projection = PROJECTION_ORTHOGONAL
 				
 	##Z locks the camera's rotation to the player's rotation
-	if match_target_rotation:
+	if match_target_rotation and target:
 		horizontal_angle = rad_to_deg(target.rotation.y + PI)
 
 	
@@ -91,7 +91,7 @@ func _physics_process(delta: float) -> void:
 		
 
 func _unhandled_input(event: InputEvent) -> void:
-	if CharacterController.controller_type != CharacterController.ControllerType.WASD:
+	if CharacterController.controller_type != CharacterController.ControllerType.WASD or CharacterController.char_state.attack_stance:
 		return
 	if event is InputEventMouseMotion:
 		target.rotation.y -= event.relative.x * 0.002

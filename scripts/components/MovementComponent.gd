@@ -70,27 +70,26 @@ func stop() -> void:
 	target_position = parent.global_position
 	target_node = null
 	target_reached = true
-	
-func jump() -> void:
-	if is_midair:
+var look_mode_before_jump: LookMode
+func jump(relative_direction: Vector3 = Vector3.FORWARD, angle_degrees: float = 45.0, speed: float = 10.0) -> void:
+	if is_midair or relative_direction.length() == 0:
 		return
-	
+	look_mode_before_jump = look_mode
 	move_mode = MoveMode.NONE
-	look_mode = LookMode.VELOCITY
+	look_mode = LookMode.NONE
 	
-	var jump_direction = -parent.global_transform.basis.z
-	parent.velocity = jump_direction * 4
-	parent.velocity.y  = 1.5
+	var angle = deg_to_rad(angle_degrees)
+	var jump_direction = parent.global_transform.basis * relative_direction.normalized()
+	
+	var horizontal_speed = cos(angle) * speed
+	var vertical_speed = sin(angle) * speed
+	
+	parent.velocity.x = jump_direction.x * horizontal_speed
+	parent.velocity.z = jump_direction.z * horizontal_speed
+	parent.velocity.y  = vertical_speed
 
 	
-func jump_backwards() -> void:
-	if is_midair:
-		return
-	
-	move_mode = MoveMode.NONE
-	var jump_direction = parent.global_transform.basis.z
-	parent.velocity = jump_direction * 4
-	parent.velocity.y  = 1.5
+
 
 
 func _physics_process(delta: float) -> void:
@@ -101,7 +100,7 @@ func _physics_process(delta: float) -> void:
 		MoveMode.NONE:
 			pass
 		MoveMode.NODE:
-			if parent.global_position.distance_to(target_node.global_position) > target_margin and not move_lock:
+			if target_node and parent.global_position.distance_to(target_node.global_position) > target_margin and not move_lock:
 				parent.velocity = (target_node.global_position - parent.global_position).normalized() * speed * Vector3(1,0,1)
 			else:
 				parent.velocity = Vector3.ZERO
@@ -136,7 +135,7 @@ func _physics_process(delta: float) -> void:
 		LookMode.NODE:
 			if target_node:
 				var target_rotation = atan2(target_node.global_position.x-parent.global_position.x, target_node.global_position.z-parent.global_position.z) + PI
-				parent.rotation.y = lerp_angle(parent.rotation.y, target_rotation, 0.2)
+				parent.rotation.y = lerp_angle(parent.rotation.y, target_rotation, 0.8)
 		LookMode.POSITION:
 			var target_rotation = atan2(target_position.x-parent.global_position.x, target_position.z-parent.global_position.z) + PI
 			parent.rotation.y = lerp_angle(parent.rotation.y, target_rotation, 0.2)
@@ -151,6 +150,7 @@ func _physics_process(delta: float) -> void:
 	#var just_landed = false
 	if not is_on_floor:
 		parent.velocity.y -= delta * 5
+		#print("applying gravity: ", parent.velocity.y)
 	else:
 		if parent.velocity.y < 0:		#y is only negative on the floor if the character just landed. it is safe to set all velocity to 0
 			parent.velocity.y = 0
@@ -161,14 +161,14 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_floor and not was_on_floor:
 		just_landed = true
-		
+		look_mode = look_mode_before_jump
 		parent.velocity = Vector3.ZERO;
 	else:
 		just_landed = false
 	was_on_floor = is_on_floor
 	
 	
-	is_moving = parent.velocity.x != 0 or parent.velocity.y != 0
+	is_moving = Vector2(parent.velocity.x, parent.velocity.z).length() < 0.01
 	is_jumping = parent.velocity.y >= 0 and not is_on_floor
 	is_falling = parent.velocity.y < 0 and not is_on_floor
 	is_midair = not is_on_floor

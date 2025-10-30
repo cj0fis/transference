@@ -15,6 +15,7 @@ class_name GameController extends Node
 @onready var world_2d: Node2D = $GUI/SubViewportContainer/SubViewport/World2D
 @onready var sub_viewport: SubViewport = $GUI/SubViewportContainer/SubViewport
 @onready var persisted_scenes: Node3D = $GUI/SubViewportContainer/SubViewport/PersistedScenes
+@onready var background_gui: Control = $BackgroundGUI
 @onready var global_audio: AudioStreamPlayer = $GlobalAudio
 
 var current_3d_scene: Node3D
@@ -32,6 +33,9 @@ func _ready() -> void:
 	GlobalManager.game_controller = self
 	change_3d_scene("res://scenes/levels/testing_grounds.tscn")
 
+
+
+
 #holds references to which scenes are being kept in the background
 var persisted_dict: Dictionary[String, Node3D]
 func change_2d_scene(new_scene: String) -> void:
@@ -41,41 +45,41 @@ func change_2d_scene(new_scene: String) -> void:
 			world_2d.remove_child(current_2d_scene)
 			persisted_scenes.add_child(current_2d_scene)
 			current_2d_scene.process_mode = Node.PROCESS_MODE_DISABLED
-			#persisted_dict[current_2d_path] = current_2d_scene
-		#else:
-			#if current_2d_scene is Level:
-				#current_2d_scene.exit()
-			#current_2d_scene.queue_free() #removes the node from memory
-	
-	#if new_scene in persisted_dict:
-		#var reused_scene = persisted_dict[new_scene]
-		#persisted_scenes.remove_child(reused_scene)
-		#world_2d.add_child(reused_scene)
-		#reused_scene.process_mode = Node.PROCESS_MODE_INHERIT
-		#current_2d_scene = reused_scene
-		#current_2d_scene.global_position = Vector2.ZERO	#reset the offset position
-		#persisted_dict.erase(new_scene)
 	#else:
 	var new = load(new_scene).instantiate()
 	world_2d.add_child(new)
 	current_2d_scene = new
-	#if current_2d_scene is Level:
-		#current_2d_scene.enter()
 	current_2d_path = new_scene
+
+var last_loaded_gui_path = ""
+
+func show_gui_scene(gui_scene: String) -> void:
+	last_loaded_gui_path = gui_scene
+	var new_gui = load(gui_scene).instantiate()
+	gui.add_child(new_gui)
+
 	
-func change_gui_scene(new_scene: String, delete: bool = true, keep_running: bool = false) -> void:
-	if current_gui_scene != null:
-		if delete:
-			current_gui_scene.queue_free() #removes the node from memory
-		elif keep_running:
-			current_gui_scene.visible = false #keeps in memory and running
-		else:
-			gui.remove_child(current_gui_scene) #keeps in memory, does not run
-	var new = load(new_scene).instantiate()
-	gui.add_child(new)
-	current_gui_scene = new
+func hide_gui_scene() -> void:
+	var gui_node: Control = gui.get_children().back()
+	gui.remove_child(gui_node)
+
+
+#func change_gui_scene(new_scene: String, delete: bool = true, keep_running: bool = false) -> void:
+	#if current_gui_scene != null:
+		#if delete:
+			#current_gui_scene.queue_free() #removes the node from memory
+		#elif keep_running:
+			#current_gui_scene.visible = false #keeps in memory and running
+		#else:
+			#gui.remove_child(current_gui_scene) #keeps in memory, does not run
+	#var new = load(new_scene).instantiate()
+	#gui.add_child(new)
+	#current_gui_scene = new
 	
 func change_3d_scene(new_scene: String) -> void:
+	if new_scene == "":
+		world_3d.remove_child(world_3d.get_children().back())
+		return
 	if current_3d_scene != null:
 		if current_3d_scene.game_state_persists:
 			current_3d_scene.process_mode = Node.PROCESS_MODE_DISABLED

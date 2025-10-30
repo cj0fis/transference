@@ -70,7 +70,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		attack_cooldown = 0
 		
-	if parent.velocity.x == 0 and parent.velocity.z == 0:
+	if (parent.use_ai and move_component.is_moving) or (not parent.use_ai and parent.velocity.length() < 0.5):
 		parent.animation_tree.set("parameters/movement/transition_request", "idle")
 	else:
 		parent.animation_tree.set("parameters/movement/transition_request", "move")

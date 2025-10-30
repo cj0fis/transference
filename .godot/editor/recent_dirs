@@ -1,14 +1,16 @@
+res://scenes
+res://scripts/global
+res://scenes/menus
+res://assets/art
 res://assets/shaders and materials
 res://scenes/levels
 res://scripts/states
 res://scripts
 res://ai/behavior trees
-res://scenes
 res://scripts/components
 res://scenes/goblins/goblin_skirmisher
 res://assets/props and levels
 res://assets
-res://scripts/global
 res://scenes/kobolds/kobold_skirmisher
 res://
 res://scenes/goblins/goblin_fighter

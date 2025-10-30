@@ -1,0 +1,98 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwnuuspvldkqq"]
+
+[ext_resource type="Theme" uid="uid://2i0mvbnu3xr6" path="res://assets/ui/ui_theme.tres" id="1_xqga4"]
+
+[sub_resource type="GDScript" id="GDScript_xqga4"]
+resource_name = "main_menu_handler"
+script/source = "extends Control
+
+@onready var new_game: Button = $\"Panel/VBoxContainer/CenterContainer/VBoxContainer/New Game\"
+@onready var load_game: Button = $\"Panel/VBoxContainer/CenterContainer/VBoxContainer/Load Game\"
+@onready var settings: Button = $Panel/VBoxContainer/CenterContainer/VBoxContainer/Settings
+@onready var quit: Button = $Panel/VBoxContainer/CenterContainer/VBoxContainer/Quit
+
+
+
+func _ready() -> void:
+	new_game.pressed.connect(_handle_new_game_button_click)
+	load_game.pressed.connect(_handle_load_game_button_click)
+	settings.pressed.connect(_handle_settings_button_click)
+	quit.pressed.connect(_handle_quit_button_click)
+	
+func _handle_new_game_button_click() -> void:
+	print(\"new game clicked\")
+	CharacterController.reset()
+	get_tree().paused = false
+	get_tree().change_scene_to_file(\"res://scenes/game_controller.tscn\")
+	
+	#GlobalManager.game_controller.change_3d_scene(\"res://scenes/levels/testing_grounds.tscn\")
+	#GlobalManager.game_controller.hide_gui_scene()
+	
+func _handle_load_game_button_click() -> void:
+	pass
+
+func _handle_settings_button_click() -> void:
+	pass
+
+func _handle_quit_button_click() -> void:
+	get_tree().quit()
+	
+"
+
+[node name="Main menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_xqga4")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xqga4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 256
+text = "Transference"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="New Game" type="Button" parent="Panel/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "New Game"
+
+[node name="Load Game" type="Button" parent="Panel/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Load Game"
+
+[node name="Settings" type="Button" parent="Panel/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Quit" type="Button" parent="Panel/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
